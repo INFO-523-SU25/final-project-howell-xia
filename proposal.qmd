@@ -23,6 +23,7 @@ jupyter: python3
 #| label: load-pkgs
 #| message: false
 import numpy as np
+import pandas as pd
 ```
 
 ## Dataset
@@ -30,6 +31,13 @@ import numpy as np
 ```{python}
 #| label: load-dataset
 #| message: false
+reddit_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/reddit_jokes.json"
+stupid_stuff_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/stupidstuff.json"
+wocka_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/wocka.json"
+
+reddit = pd.read_csv(reddit_url)
+ss = pd.read_csv(stupid_stuff_url)
+wocka = pd.read_csv(wocka_url)
 ```
 
 A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
