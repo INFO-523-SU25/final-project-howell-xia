@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by Howell-Xia For INFO 523 - Data Mining and Discovery at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nMichael Howell: One sentence description of Team member 1 (e.g., year, major, etc.).\nCat Xia: One sentence description of Team member 2 (e.g., year, major, etc.)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "Investigating Sociological & Marginalised Themes in Jokes",
+    "section": "",
+    "text": "import numpy as np\nimport pandas as pd"
+  },
+  {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "Investigating Sociological & Marginalised Themes in Jokes",
+    "section": "Dataset",
+    "text": "Dataset\n\nreddit_url = \"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/reddit_jokes.json\"\nstupid_stuff_url = \"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/stupidstuff.json\"\nwocka_url = \"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/wocka.json\"\n\nreddit_df = pd.read_json(reddit_url)\nss_df = pd.read_json(stupid_stuff_url)\nwocka_df = pd.read_json(wocka_url)\n\nAbout our dataset: - Total observations? &gt; The dataset includes around 208,000 jokes, collected by Taivo Pungas from three sites: Reddit (~93.7%), StupidStuff (1.8%), and Wocka (4.8%) - What time period? &gt; Jokes were collected around early 2017 - Included columns? &gt; All jokes include id and body - Reddit jokes also include: score, title - Stupid Stuff jokes also include: rating, category - Wocka jokes also include: title, category - Citation: @misc{pungas, title={A dataset of English plaintext jokes.}, url={https://github.com/taivop/joke-dataset}, author={Pungas, Taivo}, year={2017}, publisher = {GitHub}, journal = {GitHub repository}}\nNote: depending on what we find next, we may go forward with only the Reddit dataset, which is already the bulk of the jokes.\nWhy we chose this dataset: - It includes text data - We wanted to work with language-focused and social data, to be able to provide some sociological insights - It provides an interesting perspective for analysing social questions - Humor (what a culture finds funny) often reflects important insights about what that culture sees as challenging, taboo, and uncomfortable. Marginalised themes - such as someone’s weight or ability - are often at the center of what’s being mocked or reflected on. - It is complete - This dataset provides enough observations (rows) to be able to surface interesting trends, and the majority of those rows have complete information for their columns. - It is available - Many of the other datasets we considered and found compelling are no longer available or have a high number of data protections making accessing them difficult, due to the sensitive themes of the data."
+  },
+  {
+    "objectID": "proposal.html#questions",
+    "href": "proposal.html#questions",
+    "title": "Investigating Sociological & Marginalised Themes in Jokes",
+    "section": "Questions",
+    "text": "Questions\nThe two central questions we’re looking to answer are: 1. What are the differences in distributions among social categories, marginalised groups, or themes represented in the jokes? - Can we see any patterns around what types of jokes are most prominent on each website?\n- Does the distribution suggest anything about the demographics on each site?\n2. How does each social category/theme relate to the scores and rating - are certain themes rated more highly? - What are the distributions of scores per theme? - Can we predict a joke’s rating based on its length and theme? - Is there major influence from certain users who are more active than others?"
+  },
+  {
+    "objectID": "proposal.html#analysis-plan",
+    "href": "proposal.html#analysis-plan",
+    "title": "Investigating Sociological & Marginalised Themes in Jokes",
+    "section": "Analysis plan",
+    "text": "Analysis plan\nWe’ll need to do some preprocessing on the data: - Convert JSON to CSV to add to a Google Sheet - Consider characters/symbols to remove, lowercasing, stop word removal, and other normalisation of the joke text - Create engineered features as new columns (using strict formulas, to start) - Find or create a stop word list - use to remove stop words from whole_text_normalised and whole_text_normalised_tokens - Come up with word lists for each theme; count how many times word is in the text (we may need to use a smarter approach than simply checking if a word is present, such as using an LLM to annotate themes)\nWe’ll likely need the following variables, engineered features, and additional data: - Counts/booleans for different social themes: gender, race, etc. - and word lists for each - theme_gender - women, men, nonbinary, agender, trans - theme_race - Black, white, Asian, racist - theme_sexuality - gay, homo, straight, sex, sexy, desire, arousal - theme_ability - weak, stupid, dumb, slow, disability, spelling, learning - theme_age - children, elders, old, young - theme_weight - fat, skinny, overweight - theme_appearance - ugly, blond, pimple - theme_class - poverty, poor - whole_text (string) - the first and second parts of the jokes combined - whole_text_normalised (string) - to support further NLP analysis - whole_text_normalised_tokens (list) - to support further NLP analysis - overall_length (int) - count of the words in the text (not normalised, stop words remain) - distinct_words (list) - the list of different words in the text (stop words removed) - distinct_words_count (int) - the number of different words used\nHow these will help us answer our questions: - Question 1: distributions of themes and representation - The social theme counts or booleans will allow us to see distributions per theme, which topics jokes most often reference - Question 2: relating themes to user ratings - We will be able to see and plot interesting stats (mean, median, standard deviation, etc) of the scores users typically assign per theme - Additional insights - We can also surface other relevant metrics and patterns using NLP strategies, such as observing which words are most commonly used in jokes, per theme, whether longer or shorter jokes are rated more highly, etc"
+  },
+  {
+    "objectID": "presentation.html#quarto",
+    "href": "presentation.html#quarto",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Quarto",
+    "text": "Quarto\n\nThe presentation is created using the Quarto CLI\n## sets the start of a new slide"
+  },
+  {
+    "objectID": "presentation.html#layouts",
+    "href": "presentation.html#layouts",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Layouts",
+    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\nlike\nthis\n\nAnd add footnotes"
+  },
+  {
+    "objectID": "presentation.html#code",
+    "href": "presentation.html#code",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Code",
+    "text": "Code\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Sat, 02 Aug 2025   Prob (F-statistic):           5.84e-08\nTime:                        05:11:11   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified."
+  },
+  {
+    "objectID": "presentation.html#plots",
+    "href": "presentation.html#plots",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Plots",
+    "text": "Plots"
+  },
+  {
+    "objectID": "presentation.html#plot-and-text",
+    "href": "presentation.html#plot-and-text",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Plot and text",
+    "text": "Plot and text\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#tables",
+    "href": "presentation.html#tables",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Tables",
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\n\n\n\nisland\n\n\n\nbill_length_mm\n\n\n\nbill_depth_mm\n\n\n\nflipper_length_mm\n\n\n\nbody_mass_g\n\n\n\nsex\n\n\n\n\n\n\n\n\n\n\n\n0\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.1\n\n\n\n18.7\n\n\n\n181.0\n\n\n\n3750.0\n\n\n\nMale\n\n\n\n\n\n\n\n1\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.5\n\n\n\n17.4\n\n\n\n186.0\n\n\n\n3800.0\n\n\n\nFemale\n\n\n\n\n\n\n\n2\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n40.3\n\n\n\n18.0\n\n\n\n195.0\n\n\n\n3250.0\n\n\n\nFemale\n\n\n\n\n\n\n\n4\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n36.7\n\n\n\n19.3\n\n\n\n193.0\n\n\n\n3450.0\n\n\n\nFemale\n\n\n\n\n\n\n\n5\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.3\n\n\n\n20.6\n\n\n\n190.0\n\n\n\n3650.0\n\n\n\nMale"
+  },
+  {
+    "objectID": "presentation.html#images",
+    "href": "presentation.html#images",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Images",
+    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
+  },
+  {
+    "objectID": "presentation.html#math-expressions",
+    "href": "presentation.html#math-expressions",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Math Expressions",
+    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
+  },
+  {
+    "objectID": "presentation.html#feeling-adventurous",
+    "href": "presentation.html#feeling-adventurous",
+    "title": "Internet Jokes from 2017 (Working Title)",
+    "section": "Feeling adventurous?",
+    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
+  }
+]
