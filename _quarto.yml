@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: Internet Jokes from 2017 (Working Title)
+  title: Investigating Sociological & Marginalised Themes in Jokes
   navbar:
     right:
       - icon: github

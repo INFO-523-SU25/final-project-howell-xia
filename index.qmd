@@ -1,11 +1,11 @@
 ---
-title: "Internet Jokes from 2017 (Working Title)"
+title: "Investigating Sociological & Marginalised Themes in Jokes"
 subtitle: "INFO 523 - Final Project"
 author: 
   - name: "Howell-Xia: Michael Howell, Cat Xia"
     affiliations:
       - name: "College of Information Science, University of Arizona"
-description: "Project description"
+description: "This project aims to study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites (primarily Reddit) around 2017.  We are specifically interested in identifying patterns around which marginalised groups and themes are represented in the jokes, as well as how those themes relate to the ratings users assign to each joke."
 format:
    html:
     code-tools: true

@@ -7,7 +7,7 @@ jupyter: python3
 
 This project was developed by **Howell-Xia** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
--   Michael Howell: One sentence description of Team member 1 (e.g., year, major, etc.).
+-   (Ahn) Michael Howell: Human Language Technology Masters - Sociolinguist & Agentic AI Engineer
 
 -   Cat Xia: One sentence description of Team member 2 (e.g., year, major, etc.).
 
