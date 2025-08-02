@@ -1,11 +1,11 @@
 ---
-title: "Proposal title"
+title: "Investigating Sociological & Marginalised Themes in Jokes"
 subtitle: "Proposal"
 author: 
-  - name: "Team Name - Team member 1, Team member 2,..."
+  - name: "Howell-Xia - Michael Howell, Cat Xia"
     affiliations:
       - name: "College of Information Science, University of Arizona"
-description: "Project description"
+description: "This project aims to study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites around 2017.  We are specifically interested in identifying patterns around which marginalised groups and themes are represented in the jokes, as well as how those themes relate to the ratings users assign to each joke."
 format:
   html:
     code-tools: true
@@ -35,19 +35,36 @@ reddit_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/m
 stupid_stuff_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/stupidstuff.json"
 wocka_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/wocka.json"
 
-reddit = pd.read_csv(reddit_url)
-ss = pd.read_csv(stupid_stuff_url)
-wocka = pd.read_csv(wocka_url)
+reddit_df = pd.read_json(reddit_url)
+ss_df = pd.read_json(stupid_stuff_url)
+wocka_df = pd.read_json(wocka_url)
 ```
 
 A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
+About our dataset:
+- 
 
-Make sure to load the data and use inline code for some of this information.
+Why we chose this dataset:
+- It provides an interesting perspective for analysing social questions
+  - Humor (what a culture finds funny) often reflects important insights about what that culture sees as challenging, taboo, and uncomfortable.  Marginalised themes - such as someone's weight or ability - are often at the center of what's being mocked or reflected on.
+- It is complete
+  - This dataset provides enough observations (rows) to be able to surface interesting trends, and the majority of those rows have complete information for their columns.
+- It is available
+  - Many of the other datasets we considered and found compelling are no longer available or have a high number of data protections making accessing them difficult, due to the sensitive themes of the data.
+
 
 ## Questions
 
-The two questions you want to answer.
+The two central questions we're looking to answer are:
+- What are the differences in distributions among social categories, marginalised groups, or themes represented in the jokes?
+- How does each social category/theme relate to the scores and rating - are certain themes rated more highly?
+
 
 ## Analysis plan
 
--   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+We'll need the following variables, engineered features, and additional data:
+- 
+
+How these will help us answer our questions:
+-
+
