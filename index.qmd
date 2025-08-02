@@ -1,8 +1,8 @@
 ---
-title: "Project Title"
+title: "Internet Jokes from 2017 (Working Title)"
 subtitle: "INFO 523 - Final Project"
 author: 
-  - name: "Team name - Team member 1, Team member 2,..."
+  - name: "Howell-Xia: Michael Howell, Cat Xia"
     affiliations:
       - name: "College of Information Science, University of Arizona"
 description: "Project description"

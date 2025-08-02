@@ -1,7 +1,7 @@
 ---
-title: "Project title"
+title: "Internet Jokes from 2017 (Working Title)"
 subtitle: "INFO 523 - Summer 2025 - Final Project"
-author: "Author names"
+author: "Michael Howell, Cat Xia"
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch

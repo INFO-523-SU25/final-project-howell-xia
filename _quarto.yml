@@ -2,11 +2,11 @@ project:
   type: website
 
 website:
-  title: Project Title
+  title: Internet Jokes from 2017 (Working Title)
   navbar:
     right:
       - icon: github
-        href: https://github.com/INFO-523-SU24/final-project # Need to change to your project repo
+        href: https://github.com/INFO-523-SU25/final-project-howell-xia 
     left:
       - text: Project
         href: index.qmd
