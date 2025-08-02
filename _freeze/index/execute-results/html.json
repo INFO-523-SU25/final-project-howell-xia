@@ -1,9 +1,10 @@
 {
-  "hash": "0e6b82ab6a634a8b8dc925668c0f975c",
+  "hash": "89d1732dab22a296d796658835b77aa0",
   "result": {
-    "markdown": "---\ntitle: Project title\nsubtitle: INFO 523 - Project Final\nauthor: Team name\nformat: html\neditor: visual\n---\n\n## Abstract\n\nAdd project abstract here.\n\n",
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Investigating Sociological & Marginalised Themes in Jokes\"\nsubtitle: \"INFO 523 - Final Project\"\nauthor: \n  - name: \"Howell-Xia: Michael Howell, Cat Xia\"\n    affiliations:\n      - name: \"College of Information Science, University of Arizona\"\ndescription: \"This project aims to study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites (primarily Reddit) around 2017.  We are specifically interested in identifying patterns around which marginalised groups and themes are represented in the jokes, as well as how those themes relate to the ratings users assign to each joke.\"\nformat:\n   html:\n    code-tools: true\n    code-overflow: wrap\n    embed-resources: true\neditor: visual\nexecute:\n  warning: false\n  echo: false\njupyter: python3\n---\n\n## Abstract\n\nAdd project abstract here.\n\n",
     "supporting": [
-      "index_files"
+      "index_files/figure-html"
     ],
     "filters": [],
     "includes": {}
