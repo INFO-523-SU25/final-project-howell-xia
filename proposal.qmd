@@ -5,7 +5,7 @@ author:
   - name: "Howell-Xia - Michael Howell, Cat Xia"
     affiliations:
       - name: "College of Information Science, University of Arizona"
-description: "This project aims to study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites around 2017.  We are specifically interested in identifying patterns around which marginalised groups and themes are represented in the jokes, as well as how those themes relate to the ratings users assign to each joke."
+description: "This project aims to study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites (primarily Reddit) around 2017.  We are specifically interested in identifying patterns around which marginalised groups and themes are represented in the jokes, as well as how those themes relate to the ratings users assign to each joke."
 format:
   html:
     code-tools: true
@@ -40,11 +40,26 @@ ss_df = pd.read_json(stupid_stuff_url)
 wocka_df = pd.read_json(wocka_url)
 ```
 
-A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
 About our dataset:
-- 
+- Total observations? > The dataset includes around 208,000 jokes, collected by Taivo Pungas from three sites: Reddit (~93.7%), StupidStuff (1.8%), and Wocka (4.8%)
+- What time period? > Jokes were collected around early 2017
+- Included columns? > All jokes include id and body
+  - Reddit jokes also include: score, title
+  - Stupid Stuff jokes also include: rating, category
+  - Wocka jokes also include: title, category
+- Citation: @misc{pungas,
+        title={A dataset of English plaintext jokes.},
+        url={https://github.com/taivop/joke-dataset},
+        author={Pungas, Taivo},
+        year={2017},
+        publisher = {GitHub},
+        journal = {GitHub repository}}
+
+Note: depending on what we find next, we may go forward with only the Reddit dataset, which is already the bulk of the jokes.
 
 Why we chose this dataset:
+- It includes text data
+  - We wanted to work with language-focused and social data, to be able to provide some sociological insights
 - It provides an interesting perspective for analysing social questions
   - Humor (what a culture finds funny) often reflects important insights about what that culture sees as challenging, taboo, and uncomfortable.  Marginalised themes - such as someone's weight or ability - are often at the center of what's being mocked or reflected on.
 - It is complete
@@ -56,15 +71,45 @@ Why we chose this dataset:
 ## Questions
 
 The two central questions we're looking to answer are:
-- What are the differences in distributions among social categories, marginalised groups, or themes represented in the jokes?
-- How does each social category/theme relate to the scores and rating - are certain themes rated more highly?
+1. What are the differences in distributions among social categories, marginalised groups, or themes represented in the jokes?
+  - Can we see any patterns around what types of jokes are most prominent on each website?  
+  - Does the distribution suggest anything about the demographics on each site?  
+2. How does each social category/theme relate to the scores and rating - are certain themes rated more highly?
+  - What are the distributions of scores per theme?
+  - Can we predict a joke’s rating based on its length and theme?
+  - Is there major influence from certain users who are more active than others?
 
 
 ## Analysis plan
 
-We'll need the following variables, engineered features, and additional data:
-- 
+We'll need to do some preprocessing on the data:
+- Convert JSON to CSV to add to a Google Sheet
+- Consider characters/symbols to remove, lowercasing, stop word removal, and other normalisation of the joke text
+- Create engineered features as new columns (using strict formulas, to start)
+  - Find or create a stop word list - use to remove stop words from whole_text_normalised and whole_text_normalised_tokens
+  - Come up with word lists for each theme; count how many times word is in the text (we may need to use a smarter approach than simply checking if a word is present, such as using an LLM to annotate themes)
+
+We'll likely need the following variables, engineered features, and additional data:
+- Counts/booleans for different social themes: gender, race, etc. - and word lists for each
+  - theme_gender - women, men, nonbinary, agender, trans
+  - theme_race - Black, white, Asian, racist
+  - theme_sexuality - gay, homo, straight, sex, sexy, desire, arousal
+  - theme_ability - weak, stupid, dumb, slow, disability, spelling, learning
+  - theme_age - children, elders, old, young
+  - theme_weight - fat, skinny, overweight
+  - theme_appearance - ugly, blond, pimple
+  - theme_class - poverty, poor
+- whole_text (string) - the first and second parts of the jokes combined
+- whole_text_normalised (string) - to support further NLP analysis
+- whole_text_normalised_tokens (list) - to support further NLP analysis
+- overall_length (int) - count of the words in the text (not normalised, stop words remain)
+- distinct_words (list) - the list of different words in the text (stop words removed)
+- distinct_words_count (int) - the number of different words used
 
 How these will help us answer our questions:
--
-
+- Question 1: distributions of themes and representation
+  - The social theme counts or booleans will allow us to see distributions per theme, which topics jokes most often reference
+- Question 2: relating themes to user ratings
+  - We will be able to see and plot interesting stats (mean, median, standard deviation, etc) of the scores users typically assign per theme
+- Additional insights
+  - We can also surface other relevant metrics and patterns using NLP strategies, such as observing which words are most commonly used in jokes, per theme, whether longer or shorter jokes are rated more highly, etc
