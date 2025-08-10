@@ -19,12 +19,19 @@ execute:
 jupyter: python3
 ---
 
+## High-Level Goal
+
+To study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites (primarily Reddit) around 2017, both in terms of distribution of the sociological themes as well as how they relate to user-assigned ratings.
+
+## Libraries & packages
+
 ```{python}
 #| label: load-pkgs
 #| message: false
 import numpy as np
 import pandas as pd
 ```
+
 
 ## Dataset
 
@@ -127,3 +134,9 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
   - We will be able to see and plot interesting stats (mean, median, standard deviation, etc) of the scores users typically assign per theme
 - Additional insights
   - We can also surface other relevant metrics and patterns using NLP strategies, such as observing which words are most commonly used in jokes, per theme, whether longer or shorter jokes are rated more highly, etc
+
+## Repo organisation:
+
+- root: contains central files such as README.md, proposal.qmd, presentation.qmd, preprocess_data.ipynb, etc
+- /data: contains the preprocessed dataset (CSV) and any other important data
+- /images: contains plots and other graphics of key interest
