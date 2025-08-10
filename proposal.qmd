@@ -42,9 +42,11 @@ reddit_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/m
 stupid_stuff_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/stupidstuff.json"
 wocka_url = "https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/wocka.json"
 
-reddit_df = pd.read_json(reddit_url)
-ss_df = pd.read_json(stupid_stuff_url)
-wocka_df = pd.read_json(wocka_url)
+# TODO: update to use CSVs from data folder
+# All have columns: id, body
+reddit_df = pd.read_json(reddit_url) # Extra columns: title, score
+ss_df = pd.read_json(stupid_stuff_url) # Extra columns: rating, category
+wocka_df = pd.read_json(wocka_url) # Extra columns: title, category
 ```
 
 ### About our dataset:
@@ -108,6 +110,9 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
   - Come up with word lists for each theme; count how many times word is in the text (we may need to use a smarter approach than simply checking if a word is present, such as using an LLM to annotate themes)
 
 ### We'll likely need the following variables, engineered features, and additional data:
+
+- Some basic info:
+  - website (string) - which site the data belongs to
 
 - Counts/booleans for different social themes: gender, race, etc. - and word lists for each
   - theme_gender - women, men, nonbinary, agender, trans
