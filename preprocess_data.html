@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>This notebook’s goal: – Investigating Sociological &amp; Marginalised Themes in Jokes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ae6a7aef4b950b0b477a2111065959bd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-fb3a5e9557d06aa35a2e64b95f480777.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-ae6a7aef4b950b0b477a2111065959bd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Investigating Sociological &amp; Marginalised Themes in Jokes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./proposal.html"> 
+<span class="menu-text">Proposal</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./presentation.html"> 
+<span class="menu-text">Presentation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/INFO-523-SU25/final-project-howell-xia"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">This notebook’s goal:</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>To preprocess, merge, and otherwise prepare the original datasets (JSON) while converting them to CSVs. This includes some text normalisation, tokenisation, and feature engineering steps.</p>
+<section id="authors" class="level5">
+<h5 class="anchored" data-anchor-id="authors">Author(s):</h5>
+<ul>
+<li>(Ahn) Michael Howell - Human Language Technology Masters - Sociolinguist &amp; Agentic AI Engineer - ahn@equita-tech.com</li>
+</ul>
+</section>
+<section id="gather-imports" class="level4">
+<h4 class="anchored" data-anchor-id="gather-imports">Gather imports</h4>
+<div id="49786bb1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re <span class="co"># For text processing, pattern recognition</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> ENGLISH_STOP_WORDS <span class="co"># For focusing NLP analysis on contentful words</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-original-data" class="level4">
+<h4 class="anchored" data-anchor-id="load-original-data">Load original data</h4>
+<div id="04c91578" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## LOAD DATA</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>reddit_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/reddit_jokes.json"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>stupid_stuff_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/stupidstuff.json"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>wocka_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/wocka.json"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>reddit_df <span class="op">=</span> pd.read_json(reddit_url) <span class="co"># Extra columns: title, score</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ss_df <span class="op">=</span> pd.read_json(stupid_stuff_url) <span class="co"># Extra columns: rating, category</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>wocka_df <span class="op">=</span> pd.read_json(wocka_url) <span class="co"># Extra columns: title, category</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="preprocessing-tidy-initial-columns-merging" class="level5">
+<h5 class="anchored" data-anchor-id="preprocessing-tidy-initial-columns-merging">Preprocessing: tidy initial columns &amp; merging</h5>
+<div id="86eb681b" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add site column to each</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>reddit_df[<span class="st">"website"</span>] <span class="op">=</span> <span class="st">"reddit"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ss_df[<span class="st">"website"</span>] <span class="op">=</span> <span class="st">"stupidstuff"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>wocka_df[<span class="st">"website"</span>] <span class="op">=</span> <span class="st">"wocka"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure each dataset has all necessary columns</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> (reddit_df, ss_df, wocka_df):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">'title'</span>, <span class="st">'category'</span>, <span class="st">'score'</span>, <span class="st">'rating'</span>]:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> col <span class="kw">not</span> <span class="kw">in</span> d.columns:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            d[col] <span class="op">=</span> pd.NA</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">## MERGE DATASETS</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.concat([reddit_df, ss_df, wocka_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure text columns are real strings (empty if missing)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'title'</span>] <span class="op">=</span> merged_df[<span class="st">'title'</span>].fillna(<span class="st">''</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'body'</span>] <span class="op">=</span> merged_df[<span class="st">'body'</span>].fillna(<span class="st">''</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'category'</span>] <span class="op">=</span> merged_df[<span class="st">'category'</span>].fillna(<span class="st">''</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure score is numeric</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'score'</span>] <span class="op">=</span> pd.to_numeric(merged_df[<span class="st">'score'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">## REVIEW UPDATES</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_df_details(details_to_include <span class="op">=</span> []):</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"head"</span> <span class="kw">in</span> details_to_include:</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** merged_df.head:</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>head()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"tail"</span> <span class="kw">in</span> details_to_include:</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** merged_df.tail:</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>tail()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"info"</span> <span class="kw">in</span> details_to_include:</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>        merged_df.info()</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(f"\n** merged_df.info:\n{merged_df.info(verbose = 'true')}\n")</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"describe"</span> <span class="kw">in</span> details_to_include:</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** merged_df.describe:</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>describe()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"describe-all"</span> <span class="kw">in</span> details_to_include:</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** merged_df.describe:</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>describe(include <span class="op">=</span> <span class="st">'all'</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>show_df_details([<span class="st">"head"</span>, <span class="st">"tail"</span>, <span class="st">"info"</span>, <span class="st">"describe-all"</span>])</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Consider if rating &amp; score can be immediately merged &gt; no, they are not on the same scale</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Rating is 0 to 5, while score is upvotes count; </span><span class="al">TODO</span><span class="co">: reflect on binning strategy</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="co"># to fit into 5-part scale: VERYLOW, LOW, MID, HIGH, VERYHIGH, as user_rating column</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: look at distribution of score column, review outliers</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: reflect on if the 5-part binning makes more sense or keeping numerics; maybe both</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Score is extremely skewed (median = 3, max = 48,526, 75% quantile = 16, means 75% of jokes have 16 upvotes or less)</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation = 936; variance is mostly caused by viral jokes &gt; should use quantiles to bin</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">score &amp; rating .describe:</span><span class="ch">\n</span><span class="sc">{</span>merged_df[[<span class="st">'score'</span>,<span class="st">'rating'</span>]]<span class="sc">.</span>describe(include<span class="op">=</span><span class="st">'all'</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: check on if the IDs will be a challenge &gt; it may make most sense to just keep reddit data only</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">## TEMPORARY FILTER - to simplify data intake</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>websites_to_keep <span class="op">=</span> [<span class="st">"reddit"</span>]</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [<span class="st">"body"</span>, <span class="st">"id"</span>, <span class="st">"title"</span>, <span class="st">"score"</span>, <span class="st">"website"</span>]</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> merged_df.loc[merged_df[<span class="st">'website'</span>].isin(websites_to_keep), columns_to_keep].copy()</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** AFTER FILTER: merged_df.head:</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>head()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_61142/2405821299.py:13: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  merged_df = pd.concat([reddit_df, ss_df, wocka_df], ignore_index=True)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+** merged_df.head:
+                                                body      id  score  \
+0  Now I have to say "Leroy can you please paint ...  5tz52q    1.0   
+1  Pizza doesn't scream when you put it in the ov...  5tz4dd    0.0   
+2  ...and being there really helped me learn abou...  5tz319    0.0   
+3  A Sunday school teacher is concerned that his ...  5tz2wj    1.0   
+4  He got caught trying to sell the two books to ...  5tz1pc    0.0   
+
+                                               title website category  rating  
+0   I hate how you cant even say black paint anymore  reddit              NaN  
+1  What's the difference between a Jew in Nazi Ge...  reddit              NaN  
+2                     I recently went to America....  reddit              NaN  
+3  Brian raises his hand and says, “He’s in Heaven.”  reddit              NaN  
+4  You hear about the University book store worke...  reddit              NaN  
+
+
+** merged_df.tail:
+                                                     body     id  score  \
+208340  (A man comes to my register with a mint chocol...  18196    NaN   
+208341  (I am shelving DVDs in a library when a man co...  18197    NaN   
+208342  Me: "That will be 17.50, please."\r\n\r\nCusto...  18198    NaN   
+208343  Me: "Sir, would you like to use any coupons to...  18199    NaN   
+208344  Customer: "Are you Hispanic?"\r\n\r\nMe: "No."...  18200    NaN   
+
+                                                  title website     category  \
+208340  Hell Hath No Fury Like A Pregnant Woman Scorned   wocka  Men / Women   
+208341                           No Pranks, Just Thanks   wocka     Children   
+208342                                Hell In A Handbag   wocka    Religious   
+208343                A Good Ol' Fashioned A** Whoopin'   wocka      At Work   
+208344          ... And We Wonder Why Everyone Hates Us   wocka      Insults   
+
+        rating  
+208340     NaN  
+208341     NaN  
+208342     NaN  
+208343     NaN  
+208344     NaN  
+
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 208345 entries, 0 to 208344
+Data columns (total 7 columns):
+ #   Column    Non-Null Count   Dtype  
+---  ------    --------------   -----  
+ 0   body      208345 non-null  object 
+ 1   id        208345 non-null  object 
+ 2   score     194553 non-null  float64
+ 3   title     208345 non-null  object 
+ 4   website   208345 non-null  object 
+ 5   category  208345 non-null  object 
+ 6   rating    3773 non-null    float64
+dtypes: float64(2), object(5)
+memory usage: 11.1+ MB
+
+** merged_df.describe:
+          body        id          score   title website category       rating
+count   208345  208345.0  194553.000000  208345  208345   208345  3773.000000
+unique  190400  205985.0            NaN  186041       3       60          NaN
+top               2306.0            NaN          reddit                   NaN
+freq      4684       2.0            NaN    3773  194553   194553          NaN
+mean       NaN       NaN     118.223255     NaN     NaN      NaN     3.284363
+std        NaN       NaN     936.231277     NaN     NaN      NaN     1.199279
+min        NaN       NaN       0.000000     NaN     NaN      NaN     0.000000
+25%        NaN       NaN       0.000000     NaN     NaN      NaN     2.330000
+50%        NaN       NaN       3.000000     NaN     NaN      NaN     3.090000
+75%        NaN       NaN      16.000000     NaN     NaN      NaN     4.000000
+max        NaN       NaN   48526.000000     NaN     NaN      NaN     5.000000
+
+
+score &amp; rating .describe:
+               score       rating
+count  194553.000000  3773.000000
+mean      118.223255     3.284363
+std       936.231277     1.199279
+min         0.000000     0.000000
+25%         0.000000     2.330000
+50%         3.000000     3.090000
+75%        16.000000     4.000000
+max     48526.000000     5.000000
+
+
+** AFTER FILTER: merged_df.head:
+                                                body      id  \
+0  Now I have to say "Leroy can you please paint ...  5tz52q   
+1  Pizza doesn't scream when you put it in the ov...  5tz4dd   
+2  ...and being there really helped me learn abou...  5tz319   
+3  A Sunday school teacher is concerned that his ...  5tz2wj   
+4  He got caught trying to sell the two books to ...  5tz1pc   
+
+                                               title  score website  
+0   I hate how you cant even say black paint anymore    1.0  reddit  
+1  What's the difference between a Jew in Nazi Ge...    0.0  reddit  
+2                     I recently went to America....    0.0  reddit  
+3  Brian raises his hand and says, “He’s in Heaven.”    1.0  reddit  
+4  You hear about the University book store worke...    0.0  reddit  
+</code></pre>
+</div>
+</div>
+</section>
+<section id="preprocessing-gather-whole-text-initial-text-features" class="level5">
+<h5 class="anchored" data-anchor-id="preprocessing-gather-whole-text-initial-text-features">Preprocessing: gather whole text &amp; initial text features</h5>
+<div id="052b3425" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: whole_text (string) - the first and second parts of the jokes combined</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'whole_text'</span>] <span class="op">=</span> (merged_df[<span class="st">'title'</span>] <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> merged_df[<span class="st">'body'</span>]).<span class="bu">str</span>.strip()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: whole_text_normalised (string) - to support further NLP analysis</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> normalise_text(s):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> s.lower() <span class="co"># make lowercase</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> re.sub(<span class="vs">r"</span><span class="pp">[^a-z0-9</span><span class="dv">\s</span><span class="pp">]</span><span class="vs">"</span>, <span class="st">" "</span>, s) <span class="co"># remove non-text characters</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> re.sub(<span class="vs">r"</span><span class="dv">\s</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, s)  <span class="co"># collapse multiple spaces to a single space</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> s.strip() <span class="co"># remove whitespace from ends</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> s</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'whole_text_normalised'</span>] <span class="op">=</span> merged_df[<span class="st">'whole_text'</span>].<span class="bu">apply</span>(normalise_text)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: whole_text_normalised_tokens (list) - to support further NLP analysis</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'whole_text_normalised_tokens'</span>] <span class="op">=</span> merged_df[<span class="st">'whole_text_normalised'</span>].<span class="bu">str</span>.split()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: overall_length (int) - count of the words in the text (not normalised, stop words remain)</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'overall_length'</span>] <span class="op">=</span> merged_df[<span class="st">'whole_text_normalised_tokens'</span>].<span class="bu">apply</span>(<span class="bu">len</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: distinct_words (list) - the list of different words in the text (stop words removed)</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>CONTRACTED_STOP_WORDS <span class="op">=</span> {<span class="st">"im"</span>,<span class="st">"ive"</span>,<span class="st">"youre"</span>,<span class="st">"dont"</span>,<span class="st">"didnt"</span>,<span class="st">"hes"</span>,<span class="st">"shes"</span>,<span class="st">"theyre"</span>,<span class="st">"weve"</span>,<span class="st">"cant"</span>,<span class="st">"wont"</span>,<span class="st">"thats"</span>}</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>STOP_WORDS_ALL <span class="op">=</span> <span class="bu">set</span>(ENGLISH_STOP_WORDS) <span class="op">|</span> CONTRACTED_STOP_WORDS</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'distinct_words'</span>] <span class="op">=</span> merged_df[<span class="st">'whole_text_normalised_tokens'</span>].<span class="bu">apply</span>(</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> toks: <span class="bu">list</span>(<span class="bu">set</span>(t <span class="cf">for</span> t <span class="kw">in</span> toks <span class="cf">if</span> t <span class="kw">not</span> <span class="kw">in</span> STOP_WORDS_ALL))</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: distinct_words_count (int) - the number of different words used</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'distinct_words_count'</span>] <span class="op">=</span> merged_df[<span class="st">'distinct_words'</span>].<span class="bu">apply</span>(<span class="bu">len</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">## REVIEW UPDATES</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>show_df_details([<span class="st">"head"</span>, <span class="st">"tail"</span>, <span class="st">"info"</span>, <span class="st">"describe"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+** merged_df.head:
+                                                body      id  \
+0  Now I have to say "Leroy can you please paint ...  5tz52q   
+1  Pizza doesn't scream when you put it in the ov...  5tz4dd   
+2  ...and being there really helped me learn abou...  5tz319   
+3  A Sunday school teacher is concerned that his ...  5tz2wj   
+4  He got caught trying to sell the two books to ...  5tz1pc   
+
+                                               title  score website  \
+0   I hate how you cant even say black paint anymore    1.0  reddit   
+1  What's the difference between a Jew in Nazi Ge...    0.0  reddit   
+2                     I recently went to America....    0.0  reddit   
+3  Brian raises his hand and says, “He’s in Heaven.”    1.0  reddit   
+4  You hear about the University book store worke...    0.0  reddit   
+
+                                          whole_text  \
+0  I hate how you cant even say black paint anymo...   
+1  What's the difference between a Jew in Nazi Ge...   
+2  I recently went to America.... ...and being th...   
+3  Brian raises his hand and says, “He’s in Heave...   
+4  You hear about the University book store worke...   
+
+                               whole_text_normalised  \
+0  i hate how you cant even say black paint anymo...   
+1  what s the difference between a jew in nazi ge...   
+2  i recently went to america and being there rea...   
+3  brian raises his hand and says he s in heaven ...   
+4  you hear about the university book store worke...   
+
+                        whole_text_normalised_tokens  overall_length  \
+0  [i, hate, how, you, cant, even, say, black, pa...              22   
+1  [what, s, the, difference, between, a, jew, in...              27   
+2  [i, recently, went, to, america, and, being, t...              40   
+3  [brian, raises, his, hand, and, says, he, s, i...             105   
+4  [you, hear, about, the, university, book, stor...              30   
+
+                                      distinct_words  distinct_words_count  
+0   [fence, paint, hate, say, black, leroy, anymore]                     7  
+1  [m, germany, s, nazi, doesn, difference, t, je...                    12  
+2  [sued, recently, american, shop, america, cult...                    18  
+3  [heaven, gets, teacher, students, johnny, dad,...                    35  
+4  [sell, 20, 000, books, hear, worker, trying, u...                    16  
+
+
+** merged_df.tail:
+                                                     body      id  \
+194548  Gives me something to read while i'm in the sh...  1a89ts   
+194549                        I mean dyslexia fcuk!!! &gt;_&lt;  1a87we   
+194550       A hockey player showers after three periods.  1a7xnd   
+194551  A father buys a lie detector robot that slaps ...  1a813f   
+194552                                It was a 'Shih Tzu'  1a801u   
+
+                                                    title  score website  \
+194548     I like a girl with words tattooed on her back.    5.0  reddit   
+194549                                 I have sexdaily...   12.0  reddit   
+194550  What's the difference between a hippie chick a...   44.0  reddit   
+194551                                   new family robot   63.0  reddit   
+194552   I went to a zoo and there was only one animal...    0.0  reddit   
+
+                                               whole_text  \
+194548  I like a girl with words tattooed on her back....   
+194549     I have sexdaily... I mean dyslexia fcuk!!! &gt;_&lt;   
+194550  What's the difference between a hippie chick a...   
+194551  new family robot A father buys a lie detector ...   
+194552  I went to a zoo and there was only one animal....   
+
+                                    whole_text_normalised  \
+194548  i like a girl with words tattooed on her back ...   
+194549               i have sexdaily i mean dyslexia fcuk   
+194550  what s the difference between a hippie chick a...   
+194551  new family robot a father buys a lie detector ...   
+194552  i went to a zoo and there was only one animal ...   
+
+                             whole_text_normalised_tokens  overall_length  \
+194548  [i, like, a, girl, with, words, tattooed, on, ...              21   
+194549       [i, have, sexdaily, i, mean, dyslexia, fcuk]               7   
+194550  [what, s, the, difference, between, a, hippie,...              19   
+194551  [new, family, robot, a, father, buys, a, lie, ...             123   
+194552  [i, went, to, a, zoo, and, there, was, only, o...              16   
+
+                                           distinct_words  \
+194548  [like, m, shitter, words, read, girl, gives, t...   
+194549                   [sexdaily, mean, fcuk, dyslexia]   
+194550  [hippie, chick, player, periods, s, hockey, di...   
+194551  [story, schoolwork, lie, test, afternoon, movi...   
+194552                     [shih, animal, tzu, zoo, went]   
+
+        distinct_words_count  
+194548                     8  
+194549                     4  
+194550                     8  
+194551                    40  
+194552                     5  
+
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 194553 entries, 0 to 194552
+Data columns (total 11 columns):
+ #   Column                        Non-Null Count   Dtype  
+---  ------                        --------------   -----  
+ 0   body                          194553 non-null  object 
+ 1   id                            194553 non-null  object 
+ 2   title                         194553 non-null  object 
+ 3   score                         194553 non-null  float64
+ 4   website                       194553 non-null  object 
+ 5   whole_text                    194553 non-null  object 
+ 6   whole_text_normalised         194553 non-null  object 
+ 7   whole_text_normalised_tokens  194553 non-null  object 
+ 8   overall_length                194553 non-null  int64  
+ 9   distinct_words                194553 non-null  object 
+ 10  distinct_words_count          194553 non-null  int64  
+dtypes: float64(1), int64(2), object(8)
+memory usage: 17.8+ MB
+
+** merged_df.describe:
+               score  overall_length  distinct_words_count
+count  194553.000000   194553.000000         194553.000000
+mean      118.223255       47.924859             17.107451
+std       936.231277      106.849345             26.195536
+min         0.000000        0.000000              0.000000
+25%         0.000000       13.000000              6.000000
+50%         3.000000       19.000000              9.000000
+75%        16.000000       36.000000             15.000000
+max     48526.000000     7795.000000           1128.000000
+</code></pre>
+</div>
+</div>
+</section>
+<section id="preprocessing-gather-theme-counts-from-features" class="level5">
+<h5 class="anchored" data-anchor-id="preprocessing-gather-theme-counts-from-features">Preprocessing: gather theme counts from features</h5>
+</section>
+<section id="tidy-dataframe---last-steps" class="level5">
+<h5 class="anchored" data-anchor-id="tidy-dataframe---last-steps">Tidy dataframe - last steps</h5>
+</section>
+</section>
+<section id="output-new-csv-in-data-folder" class="level4">
+<h4 class="anchored" data-anchor-id="output-new-csv-in-data-folder">Output new CSV (in data folder)</h4>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/INFO-523-SU25\.github\.io\/final-project-howell-xia\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
