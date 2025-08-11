@@ -150,11 +150,11 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
 
 | **Task** | **Dates** | **Team Member** |
 |--------------------|--------------------------------|--------------------|
-| **Project Proposal** | Aug 8 | \- Both |
-| **Data Collection** | Aug 10 | \- Michael |
-| **Data Cleaning and Wrangling** | Aug 13 | \- Both |
-| **Model Training and Evaluation** | Aug 15 | \- Cat |
-| **Initial Powerpoint outline** | Aug 16 | \- Both |
-| **Graph Making and Powerpoint Finalization** | Aug 18 | \- Both |
-| **Powerpoint Recording** | Aug 19 | \- Both |
-| **Last minute cleaning and Submission** | Aug 20 | \- Both |
+| **Project Proposal** | Aug 8 | \ Both |
+| **Data Collection** | Aug 10 | \ Michael |
+| **Data Cleaning and Wrangling** | Aug 13 | \ Both |
+| **Model Training and Evaluation** | Aug 15 | \ Cat |
+| **Initial Powerpoint outline** | Aug 16 | \ Both |
+| **Graph Making and Powerpoint Finalization** | Aug 18 | \ Both |
+| **Powerpoint Recording** | Aug 19 | \ Both |
+| **Last minute cleaning and Submission** | Aug 20 | \ Both |

@@ -1,8 +1,8 @@
 {
-  "hash": "c4e8ad3ba21e7009b333a235d3951437",
+  "hash": "b85b56c04dbe01b6cc10ed250b47fe84",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: \"About\"\nformat: html\neditor: visual\njupyter: python3\n---\n\nThis project was developed by **Howell-Xia** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\n-   (Ahn) Michael Howell: Human Language Technology Masters - Sociolinguist & Agentic AI Engineer\n\n-   Cat Xia: One sentence description of Team member 2 (e.g., year, major, etc.).\n\n",
+    "markdown": "---\ntitle: \"About\"\nformat: html\neditor: visual\njupyter: python3\n---\n\nThis project was developed by **Howell-Xia** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\n-   (Ahn) Michael Howell: Human Language Technology Masters - Sociolinguist & Agentic AI Engineer\n\n-   Cat Xia: Data Science Masters - Interested in data analysis of biological and cultural research.\n\n",
     "supporting": [
       "about_files/figure-html"
     ],
