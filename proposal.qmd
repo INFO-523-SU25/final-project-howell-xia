@@ -21,7 +21,7 @@ jupyter: python3
 
 ## High-Level Goal
 
-To study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites (primarily Reddit) around 2017, both in terms of distribution of the sociological themes as well as how they relate to user-assigned ratings.
+To study patterns between sociological categories (gender, race, ability, etc) and humor in jokes collected from three websites (primarily Reddit) around 2017, both in terms of distribution of the sociological themes as well as how they relate to user-assigned ratings. Our end project goal is to create a model that predicts the user rating of a joke based on the sociological categories it falls under and the websites it comes from.
 
 ## Libraries & packages
 
@@ -121,8 +121,8 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
   - theme_ability - weak, stupid, dumb, slow, disability, spelling, learning
   - theme_age - children, elders, old, young
   - theme_weight - fat, skinny, overweight
-  - theme_appearance - ugly, blond, pimple
-  - theme_class - poverty, poor
+  - theme_appearance - ugly, blond, pimple, brunette, fat
+  - theme_class - poverty, poor, rich, wealthy
 
 - whole_text (string) - the first and second parts of the jokes combined
 - whole_text_normalised (string) - to support further NLP analysis
@@ -145,3 +145,16 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
 - root: contains central files such as README.md, proposal.qmd, presentation.qmd, preprocess_data.ipynb, etc
 - /data: contains the preprocessed dataset (CSV) and any other important data
 - /images: contains plots and other graphics of key interest
+
+## Weekly Plan of Attack:
+
+| **Task** | **Dates** | **Team Member** |
+|--------------------|--------------------------------|--------------------|
+| **Project Proposal** | Aug 8 | \- Both |
+| **Data Collection** | Aug 10 | \- Michael |
+| **Data Cleaning and Wrangling** | Aug 13 | \- Both |
+| **Model Training and Evaluation** | Aug 15 | \- Cat |
+| **Initial Powerpoint outline** | Aug 16 | \- Both |
+| **Graph Making and Powerpoint Finalization** | Aug 18 | \- Both |
+| **Powerpoint Recording** | Aug 19 | \- Both |
+| **Last minute cleaning and Submission** | Aug 20 | \- Both |
