@@ -116,7 +116,8 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
 
 - Counts/booleans for different social themes: gender, race, etc. - and word lists for each
   - theme_gender - women, men, nonbinary, agender, trans
-  - theme_race - Black, white, Asian, racist
+  - theme_race (edit: ethnicity) - Black, white, Asian, racist
+    - Updated to include race-adjacent themes like nationality and language
   - theme_sexuality - gay, homo, straight, sex, sexy, desire, arousal
   - theme_ability - weak, stupid, dumb, slow, disability, spelling, learning
   - theme_age - children, elders, old, young
