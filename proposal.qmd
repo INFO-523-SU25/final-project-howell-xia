@@ -142,8 +142,8 @@ Note: depending on what we find next, we may go forward with only the Reddit dat
   - We can also surface other relevant metrics and patterns using NLP strategies, such as observing which words are most commonly used in jokes, per theme, whether longer or shorter jokes are rated more highly, etc
 
 ### Model Creation
-- We will create graphs with seaborn to address the analysis in question 1 and 2.
-- With rating score and word lists, we will create a model that uses classification to predict the rating score of any particular joke from 2017. We can use this model to further understand the underlying social themes around what becomes popular as jokes on certain websites.
+- We will create graphs with Seaborn to address the analysis in question 1 and 2.
+- With rating score and word lists, we will create a model that uses classification to predict the rating score of any particular joke from 2017. We can use this model to further understand the underlying social themes around what becomes popular as jokes on Reddit.
 
 ## Repo organisation:
 
