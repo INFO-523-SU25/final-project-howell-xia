@@ -359,16 +359,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gather-imports" class="level4">
 <h4 class="anchored" data-anchor-id="gather-imports">Gather imports</h4>
-<div id="49786bb1" class="cell" data-execution_count="1">
+<div id="49786bb1" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re <span class="co"># For text processing, pattern recognition</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> ENGLISH_STOP_WORDS <span class="co"># For focusing NLP analysis on contentful words</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> ENGLISH_STOP_WORDS <span class="co"># For focusing NLP analysis on contentful words</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os <span class="co"># For outputting CSV to repo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-original-data" class="level4">
 <h4 class="anchored" data-anchor-id="load-original-data">Load original data</h4>
-<div id="04c91578" class="cell" data-execution_count="2">
+<div id="04c91578" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## LOAD DATA</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>reddit_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/reddit_jokes.json"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>stupid_stuff_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/taivop/joke-dataset/refs/heads/master/stupidstuff.json"</span></span>
@@ -380,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="preprocessing-tidy-initial-columns-merging" class="level5">
 <h5 class="anchored" data-anchor-id="preprocessing-tidy-initial-columns-merging">Preprocessing: tidy initial columns &amp; merging</h5>
-<div id="86eb681b" class="cell">
+<div id="86eb681b" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add site column to each</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>reddit_df[<span class="st">"website"</span>] <span class="op">=</span> <span class="st">"reddit"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ss_df[<span class="st">"website"</span>] <span class="op">=</span> <span class="st">"stupidstuff"</span></span>
@@ -426,15 +427,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Score is extremely skewed (median = 3, max = 48,526, 75% quantile = 16, means 75% of jokes have 16 upvotes or less)</span></span>
 <span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation = 936; variance is mostly caused by viral jokes &gt; should use quantiles to bin</span></span>
 <span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">score &amp; rating .describe:</span><span class="ch">\n</span><span class="sc">{</span>merged_df[[<span class="st">'score'</span>,<span class="st">'rating'</span>]]<span class="sc">.</span>describe(include<span class="op">=</span><span class="st">'all'</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: check on if the IDs will be a challenge &gt; it may make most sense to just keep reddit data only</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Check on if the IDs will be a challenge &gt; it may make most sense to just keep reddit data only &gt; decision: only keep Reddit data</span></span>
 <span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">## TEMPORARY FILTER - to simplify data intake</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co">## FILTER - to simplify data intake (We decided to keep only Reddit data)</span></span>
 <span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>websites_to_keep <span class="op">=</span> [<span class="st">"reddit"</span>]</span>
 <span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [<span class="st">"body"</span>, <span class="st">"id"</span>, <span class="st">"title"</span>, <span class="st">"score"</span>, <span class="st">"website"</span>]</span>
 <span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> merged_df.loc[merged_df[<span class="st">'website'</span>].isin(websites_to_keep), columns_to_keep].copy()</span>
 <span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** AFTER FILTER: merged_df.head:</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>head()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_61142/2405821299.py:13: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+<pre><code>/tmp/ipykernel_63002/3962265502.py:13: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
   merged_df = pd.concat([reddit_df, ss_df, wocka_df], ignore_index=True)</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -539,7 +540,7 @@ max     48526.000000     5.000000
 </section>
 <section id="preprocessing-gather-whole-text-initial-text-features" class="level5">
 <h5 class="anchored" data-anchor-id="preprocessing-gather-whole-text-initial-text-features">Preprocessing: gather whole text &amp; initial text features</h5>
-<div id="052b3425" class="cell" data-execution_count="4">
+<div id="052b3425" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add feature: whole_text (string) - the first and second parts of the jokes combined</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">'whole_text'</span>] <span class="op">=</span> (merged_df[<span class="st">'title'</span>] <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> merged_df[<span class="st">'body'</span>]).<span class="bu">str</span>.strip()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -609,11 +610,11 @@ max     48526.000000     5.000000
 4  [you, hear, about, the, university, book, stor...              30   
 
                                       distinct_words  distinct_words_count  
-0   [fence, paint, hate, say, black, leroy, anymore]                     7  
-1  [m, germany, s, nazi, doesn, difference, t, je...                    12  
-2  [sued, recently, american, shop, america, cult...                    18  
-3  [heaven, gets, teacher, students, johnny, dad,...                    35  
-4  [sell, 20, 000, books, hear, worker, trying, u...                    16  
+0   [paint, say, leroy, hate, fence, black, anymore]                     7  
+1  [difference, germany, pizza, sorry, scream, m,...                    12  
+2  [america, learn, culture, helped, day, sued, v...                    18  
+3  [heart, sunday, jesus, little, class, today, s...                    35  
+4  [sell, book, store, hear, worker, 000, 20, cau...                    16  
 
 
 ** merged_df.tail:
@@ -653,11 +654,11 @@ max     48526.000000     5.000000
 194552  [i, went, to, a, zoo, and, there, was, only, o...              16   
 
                                            distinct_words  \
-194548  [like, m, shitter, words, read, girl, gives, t...   
-194549                   [sexdaily, mean, fcuk, dyslexia]   
-194550  [hippie, chick, player, periods, s, hockey, di...   
-194551  [story, schoolwork, lie, test, afternoon, movi...   
-194552                     [shih, animal, tzu, zoo, went]   
+194548  [read, words, m, like, gives, shitter, girl, t...   
+194549                   [dyslexia, fcuk, mean, sexdaily]   
+194550  [difference, player, showers, hippie, hockey, ...   
+194551  [night, movies, test, didn, detector, movie, s...   
+194552                     [tzu, went, zoo, animal, shih]   
 
         distinct_words_count  
 194548                     8  
@@ -701,13 +702,424 @@ max     48526.000000     7795.000000           1128.000000
 </section>
 <section id="preprocessing-gather-theme-counts-from-features" class="level5">
 <h5 class="anchored" data-anchor-id="preprocessing-gather-theme-counts-from-features">Preprocessing: gather theme counts from features</h5>
+<div id="b6f056c4" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## LIST OUR THEME WORDS</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>theme_words_gender <span class="op">=</span> [</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gender"</span>,<span class="st">"woman"</span>,<span class="st">"women"</span>,<span class="st">"girl"</span>,<span class="st">"girls"</span>,<span class="st">"lady"</span>,<span class="st">"ladies"</span>,<span class="st">"female"</span>,<span class="st">"females"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wife"</span>,<span class="st">"wives"</span>,<span class="st">"mother"</span>,<span class="st">"mothers"</span>,<span class="st">"mom"</span>,<span class="st">"moms"</span>,<span class="st">"aunt"</span>,<span class="st">"aunts"</span>,<span class="st">"daughter"</span>,<span class="st">"daughters"</span>,<span class="st">"sister"</span>,<span class="st">"sisters"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"man"</span>,<span class="st">"men"</span>,<span class="st">"boy"</span>,<span class="st">"boys"</span>,<span class="st">"gentleman"</span>,<span class="st">"gentlemen"</span>,<span class="st">"male"</span>,<span class="st">"males"</span>,<span class="st">"cis"</span>,<span class="st">"cishetero"</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"husband"</span>,<span class="st">"husbands"</span>,<span class="st">"father"</span>,<span class="st">"fathers"</span>,<span class="st">"dad"</span>,<span class="st">"dads"</span>,<span class="st">"uncle"</span>,<span class="st">"uncles"</span>,<span class="st">"son"</span>,<span class="st">"sons"</span>,<span class="st">"brother"</span>,<span class="st">"brothers"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"trans"</span>,<span class="st">"transgender"</span>,<span class="st">"transition"</span>,<span class="st">"mtf"</span>,<span class="st">"ftm"</span>,<span class="st">"nonbinary"</span>,<span class="st">"genderqueer"</span>,<span class="st">"agender"</span>,<span class="st">"genderfluid"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"feminine"</span>,<span class="st">"masculine"</span>,<span class="st">"masc"</span>,<span class="st">"fem"</span>,<span class="st">"femme"</span>,<span class="st">"butch"</span>,<span class="st">"misogyny"</span>,<span class="st">"misogynist"</span>,<span class="st">"patriarchy"</span>,<span class="st">"matriarchy"</span>,<span class="st">"sexism"</span>,<span class="st">"sexist"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"girlfriend"</span>,<span class="st">"boyfriend"</span>,<span class="st">"bride"</span>,<span class="st">"brides"</span>,<span class="st">"groom"</span>,<span class="st">"grooms"</span>,<span class="st">"fiance"</span>,<span class="st">"fiancee"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pregnant"</span>,<span class="st">"sexist"</span>,<span class="st">"misogynist"</span>,<span class="st">"emasculated"</span>,<span class="st">"motherly"</span>,<span class="st">"fatherly"</span>,<span class="st">"girly"</span>,<span class="st">"manly"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"guy"</span>,<span class="st">"chick"</span>,<span class="st">"babe"</span>,<span class="st">"period"</span>,<span class="st">"periods"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>theme_words_ethnicity <span class="op">=</span> [</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"race"</span>,<span class="st">"black"</span>,<span class="st">"white"</span>,<span class="st">"asian"</span>,<span class="st">"african"</span>,<span class="st">"afro"</span>,<span class="st">"caucasian"</span>,<span class="st">"european"</span>,<span class="st">"latino"</span>,<span class="st">"latina"</span>,<span class="st">"latinx"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hispanic"</span>,<span class="st">"mexican"</span>,<span class="st">"chinese"</span>,<span class="st">"japanese"</span>,<span class="st">"korean"</span>,<span class="st">"vietnamese"</span>,<span class="st">"filipino"</span>,<span class="st">"indian"</span>,<span class="st">"pakistani"</span>,<span class="st">"bangladeshi"</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"eastern"</span>,<span class="st">"arab"</span>,<span class="st">"persian"</span>,<span class="st">"turkish"</span>,<span class="st">"native"</span>,<span class="st">"indigenous"</span>,<span class="st">"aboriginal"</span>,<span class="st">"nations"</span>, <span class="st">"western"</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ethiopian"</span>,<span class="st">"somali"</span>,<span class="st">"nigerian"</span>,<span class="st">"kenyan"</span>,<span class="st">"congolese"</span>,<span class="st">"egyptian"</span>,<span class="st">"moroccan"</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"racist"</span>,<span class="st">"racism"</span>,<span class="st">"stereotype"</span>,<span class="st">"discriminate"</span>,<span class="st">"discrimination"</span>,<span class="st">"prejudice"</span>,<span class="st">"xenophobia"</span>,<span class="st">"xenophobic"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"slur"</span>,<span class="st">"ethnic"</span>,<span class="st">"ethnicity"</span>,<span class="st">"skin"</span>,<span class="st">"melanin"</span>,<span class="st">"tribe"</span>,<span class="st">"tribal"</span>,<span class="st">"minority"</span>,<span class="st">"majority"</span>,<span class="st">"ghetto"</span>,<span class="st">"thug"</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"racist"</span>,<span class="st">"prejudiced"</span>,<span class="st">"xenophobic"</span>,<span class="st">"discriminatory"</span>,<span class="st">"tribal"</span>,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"segregated"</span>,<span class="st">"integrated"</span>,<span class="st">"oppressed"</span>,<span class="st">"marginalized"</span>,<span class="st">"marginalised"</span>,<span class="st">"colonized"</span>,<span class="st">"colonised"</span>,</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data - including some nationality and language-group terms</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"jew"</span>,<span class="st">"latin"</span>,<span class="st">"nazi"</span>,<span class="st">"america"</span>,<span class="st">"american"</span>,<span class="st">"usa"</span>,<span class="st">"europe"</span>,<span class="st">"european"</span>,<span class="st">"french"</span>,<span class="st">"france"</span>,<span class="st">"africa"</span>,<span class="st">"asia"</span>,<span class="st">"canada"</span>,<span class="st">"australia"</span>,<span class="st">"australian"</span>,<span class="st">"hawaiian"</span>,</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"uk"</span>,<span class="st">"brit"</span>,<span class="st">"gb"</span>,<span class="st">"britain"</span>,<span class="st">"british"</span>,<span class="st">"germany"</span>,<span class="st">"china"</span>,<span class="st">"mexico"</span>,<span class="st">"brazil"</span>,<span class="st">"sweden"</span>,<span class="st">"israel"</span>,<span class="st">"israeli"</span>,<span class="st">"palestine"</span>,<span class="st">"palestinian"</span>,<span class="st">"gaza"</span>,<span class="st">"ireland"</span>,</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"russia"</span>,<span class="st">"russian"</span>,<span class="st">"ukraine"</span>,<span class="st">"arab"</span>,<span class="st">"uae"</span>,<span class="st">"saudi"</span>,<span class="st">"arabic"</span>,<span class="st">"french"</span>,<span class="st">"english"</span>,<span class="st">"spanish"</span>,<span class="st">"portuguese"</span>,<span class="st">"japanese"</span>,<span class="st">"thai"</span>,<span class="st">"irish"</span>,</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"kkk"</span>,<span class="st">"nigger"</span>,<span class="st">"niggers"</span>,<span class="st">"chink"</span>,<span class="st">"chinks"</span>,<span class="st">"wetback"</span>,<span class="st">"ethiopian"</span>,<span class="st">"caucasian"</span>,<span class="st">"dea"</span>,<span class="st">"culture"</span>,<span class="st">"cultural"</span>,<span class="st">"minorities"</span>,<span class="st">"jewish"</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>theme_words_sexuality <span class="op">=</span> [</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sexuality"</span>,<span class="st">"orientation"</span>,<span class="st">"gay"</span>,<span class="st">"gays"</span>,<span class="st">"homosexual"</span>,<span class="st">"homo"</span>,<span class="st">"lesbian"</span>,<span class="st">"lesbians"</span>,<span class="st">"bi"</span>,<span class="st">"bisexual"</span>,<span class="st">"pansexual"</span>,<span class="st">"queer"</span>,</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"straight"</span>,<span class="st">"hetero"</span>,<span class="st">"heterosexual"</span>,<span class="st">"closet"</span>,<span class="st">"closeted"</span>,<span class="st">"coming"</span>,<span class="st">"outing"</span>,</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lgbt"</span>,<span class="st">"lgbtq"</span>,<span class="st">"lgbtqia"</span>,<span class="st">"pride"</span>,<span class="st">"rainbow"</span>,<span class="st">"ally"</span>,<span class="st">"allies"</span>,</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sex"</span>,<span class="st">"sexual"</span>,<span class="st">"sexy"</span>,<span class="st">"desire"</span>,<span class="st">"arousal"</span>,<span class="st">"aroused"</span>,<span class="st">"intimacy"</span>,<span class="st">"intimate"</span>,<span class="st">"lust"</span>,<span class="st">"flirt"</span>,<span class="st">"flirting"</span>,</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">"kink"</span>,<span class="st">"kinky"</span>,<span class="st">"fetish"</span>,<span class="st">"fetishes"</span>,<span class="st">"hookup"</span>,<span class="st">"hooking"</span>,<span class="st">"affair"</span>,<span class="st">"affairs"</span>,<span class="st">"cheat"</span>,<span class="st">"cheating"</span>,</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"romance"</span>,<span class="st">"romantic"</span>,<span class="st">"date"</span>,<span class="st">"dating"</span>,<span class="st">"partner"</span>,<span class="st">"partners"</span>,<span class="st">"spouse"</span>,<span class="st">"spouses"</span>,<span class="st">"relationship"</span>,<span class="st">"relationships"</span>,</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wife"</span>,<span class="st">"wives"</span>,<span class="st">"husband"</span>,<span class="st">"husbands"</span>,<span class="st">"girlfriend"</span>,<span class="st">"girlfriends"</span>,<span class="st">"boyfriend"</span>,<span class="st">"boyfriends"</span>,</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bride"</span>,<span class="st">"brides"</span>,<span class="st">"groom"</span>,<span class="st">"grooms"</span>,<span class="st">"fiance"</span>,<span class="st">"fiancee"</span>,<span class="st">"engaged"</span>,<span class="st">"engagement"</span>,</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    <span class="st">"marriage"</span>,<span class="st">"married"</span>,<span class="st">"wedding"</span>,<span class="st">"couple"</span>,<span class="st">"couples"</span>,<span class="st">"lover"</span>,<span class="st">"lovers"</span>,<span class="st">"crush"</span>,<span class="st">"crushes"</span>,</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mistress"</span>,<span class="st">"mistresses"</span>,<span class="st">"significant"</span>,<span class="st">"poly"</span>,<span class="st">"polyamorous"</span>,<span class="st">"polyamory"</span>,<span class="st">"monogamous"</span>,<span class="st">"monogamy"</span>,</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    <span class="st">"affectionate"</span>,<span class="st">"lustful"</span>,<span class="st">"lusted"</span>,<span class="st">"lusting"</span>,<span class="st">"promiscuous"</span>,<span class="st">"flirtatious"</span>,<span class="st">"desirable"</span>,<span class="st">"attractive"</span>,<span class="st">"attracted"</span>,<span class="st">"attract"</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>    <span class="st">"intimate"</span>,<span class="st">"faithful"</span>,<span class="st">"unfaithful"</span>,<span class="st">"monogamous"</span>,<span class="st">"polyamorous"</span>,</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data</span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"daddy"</span>,<span class="st">"dilf"</span>,<span class="st">"milf"</span>,<span class="st">"porn"</span>,<span class="st">"porno"</span>,<span class="st">"hooker"</span>,<span class="st">"aids"</span>,<span class="st">"std"</span>,<span class="st">"sti"</span>,<span class="st">"molestor"</span>,<span class="st">"pervert"</span>,<span class="st">"offender"</span>,<span class="st">"virgin"</span>,</span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">"headjob"</span>,<span class="st">"handjob"</span>,<span class="st">"bj"</span>,<span class="st">"oral"</span>,<span class="st">"anal"</span>,<span class="st">"cock"</span>,<span class="st">"cocks"</span>,<span class="st">"dick"</span>,<span class="st">"dicks"</span>,<span class="st">"clit"</span>,<span class="st">"clits"</span>,<span class="st">"cunt"</span>,<span class="st">"cunts"</span>,<span class="st">"suck"</span>,<span class="st">"sucked"</span>,<span class="st">"fuck"</span>,<span class="st">"fucked"</span>,<span class="st">"fucks"</span>,</span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">"viagra"</span>,<span class="st">"hardon"</span>,<span class="st">"jerk"</span>,<span class="st">"jerks"</span>,<span class="st">"jerked"</span>,<span class="st">"fucking"</span>,</span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>theme_words_ability <span class="op">=</span> [</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ability"</span>,<span class="st">"disabled"</span>,<span class="st">"disability"</span>,<span class="st">"handicap"</span>,<span class="st">"handicapped"</span>,<span class="st">"wheelchair"</span>,<span class="st">"paraplegic"</span>,<span class="st">"quadriplegic"</span>,<span class="st">"blind"</span>,<span class="st">"deaf"</span>,</span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">"mute"</span>,<span class="st">"impaired"</span>,<span class="st">"learning"</span>,<span class="st">"dyslexia"</span>,<span class="st">"dyslexic"</span>,<span class="st">"autism"</span>,<span class="st">"autistic"</span>,<span class="st">"adhd"</span>,<span class="st">"audhd"</span>,<span class="st">"neurodivergent"</span>,<span class="st">"deformed"</span>,</span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weak"</span>,<span class="st">"weaker"</span>,<span class="st">"weakness"</span>,<span class="st">"stupid"</span>,<span class="st">"stupidity"</span>,<span class="st">"dumb"</span>,<span class="st">"dumber"</span>,<span class="st">"slow"</span>,<span class="st">"slowness"</span>,<span class="st">"retard"</span>,<span class="st">"retarded"</span>,<span class="st">"special"</span></span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cripple"</span>,<span class="st">"crippled"</span>,<span class="st">"amputee"</span>,<span class="st">"limp"</span>,<span class="st">"limping"</span>,<span class="st">"spelling"</span>,<span class="st">"misspell"</span>,<span class="st">"misspelling"</span>,<span class="st">"typo"</span>,<span class="st">"grammar"</span>,<span class="st">"illiterate"</span>,</span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a>    <span class="st">"brain"</span>,<span class="st">"damage"</span>,<span class="st">"mental"</span>,<span class="st">"illness"</span>,<span class="st">"health"</span>,<span class="st">"psychiatric"</span>,<span class="st">"psychotic"</span>,<span class="st">"psychosis"</span>,<span class="st">"depression"</span>,<span class="st">"anxiety"</span>,</span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data</span></span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>    <span class="st">"idiot"</span>,<span class="st">"amnesia"</span>,<span class="st">"dementia"</span>,<span class="st">"stutter"</span>,<span class="st">"impediment"</span>,<span class="st">"therapy"</span>,<span class="st">"phonics"</span>,<span class="st">"cripple"</span>,<span class="st">"crippled"</span>,</span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>    <span class="st">"paralyzed"</span>,<span class="st">"dumbass"</span>,<span class="st">"dummy"</span>,<span class="st">"iq"</span>,<span class="st">"intelligent"</span>,<span class="st">"smart"</span>,<span class="st">"smarter"</span>,<span class="st">"clever"</span>,<span class="st">"able"</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>theme_words_age <span class="op">=</span> [</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>,<span class="st">"child"</span>,<span class="st">"children"</span>,<span class="st">"kid"</span>,<span class="st">"kids"</span>,<span class="st">"toddler"</span>,<span class="st">"toddlers"</span>,<span class="st">"baby"</span>,<span class="st">"babies"</span>,<span class="st">"infant"</span>,<span class="st">"infants"</span>,</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">"teen"</span>,<span class="st">"teens"</span>,<span class="st">"teenager"</span>,<span class="st">"teenagers"</span>,<span class="st">"youth"</span>,<span class="st">"youths"</span>,<span class="st">"minor"</span>,<span class="st">"minors"</span>,<span class="st">"adolescent"</span>,<span class="st">"adolescents"</span>,</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">"young"</span>,<span class="st">"younger"</span>,<span class="st">"youthful"</span>,<span class="st">"freshman"</span>,<span class="st">"sophomore"</span>,<span class="st">"junior"</span>,<span class="st">"senior"</span>,</span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">"adult"</span>,<span class="st">"adults"</span>,<span class="st">"grownup"</span>,<span class="st">"grownups"</span>,<span class="st">"middle aged"</span>,<span class="st">"middleaged"</span>,<span class="st">"elder"</span>,<span class="st">"elders"</span>,<span class="st">"elderly"</span>,<span class="st">"old"</span>,<span class="st">"older"</span>,<span class="st">"aging"</span>,<span class="st">"aged"</span>,<span class="st">"senior"</span>,</span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">"grandma"</span>,<span class="st">"grandmas"</span>,<span class="st">"grandmother"</span>,<span class="st">"grandmothers"</span>,<span class="st">"granny"</span>,<span class="st">"grannies"</span>,</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">"grandpa"</span>,<span class="st">"grandpas"</span>,<span class="st">"grandfather"</span>,<span class="st">"grandfathers"</span>,<span class="st">"granddad"</span>,<span class="st">"granddads"</span>,<span class="st">"pensioner"</span>,<span class="st">"retiree"</span>,<span class="st">"retirees"</span>,</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>theme_words_weight <span class="op">=</span> [</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight"</span>,<span class="st">"fat"</span>,<span class="st">"fatter"</span>,<span class="st">"fattest"</span>,<span class="st">"obese"</span>,<span class="st">"obesity"</span>,<span class="st">"overweight"</span>,<span class="st">"underweight"</span>,<span class="st">"bmi"</span>,<span class="st">"massive"</span>,<span class="st">"giant"</span>,<span class="st">"huge"</span>,<span class="st">"chubby"</span>,<span class="st">"chunky"</span>,<span class="st">"plump"</span>,<span class="st">"heavy"</span>,<span class="st">"heavier"</span>,<span class="st">"heaviest"</span>,</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>    <span class="st">"big boned"</span>,<span class="st">"bigboned"</span>,<span class="st">"plussize"</span>,<span class="st">"plussize"</span>,<span class="st">"figured"</span>,<span class="st">"fullfigured"</span>,<span class="st">"thick"</span>,<span class="st">"thicc"</span>,<span class="st">"rotund"</span>,<span class="st">"portly"</span>,</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>    <span class="st">"skinny"</span>,<span class="st">"skinnier"</span>,<span class="st">"skinniest"</span>,<span class="st">"thin"</span>,<span class="st">"thinner"</span>,<span class="st">"thinnest"</span>,<span class="st">"slim"</span>,<span class="st">"slimmer"</span>,<span class="st">"slimmest"</span>,<span class="st">"underweight"</span>,</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gaunt"</span>,<span class="st">"emaciated"</span>,<span class="st">"anorexic"</span>,<span class="st">"anorexia"</span>,<span class="st">"bulimic"</span>,<span class="st">"bulimia"</span>,<span class="st">"malnourished"</span>,<span class="st">"malnutrition"</span>,</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data</span></span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bulimics"</span>,<span class="st">"diet"</span>,<span class="st">"dieting"</span></span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>theme_words_appearance <span class="op">=</span> [</span>
+<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>    <span class="st">"appearance"</span>,<span class="st">"beauty"</span>,<span class="st">"ugly"</span>,<span class="st">"uglier"</span>,<span class="st">"ugliest"</span>,<span class="st">"hideous"</span>,<span class="st">"unattractive"</span>,<span class="st">"plain"</span>,<span class="st">"homely"</span>,<span class="st">"unsightly"</span>,<span class="st">"grotesque"</span>,<span class="st">"disfigured"</span>,<span class="st">"scarred"</span>,<span class="st">"scar"</span>,<span class="st">"scarface"</span>,<span class="st">"wrinkled"</span>,<span class="st">"wrinkle"</span>,<span class="st">"wrinkles"</span>,</span>
+<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>    <span class="st">"beautiful"</span>,<span class="st">"pretty"</span>,<span class="st">"prettier"</span>,<span class="st">"prettiest"</span>,<span class="st">"gorgeous"</span>,<span class="st">"handsome"</span>,<span class="st">"cute"</span>,<span class="st">"attractive"</span>,<span class="st">"attracted"</span>,<span class="st">"unattractive"</span>,<span class="st">"looking"</span>,<span class="st">"goodlooking"</span>,<span class="st">"fine"</span>,<span class="st">"hot"</span>,<span class="st">"foxy"</span>,</span>
+<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>    <span class="st">"blond"</span>,<span class="st">"blonde"</span>,<span class="st">"brunette"</span>,<span class="st">"redhead"</span>,<span class="st">"ginger"</span>,<span class="st">"bald"</span>,<span class="st">"balding"</span>,<span class="st">"baldness"</span>,</span>
+<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pimple"</span>,<span class="st">"pimples"</span>,<span class="st">"acne"</span>,<span class="st">"zit"</span>,<span class="st">"zits"</span>,<span class="st">"blemish"</span>,<span class="st">"blemishes"</span>,<span class="st">"scar"</span>,<span class="st">"scars"</span>,</span>
+<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fat"</span>,<span class="st">"fatter"</span>,<span class="st">"fattest"</span>,<span class="st">"obese"</span>,<span class="st">"chubby"</span>,<span class="st">"skinny"</span>,<span class="st">"slim"</span>,<span class="st">"thin"</span>,<span class="st">"muscular"</span>,<span class="st">"fit"</span>,<span class="st">"ripped"</span>,<span class="st">"toned"</span>,</span>
+<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data</span></span>
+<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hideous"</span>,</span>
+<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>theme_words_class <span class="op">=</span> [</span>
+<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>    <span class="st">"class"</span>,<span class="st">"poverty"</span>,<span class="st">"poor"</span>,<span class="st">"poorer"</span>,<span class="st">"poorest"</span>,<span class="st">"income"</span>,<span class="st">"lowincome"</span>,<span class="st">"lowerclass"</span>,<span class="st">"working"</span>,<span class="st">"worker"</span>,<span class="st">"workingclass"</span>,<span class="st">"destitute"</span>,<span class="st">"impoverished"</span>,<span class="st">"needy"</span>,<span class="st">"broke"</span>,</span>
+<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>    <span class="st">"homeless"</span>,<span class="st">"unhoused"</span>,<span class="st">"vagrant"</span>,<span class="st">"beggar"</span>,<span class="st">"beggars"</span>,<span class="st">"panhandler"</span>,<span class="st">"panhandlers"</span>,<span class="st">"squatter"</span>,<span class="st">"squatters"</span>,<span class="st">"ghetto"</span>,<span class="st">"middleclass"</span>,<span class="st">"uppermiddleclass"</span>,<span class="st">"wealthy"</span>,<span class="st">"rich"</span>,</span>
+<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a>    <span class="st">"richer"</span>,<span class="st">"richest"</span>,<span class="st">"affluent"</span>,<span class="st">"prosperous"</span>,<span class="st">"opulent"</span>,<span class="st">"luxurious"</span>,<span class="st">"privileged"</span>,<span class="st">"upperclass"</span>,<span class="st">"aristocrat"</span>,<span class="st">"aristocracy"</span>,<span class="st">"noble"</span>,<span class="st">"nobles"</span>,<span class="st">"nobility"</span>,<span class="st">"elite"</span>,<span class="st">"elites"</span>,<span class="st">"millionaire"</span>,<span class="st">"millionaires"</span>,<span class="st">"billionaire"</span>,<span class="st">"billionaires"</span>,</span>
+<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a>    <span class="st">"welfare"</span>,<span class="st">"unemployed"</span>,<span class="st">"jobless"</span>,<span class="st">"benefits"</span>,<span class="st">"subsidized"</span>,<span class="st">"housing"</span>,<span class="st">"socialhousing"</span>,<span class="st">"work"</span>,<span class="st">"pay"</span>,<span class="st">"job"</span>,<span class="st">"afford"</span>,<span class="st">"affordable"</span>,<span class="st">"wealth"</span>,<span class="st">"rundown"</span>,<span class="st">"struggle"</span>,<span class="st">"struggling"</span>,</span>
+<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional from data</span></span>
+<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a>    <span class="st">"stealing"</span>,<span class="st">"stolen"</span>,<span class="st">"theft"</span>,<span class="st">"robbery"</span>,<span class="st">"crime"</span>,<span class="st">"thief"</span>,<span class="st">"rob"</span>,<span class="st">"robbed"</span>,<span class="st">"market"</span>,<span class="st">"livelihood"</span>,<span class="st">"wage"</span>,<span class="st">"wages"</span>,<span class="st">"salary"</span>,</span>
+<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>    <span class="st">"house"</span>,<span class="st">"apartment"</span>,<span class="st">"rent"</span>,<span class="st">"buy"</span>,<span class="st">"purchase"</span>,<span class="st">"own"</span>,<span class="st">"owner"</span>,<span class="st">"homeowner"</span>,<span class="st">"landlord"</span>,<span class="st">"boss"</span>,<span class="st">"employer"</span>,<span class="st">"supervisor"</span>,</span>
+<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-100"><a href="#cb8-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-101"><a href="#cb8-101" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-102"><a href="#cb8-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-103"><a href="#cb8-103" aria-hidden="true" tabindex="-1"></a>THEMES <span class="op">=</span> {</span>
+<span id="cb8-104"><a href="#cb8-104" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gender"</span>: {<span class="st">"words"</span>: theme_words_gender},</span>
+<span id="cb8-105"><a href="#cb8-105" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ethnicity"</span>: {<span class="st">"words"</span>: theme_words_ethnicity},</span>
+<span id="cb8-106"><a href="#cb8-106" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sexuality"</span>: {<span class="st">"words"</span>: theme_words_sexuality},</span>
+<span id="cb8-107"><a href="#cb8-107" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ability"</span>: {<span class="st">"words"</span>: theme_words_ability},</span>
+<span id="cb8-108"><a href="#cb8-108" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: {<span class="st">"words"</span>: theme_words_age},</span>
+<span id="cb8-109"><a href="#cb8-109" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight"</span>: {<span class="st">"words"</span>: theme_words_weight},</span>
+<span id="cb8-110"><a href="#cb8-110" aria-hidden="true" tabindex="-1"></a>    <span class="st">"appearance"</span>: {<span class="st">"words"</span>: theme_words_appearance},</span>
+<span id="cb8-111"><a href="#cb8-111" aria-hidden="true" tabindex="-1"></a>    <span class="st">"class"</span>: {<span class="st">"words"</span>: theme_words_class}</span>
+<span id="cb8-112"><a href="#cb8-112" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="916fe84c" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">## ADD THEME FEATURES</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> theme_name, theme_data <span class="kw">in</span> THEMES.items():</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** PROCESSING THEME: </span><span class="sc">{</span>theme_name<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add count feature - how many instances of themed words appear in the joke</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    feature_count_name <span class="op">=</span> <span class="ss">f"theme_</span><span class="sc">{</span>theme_name<span class="sc">}</span><span class="ss">_count"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    merged_df[feature_count_name] <span class="op">=</span> merged_df[<span class="st">"whole_text_normalised_tokens"</span>].<span class="bu">apply</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">lambda</span> toks: <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> t <span class="kw">in</span> toks <span class="cf">if</span> t <span class="kw">in</span> THEMES[theme_name][<span class="st">"words"</span>])</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\t</span><span class="ss">&gt; Completed count feature (</span><span class="sc">{</span>theme_name<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add boolean feature - whether any instances of the themes words appear in the joke</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    feature_bool_name <span class="op">=</span> <span class="ss">f"theme_</span><span class="sc">{</span>theme_name<span class="sc">}</span><span class="ss">_bool"</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    merged_df[feature_bool_name] <span class="op">=</span> merged_df[<span class="st">"whole_text_normalised_tokens"</span>].<span class="bu">apply</span>(</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">lambda</span> toks: <span class="bu">any</span>(t <span class="kw">in</span> THEMES[theme_name][<span class="st">"words"</span>] <span class="cf">for</span> t <span class="kw">in</span> toks)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\t</span><span class="ss">&gt; Completed boolean feature (</span><span class="sc">{</span>theme_name<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+** PROCESSING THEME: gender
+
+    &gt; Completed count feature (gender)
+    &gt; Completed boolean feature (gender)
+
+** PROCESSING THEME: ethnicity
+
+    &gt; Completed count feature (ethnicity)
+    &gt; Completed boolean feature (ethnicity)
+
+** PROCESSING THEME: sexuality
+
+    &gt; Completed count feature (sexuality)
+    &gt; Completed boolean feature (sexuality)
+
+** PROCESSING THEME: ability
+
+    &gt; Completed count feature (ability)
+    &gt; Completed boolean feature (ability)
+
+** PROCESSING THEME: age
+
+    &gt; Completed count feature (age)
+    &gt; Completed boolean feature (age)
+
+** PROCESSING THEME: weight
+
+    &gt; Completed count feature (weight)
+    &gt; Completed boolean feature (weight)
+
+** PROCESSING THEME: appearance
+
+    &gt; Completed count feature (appearance)
+    &gt; Completed boolean feature (appearance)
+
+** PROCESSING THEME: class
+
+    &gt; Completed count feature (class)
+    &gt; Completed boolean feature (class)</code></pre>
+</div>
+</div>
+<div id="da13fccf" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">## ADD SUMMARY THEME FEATURE</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>theme_names <span class="op">=</span> <span class="bu">list</span>(THEMES.keys())</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> themes_found_for_row(row):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    pairs <span class="op">=</span> [(t, <span class="bu">int</span>(row[<span class="ss">f"theme_</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">_count"</span>])) <span class="cf">for</span> t <span class="kw">in</span> theme_names <span class="cf">if</span> row[<span class="ss">f"theme_</span><span class="sc">{</span>t<span class="sc">}</span><span class="ss">_count"</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    pairs.sort(key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)  <span class="co"># highest count first</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pairs  <span class="co"># list of (theme_name, count) tuples</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>merged_df[<span class="st">"themes_found"</span>] <span class="op">=</span> merged_df.<span class="bu">apply</span>(themes_found_for_row, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">## REVIEW UPDATES</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># show_df_details(["head", "tail", "info", "describe"])</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Review whole_text_normalised and all theme-related columns</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show first and last several rows (jokes)</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>review_rows <span class="op">=</span> pd.concat([</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    merged_df[[<span class="st">"whole_text_normalised"</span>, <span class="st">"themes_found"</span>]].head(<span class="dv">30</span>),</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    merged_df[[<span class="st">"whole_text_normalised"</span>, <span class="st">"themes_found"</span>]].tail(<span class="dv">30</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, row <span class="kw">in</span> review_rows.iterrows():</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">@</span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>row[<span class="st">"themes_found"</span>]<span class="sc">}</span><span class="ss">:</span><span class="ch">\n\t</span><span class="sc">{</span>row[<span class="st">"whole_text_normalised"</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+@0: [('ethnicity', 1)]:
+    i hate how you cant even say black paint anymore now i have to say leroy can you please paint the fence
+
+@1: [('ethnicity', 3)]:
+    what s the difference between a jew in nazi germany and pizza pizza doesn t scream when you put it in the oven i m so sorry
+
+@2: [('ethnicity', 3)]:
+    i recently went to america and being there really helped me learn about american culture so i visited a shop and as i was leaving the shopkeeper said have a nice day but i didn t so i sued him
+
+@3: [('gender', 1), ('class', 1)]:
+    brian raises his hand and says he s in heaven a sunday school teacher is concerned that his students might be a little confused about jesus so he asks his class where is jesus today brian raises his hand and says he s in heaven susan answers he s in my heart little johnny waves his hand furiously and blurts out he s in our bathroom the teacher is surprised by this answer and asks little johnny how he knows this well little johnny says every morning my dad gets up bangs on the bathroom door and yells jesus christ are you still in there
+
+@4: [('class', 2), ('age', 1)]:
+    you hear about the university book store worker who was charged for stealing 20 000 worth of books he got caught trying to sell the two books to a freshman
+
+@5: []:
+    why is it unknown on how pterodactyls urinate especially during flight because the p is silent
+
+@6: [('gender', 1)]:
+    why women need legs to avoid leaving tracks like a snail while walking
+
+@7: []:
+    i walked into a peta adoption center and the receptionist asked me what kind of dog i wanted apparently whatever s low in cholesterol was not the right answer
+
+@8: []:
+    how did tv studios make words appear on screen before computers character actors
+
+@9: []:
+    how do you find will smith in the snow you follow his fresh prints
+
+@10: [('class', 2), ('age', 1)]:
+    remember when you were a kid and when you cried your parents said i ll give you a reason to cry i always thought they were gunna hit me not that they were going to destroy the housing market 20 years later
+
+@11: [('sexuality', 1)]:
+    remember you can t spell valentine s day without anal destiny
+
+@12: []:
+    happy try not to jump off a bridge day oh and it s also valentines day
+
+@13: [('class', 1)]:
+    my boss said to me you re the worst train driver ever how many have you derailed this year i said i m not sure it s hard to keep track
+
+@14: []:
+    if i get a bird i m naming it trump cuz all they do is tweet
+
+@15: [('sexuality', 1)]:
+    i was going to get a headjob for valentines day but my back was sore and i couldn t reach
+
+@16: [('gender', 12), ('ability', 1), ('age', 1), ('appearance', 1)]:
+    a mother went into a coma after giving birth to twins when she woke up after 6 months and 3 days the doctor told the mother while you were in a coma we had your brother name your children one is a boy one is a girl the mother with a disappointed and angry look on her face told the doctor why my brother that guy is an idiot so what did he name them the mother expecting hideous names prepared herself the girl was named denise the mother thought hey that wasn t so bad what about my boy the doctor said denephew
+
+@17: []:
+    what do you call an exercise machine with a strobe light an epileptical
+
+@18: [('gender', 1)]:
+    my dad has a heart of a lion and a lifetime ban from the local zoo
+
+@19: [('age', 1), ('weight', 1)]:
+    smaller babies may be delivered by a stork but the bigger heavier ones are delivered by a crane
+
+@20: []:
+    a monkey is getting stoned in a zoo welcome to india
+
+@21: [('gender', 15), ('sexuality', 3), ('ethnicity', 2), ('age', 1), ('class', 1)]:
+    i ve translated a popular russian joke to english wanna hear you reaction a young boy says to his father dad our math teacher is asking to see you what happened the father asks well she asks me how much is 7 9 i answer 63 then she asks and 9 7 so i asked what s the fucking difference indeed what is the difference asks the father sure i ll go the next day the boy comes home from school dad have you gone by the school he asks not yet well when you do come and see the gym teacher also why asks the father the boy explains well we had a gym class today and he asked me to raise my left arm i did then my right arm i also raised it then he asked me to lift my right leg so i did now he says lift your left leg so i asked what am i suppose to stand on my cock exactly says the father alright i ll come the next day the boy asks his father did you go to the school no not yet don t bother i got expelled surprised the father asks why did you get expelled well they summoned me to the principal s office and sitting there were the math teacher the gym teacher and the art teacher the fuck was the art teacher doing there asks the father that s what i said replied the boy
+
+@22: [('gender', 1)]:
+    what did the mommy bean say to her son when he asked for money i dont have any go ask your fava
+
+@23: []:
+    when you break up at 11 59 tonight and save 300 instantly
+
+@24: [('class', 1)]:
+    i wanted to buy an audi but i can t a4 d it
+
+@25: [('gender', 1), ('ability', 1), ('age', 1)]:
+    i m trying to remember the name of a song it s about a girl with amnesia talking to her grandmother the lyrics are oh nana what s my name
+
+@26: [('ethnicity', 1)]:
+    what are minorities lesser people
+
+@27: []:
+    did you hear that donald trump is technically a plant because all of his cells have built a wall
+
+@28: [('sexuality', 1)]:
+    i had trouble swallowing a viagra last night my neck was stiff for 4 hours
+
+@29: []:
+    what is the king of all school supplies the ruler
+
+@194523: []:
+    what do you call 2 mexicans in a boat with a case of beer a pi at
+
+@194524: [('ability', 1)]:
+    you know there s one thing i have yet to witness in life a crippled stand up comedian
+
+@194525: []:
+    guess what i saw wood
+
+@194526: []:
+    knock knock knock knock who s there britney spears britney spears who knock knock who s there oops i did it again
+
+@194527: [('gender', 1)]:
+    did you hear about the guy who is both a taxidermist and a veterinarian he has a sign on his door either way you get your dog back
+
+@194528: []:
+    teach us about absolute zero 0k
+
+@194529: []:
+    did you hear about the lego truck that crashed on the highway authorities are still trying to piece everything together
+
+@194530: [('sexuality', 1)]:
+    the lapd the fbi and the cia the lapd the fbi and the cia are all trying to prove that they are the best at apprehending criminals the president decides to give them a test he releases a rabbit into a forest and each of them has to catch it the cia goes in they place animal informants throughout the forest they question all plant and mineral witnesses after three months of extensive investigations they conclude that rabbits do not exist the fbi goes in after two weeks with no leads they burn the forest killing everything in it including the rabbit and they made no apologies the rabbit had it coming the lapd goes in they come out two hours later with a badly beaten bear the bear is yelling okay okay i m a rabbit i m a rabbit
+
+@194531: [('gender', 1), ('sexuality', 1), ('class', 1)]:
+    my brother is so poor he had to jerk off the dog to feed the cat
+
+@194532: [('ability', 1)]:
+    what do you call a midget with down syndrome you call him a little slow
+
+@194533: []:
+    what was wrong with the wooden car it wooden go
+
+@194534: [('gender', 1), ('sexuality', 1), ('age', 1)]:
+    so i heard a new pope was elected today his wife and kids must be so proud
+
+@194535: [('gender', 1), ('sexuality', 1)]:
+    what s the difference between 3 dicks and a joke your mom can t take a joke
+
+@194536: [('gender', 3), ('ethnicity', 1)]:
+    a jewish girl asks her father dad can i have 50 dollars he says 40 dollars what do you need 30 dollars for
+
+@194537: [('weight', 1)]:
+    i know it s sick but i m curious about what bulimics do in the toilet
+
+@194538: [('ethnicity', 3), ('sexuality', 2), ('age', 1)]:
+    a dea officer stopped by our farm the other day i need to inspect your farm for growing illegal drugs i said okay but don t go in that field over there the dea officer verbally exploded saying mister i have the authority of the federal government with me reaching into his rear pants pocket the arrogant officer removed his badge and shoved it in my face see this fucking badge this badge means i am allowed to go wherever i wish on any land no questions asked or answers given have i made myself clear do you understand i nodded politely apologized and went about my chores a short time later i heard loud screams looked up and saw the dea officer running for his life being chased by my big old mean bull with every step the bull was gaining ground on the officer and it seemed likely that he d sure enough get gored before he reached safety the officer was clearly terrified i threw down my tools ran to the fence and yelled at the top of my lungs your badge show him your fucking badge
+
+@194539: [('sexuality', 2)]:
+    what s so bad about being a virgin anyway it means fucking nothing
+
+@194540: [('ethnicity', 14), ('gender', 6), ('sexuality', 4), ('class', 3), ('age', 2)]:
+    a few somewhat racist jokes what do nike and kkk have in common they both make niggers run fast why do jews like watching porno s backwards they like the part where the hooker gives back the money why did michael jackson go to k mart he heard boys pants where half off what do u call a little mexican a paragraph because he s not quite an essay yet how do you blindfold a chink dental floss whats the objective of jewish football to get the quarter back did you hear about the new black barbie it comes with 12 kids aids and a welfare check father sold separately or not at all what is the difference between a pair of jeans and an ethiopian a pair of jeans only has one fly on it did you hear about the jewish child molestor he hid in the bushes and said hey little boy wanna buy some candy why did michael jackson place a phone call to boyz 2 men he thought it was a delivery service a man goes into a shop and sees 3 jars on a table the first jar says caucasian brains 5 00 a pint the second says asian brains 10 00 a pint and the third says nigger brains 100 00 a pint hey why are these nigger brains 100 bucks a pint asked the man the shop owner replied you know how many niggers you have to kill to get a whole pint of brains
+
+@194541: []:
+    i heard german invented new ddr memory it s called cyclone bee
+
+@194542: []:
+    i was bit by a rattlesnake last summer after three days of excruciating pain the snake died
+
+@194543: [('gender', 1), ('ethnicity', 1)]:
+    after weeks of speculation that the new pope would be black alter boys at the vatican are letting out a collective sigh of relief
+
+@194544: [('sexuality', 2), ('gender', 1), ('weight', 1), ('appearance', 1)]:
+    viagra side effect i m reaching out on behalf of a golf buddy of mine who needs some help his wife told him to go out and get some of those pills that would help him get an erection when he came back he handed her some diet pills anyway he s looking for a place to live let me know if you can help
+
+@194545: [('weight', 1), ('appearance', 1)]:
+    you know i was thinking about not getting fat but i really had a lot on my plate at the time
+
+@194546: [('gender', 1)]:
+    they used to be called jumpolines till your mother had a go
+
+@194547: [('sexuality', 2), ('gender', 1), ('age', 1)]:
+    my daughter has reached that age where she s asking embarrassing questions about sex just this morning she said daddy is that the best that you can do
+
+@194548: [('gender', 1)]:
+    i like a girl with words tattooed on her back gives me something to read while i m in the shitter
+
+@194549: [('ability', 1)]:
+    i have sexdaily i mean dyslexia fcuk
+
+@194550: [('gender', 2)]:
+    what s the difference between a hippie chick and a hockey player a hockey player showers after three periods
+
+@194551: [('gender', 15), ('sexuality', 2), ('age', 1), ('class', 1)]:
+    new family robot a father buys a lie detector robot that slaps people when they lie he decides to test it out at dinner one night the father asks his son what he did that afternoon the son says i did some schoolwork the robot slaps the son the son says ok ok i was at a friend s house watching movies dad asks what movie did you watch son says toy story the robot slaps the son son says ok ok we were watching porn dad says what at your age i didn t even know what porn was the robot slaps the father mom laughs and says well he certainly is your son the robot slaps the mother robot for sale
+
+@194552: []:
+    i went to a zoo and there was only one animal it was a shih tzu</code></pre>
+</div>
+</div>
 </section>
 <section id="tidy-dataframe---last-steps" class="level5">
 <h5 class="anchored" data-anchor-id="tidy-dataframe---last-steps">Tidy dataframe - last steps</h5>
+<div id="a398454c" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See what columns we currently have</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"** COLUMNS **</span><span class="ch">\n</span><span class="sc">{</span>merged_df<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Maintain only these columns (remove any unneeded columns from CSV)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>maintained_columns <span class="op">=</span> [<span class="st">'id'</span>, <span class="st">'score'</span>, <span class="st">'overall_length'</span>, <span class="st">'distinct_words_count'</span>, <span class="st">'theme_gender_count'</span>, <span class="st">'theme_gender_bool'</span>, <span class="st">'theme_ethnicity_count'</span>, <span class="st">'theme_ethnicity_bool'</span>, <span class="st">'theme_sexuality_count'</span>, <span class="st">'theme_sexuality_bool'</span>, <span class="st">'theme_ability_count'</span>, <span class="st">'theme_ability_bool'</span>, <span class="st">'theme_age_count'</span>, <span class="st">'theme_age_bool'</span>, <span class="st">'theme_weight_count'</span>, <span class="st">'theme_weight_bool'</span>, <span class="st">'theme_appearance_count'</span>, <span class="st">'theme_appearance_bool'</span>, <span class="st">'theme_class_count'</span>, <span class="st">'theme_class_bool'</span>, <span class="st">'themes_found'</span>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing: body, title, website, whole_text, whole_text_normalised, whole_text_normalised_tokens, distinct_words</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>saved_df <span class="op">=</span> merged_df[maintained_columns]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>** COLUMNS **
+['body', 'id', 'title', 'score', 'website', 'whole_text', 'whole_text_normalised', 'whole_text_normalised_tokens', 'overall_length', 'distinct_words', 'distinct_words_count', 'theme_gender_count', 'theme_gender_bool', 'theme_ethnicity_count', 'theme_ethnicity_bool', 'theme_sexuality_count', 'theme_sexuality_bool', 'theme_ability_count', 'theme_ability_bool', 'theme_age_count', 'theme_age_bool', 'theme_weight_count', 'theme_weight_bool', 'theme_appearance_count', 'theme_appearance_bool', 'theme_class_count', 'theme_class_bool', 'themes_found']
+</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="output-new-csv-in-data-folder" class="level4">
 <h4 class="anchored" data-anchor-id="output-new-csv-in-data-folder">Output new CSV (in data folder)</h4>
+<div id="721b589e" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ./data if it doesn't exist</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">"./data"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the preprocessed dataframe</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>output_path <span class="op">=</span> <span class="st">"./data/preprocessed_dataset.csv"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>saved_df.to_csv(output_path, index<span class="op">=</span><span class="va">False</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"✅ Saved to </span><span class="sc">{</span>output_path<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>✅ Saved to ./data/preprocessed_dataset.csv</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -798,7 +1210,7 @@ max     48526.000000     7795.000000           1128.000000
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/INFO-523-SU25\.github\.io\/final-project-howell-xia\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
