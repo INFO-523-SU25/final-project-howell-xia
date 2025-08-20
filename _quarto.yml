@@ -9,8 +9,10 @@ website:
       - icon: github
         href: https://github.com/INFO-523-SU25/final-project-howell-xia 
     left:
-      - text: Project
+      - text: Overview
         href: index.qmd
+      - text: Project and Analysis
+        href: final-analysis-writeup.ipynb
       - text: Proposal
         href: proposal.qmd
       - text: Presentation
