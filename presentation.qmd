@@ -2,7 +2,11 @@
 title: '<a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological & Marginalised Themes in Jokes</a>'
 subtitle: |
   INFO 523 - Summer 2025 - Final Project  
-  <audio controls src="audio/test-sound-effect.mp3"></audio>
+  <audio controls src="audio/0-intro.mp3"></audio>
+
+  <div style="font-size:0.6em; margin-top:2em; color:#111; text-align:center;">
+    Content warning: this project explores sociopolitical themes in humor data; many jokes contain problematic, vulgar, or taboo language.
+  </div>
 author: '(Ahn) Michael Howell & Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">Repo Link</a>'
 
 
@@ -77,7 +81,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 ## Our Dataset
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/1-dataset.mp3"></audio>
 
 [A dataset of English plaintext jokes](https://github.com/taivop/joke-dataset)
 
@@ -96,7 +100,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 ## Our Questions
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/2-questions.mp3"></audio>
 
 1. What are the distributions of social categories and marginalised themes represented in jokes?
 2. How does each sociological theme relate to the scores users assign - are certain themes rated more highly?
@@ -104,7 +108,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 ## Our Approach
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/3-approach.mp3"></audio>
 
 Identifying sociological themes
 
@@ -124,7 +128,7 @@ Key files
 
 ## Our Data Prep (NLP)
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/4-data-prep.mp3"></audio>
 
 Preprocessing steps
 
@@ -147,13 +151,13 @@ Engineering features
 
 ## Example Jokes
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/5-example-jokes.mp3"></audio>
 
 ![](images/ahn/examples/example-jokes.png)
 
 ## Plot 1 - Theme prevalence (Bar)
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/6-plot-1-prevalence.mp3" style="display:block; margin:0 0 .75rem auto; width:240px;"></audio>
 
 ::: columns
 ::: {.column width="50%"}
@@ -175,7 +179,7 @@ Engineering features
 
 ## Plot 2 - Scores by theme (Box)
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/7-plot-2-scores-by-theme.mp3"></audio>
 
 ![](images/ahn/2-box_plot_scores_default.png){width=60%}
 
@@ -191,7 +195,7 @@ Engineering features
 
 ## Plot 3 - Scores by # of themes (Box)
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/8-plot-3-scores-by-num-themes.mp3"></audio>
 
 ![](images/ahn/3-box_plot_score_vs_num_themes_default.png)
 
@@ -201,9 +205,9 @@ Engineering features
 
 ## Plot 4 - Scores by joke length, by theme (Scatter)
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/9-plot-4-scores-by-length.mp3"></audio>
 
-![](images/ahn/4-scatter_plot_length_vs_score_default.png){width=50%}
+![](images/ahn/4-scatter_plot_length_vs_score_default.png){width=60%}
 
 - Longer jokes receive lower scores
 
@@ -213,19 +217,19 @@ Engineering features
 
 ## Modeling
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/10a-modeling.mp3"></audio>
 
 ## Classification
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/10b-classification-approach.mp3"></audio>
 
 ## Results
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/11-classification-results.mp3"></audio>
 
 ## Summary & Next Steps
 
-<audio controls src="audio/test-sound-effect.mp3"></audio>
+<audio controls src="audio/12-summary-next-steps.mp3"></audio>
 
 Q1: What are the distributions of themes represented in jokes?
 
