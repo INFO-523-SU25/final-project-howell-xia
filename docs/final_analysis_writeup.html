@@ -2136,7 +2136,72 @@ To explore how joke length related to upvotes from users, and whether certain th
 <h5 class="anchored" data-anchor-id="classification-model-analysis">Classification &amp; model analysis</h5>
 <p><strong>Classification</strong></p>
 <p>Firstly, we wanted to see if the model can predict if the rating of a post was more highly rated than the median rating for all reddit jokes in 2017.</p>
-<p>To do this, we created a discrete variable that displays 1 for posts with ratings above the median rating, and 0 for posts below the median rating. We conducted PCA dimensionality reduction to select 7 variables as our predictors, which ended up being the boolean values for all 7 of our sociological themes. In other words, our PCA Dimensionality reduction analysis found that the presence of a theme was a larger component than how many times words containing those themes showed up within a joke. We then ran four classification models and evaluated their performance.</p>
+<p>To do this, we created a discrete variable that displays 1 for posts with ratings above the median rating, and 0 for posts below the median rating. We conducted PCA dimensionality reduction to select 7 variables as our predictors, which ended up being the boolean values for all 7 of our sociological themes. In other words, our PCA Dimensionality reduction analysis found that the presence of a theme was a larger component than how many times words containing those themes showed up within a joke. We then ran four classification models and evaluated their performance: Logistic Regression, K Nearest Neighbor, Decision Tree, and Random Forest.</p>
+<p>The confusion matrix looked as follows for each of the models:</p>
+<p float="left">
+<img src="images/cat/Log Reg Confusion Matrix.png" width="35%"> <img src="images/cat/KNN Confusion Matrix.png" width="35%">
+</p>
+<p float="left">
+<img src="images/cat/Decision Tree Confusion Matrix.png" width="35%"> <img src="images/cat/Random Forest Confusion Matrix.png" width="35%">
+</p>
+<p>Additionally, their evaluated statistics are as follows:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 26%">
+<col style="width: 10%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Logarithmic Reg</th>
+<th>KNN</th>
+<th>Decision Tree</th>
+<th>Random Forest</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accuracy</td>
+<td>57%</td>
+<td>55%</td>
+<td>57%</td>
+<td>57%</td>
+</tr>
+<tr class="even">
+<td>Precision</td>
+<td>58%</td>
+<td>54%</td>
+<td>58%</td>
+<td>58%</td>
+</tr>
+<tr class="odd">
+<td>Recall</td>
+<td>30%</td>
+<td>26%</td>
+<td>29%</td>
+<td>29%</td>
+</tr>
+<tr class="even">
+<td>F1 Score</td>
+<td>40%</td>
+<td>35%</td>
+<td>39%</td>
+<td>39%</td>
+</tr>
+<tr class="odd">
+<td>ROC AUC</td>
+<td>57%</td>
+<td>55%</td>
+<td>57%</td>
+<td>57%</td>
+</tr>
+</tbody>
+</table>
+<p>We can see how no Classification model was able to accurately or precisely predict whether a joke would get more ratings than the median number of jokes on social theme variables alone. They are all slightly higher than 50%, but this not a strong predictor. Even worse, the recall being around 30% means that there is a significantly low number of real positives compared with the other stats, and this is reflected in the F1 score as well.</p>
+<p>This is interesting because through our graph data, we can see that Reddit users prefer social themes, but the inability of models to predict it’s popularity could imply that Reddit users are non-specific for engaging with jokes around marginalised groups. It could raise questions around if the social marginalisation nature of the jokes themselves garner attention rather than what is actually said in the joke.</p>
 <hr>
 </section>
 </section>
@@ -2150,7 +2215,8 @@ To explore how joke length related to upvotes from users, and whether certain th
 </ul>
 <p>Q2: How does each sociological theme relate to the scores users assign - are certain themes rated more highly?</p>
 <ul>
-<li>Reddit users clearly favor jokes with more social themes (up until around 6 themes, when scores fall off, likely due to length of the joke), and especially positively rate themes which are less common (appearance, age, weight, ability); jokes without a theme are consistently rated lower. While themes such as gender, sexuality, and (especially) ethnicity are more common overall, they do not receive as many upvotes from users.</li>
+<li><p>Reddit users clearly favor jokes with more social themes (up until around 6 themes, when scores fall off, likely due to length of the joke), and especially positively rate themes which are less common (appearance, age, weight, ability); jokes without a theme are consistently rated lower. While themes such as gender, sexuality, and (especially) ethnicity are more common overall, they do not receive as many upvotes from users.</p></li>
+<li><p>Classification models are unable to predict whether a joke will be more well recieved than the median rating or not when trained on social themes alone.</p></li>
 </ul>
 </section>
 <section id="next-steps" class="level5">

@@ -20,4 +20,4 @@ jupyter: python3
 
 ## Abstract
 
-Add project abstract here.
+Our project studied jokes collected from Reddit around 2017 by Taivo Pungas published on GitHub and sought to find identifying patterns around jokes aimed at marginalised groups. We discovered that the majority of jokes involved social themes, with a higher prevalence of jokes surrounding gender, ethnicity, and sexuality. Reddit users favor jokes with more social themes, but the presence of specific social themes (individual or clustered together) are unable to predict whether or not a joke will be popular and well recieved.
