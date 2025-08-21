@@ -126,7 +126,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/watercolour_sys02_img34_teacup-ocean.jpg" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Investigating Sociological &amp; Marginalised Themes in Jokes</h1>
   <p class="subtitle">INFO 523 - Summer 2025 - Final Project</p>
 
@@ -137,11 +137,6 @@
 </div>
 </div>
 </div>
-
-</section>
-<section>
-<section id="using-quarto-for-presentations" class="title-slide slide level1 center">
-<h1>Using Quarto for presentations</h1>
 
 </section>
 <section id="our-dataset" class="slide level2">
@@ -205,20 +200,54 @@
 <li><p>themes_found</p></li>
 </ul>
 </section>
-<section id="image--imagesahnexamplesexample-joke.png" class="slide level2">
-<h2>IMAGE- images/ahn/examples/example-joke.png</h2>
-</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="images/ahn/examples/example-jokes.png" class="r-stretch"></section>
 <section id="plot-1---theme-prevalence-bar" class="slide level2">
 <h2>Plot 1 - Theme prevalence (Bar)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/ahn/1-bar_plot_theme_prevalence_default.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/ahn/1-bar_plot_theme_prevalence_strict.png"></p>
+</div></div>
+<ul>
+<li><p>Most common: gender, ethnicity &amp; sexuality</p></li>
+<li><p>Least common: weight, ability</p></li>
+<li><p>Default: 28% of jokes have no visible social theme</p></li>
+<li><p>Strict: 63% of jokes have only 1 or no theme words</p></li>
+</ul>
 </section>
 <section id="plot-2---scores-by-theme-box" class="slide level2">
 <h2>Plot 2 - Scores by theme (Box)</h2>
+<p><img data-src="images/ahn/2-box_plot_scores_default.png"></p>
+<ul>
+<li><p>Themeless jokes score much lower (median: 6 upvotes)</p></li>
+<li><p>Uncommon themes (appearance, age, class) get highest scores</p></li>
+<li><p>Jokes with ethnic-themed words get lower scores, despite being common</p>
+<ul>
+<li>Social Progress or jokes becoming cover/subtle?</li>
+</ul></li>
+</ul>
+<p><img data-src="images/ahn/examples/ethnicity-leroy-paint.png"></p>
 </section>
 <section id="plot-3---scores-by-of-themes-box" class="slide level2">
 <h2>Plot 3 - Scores by # of themes (Box)</h2>
+
+<img data-src="images/ahn/3-box_plot_score_vs_num_themes_default.png" class="r-stretch"><ul>
+<li><p>Clear positive trend: more themes = higher score</p></li>
+<li><p>There is a falloff point - too long, hard to follow</p></li>
+</ul>
 </section>
 <section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2">
 <h2>Plot 4 - Scores by joke length, by theme (Scatter)</h2>
+
+<img data-src="images/ahn/4-scatter_plot_length_vs_score_default.png" class="r-stretch"><ul>
+<li><p>Longer jokes recieve lower scores</p></li>
+<li><p>Jokes with no social theme tend to be shorter</p></li>
+<li><p>Otherwise no clear trend separating themes here</p></li>
+</ul>
 </section>
 <section id="modeling" class="slide level2">
 <h2>Modeling</h2>
@@ -262,40 +291,10 @@
 <aside><ol class="aside-footnotes"><li id="fn1"><p>And add footnotes</p></li></ol></aside></section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="0f2ddac3" class="cell" data-execution_count="4">
-<div class="cell-output cell-output-stdout">
-<pre><code>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                    mpg   R-squared:                       0.073
-Model:                            OLS   Adj. R-squared:                  0.070
-Method:                 Least Squares   F-statistic:                     30.59
-Date:                Thu, 21 Aug 2025   Prob (F-statistic):           5.84e-08
-Time:                        02:59:08   Log-Likelihood:                -1346.4
-No. Observations:                 392   AIC:                             2697.
-Df Residuals:                     390   BIC:                             2705.
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const         35.8015      2.266     15.800      0.000      31.347      40.257
-speed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623
-==============================================================================
-Omnibus:                       27.687   Durbin-Watson:                   0.589
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               18.976
-Skew:                           0.420   Prob(JB):                     7.57e-05
-Kurtosis:                       2.323   Cond. No.                         169.
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
-</div>
-</div>
 </section>
 <section id="plots" class="slide level2">
 <h2>Plots</h2>
-
-<img data-src="presentation_files/figure-revealjs/cell-6-output-1.png" class="r-stretch"></section>
+</section>
 <section id="plot-and-text" class="slide level2">
 <h2>Plot and text</h2>
 <div class="columns">
@@ -305,17 +304,9 @@ Notes:
 <li><p>goes here</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="72a5e27b" class="cell" data-fig.width="5.5" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/cell-7-output-1.png"></p>
-</figure>
-</div>
-</div>
-</div>
+
 </div></div>
-</section></section>
+</section>
 <section>
 <section id="a-new-section" class="title-slide slide level1 center">
 <h1>A new section…</h1>
@@ -324,236 +315,6 @@ Notes:
 <section id="tables" class="slide level2">
 <h2>Tables</h2>
 <p>If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,</p>
-<div id="2c54ea69" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="350">
-<table border="1" class="dataframe">
-
-<thead>
-
-<tr style="text-align: right;">
-
-<th>
-</th>
-
-<th>
-species
-</th>
-
-<th>
-island
-</th>
-
-<th>
-bill_length_mm
-</th>
-
-<th>
-bill_depth_mm
-</th>
-
-<th>
-flipper_length_mm
-</th>
-
-<th>
-body_mass_g
-</th>
-
-<th>
-sex
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<th>
-0
-</th>
-
-<td>
-Adelie
-</td>
-
-<td>
-Torgersen
-</td>
-
-<td>
-39.1
-</td>
-
-<td>
-18.7
-</td>
-
-<td>
-181.0
-</td>
-
-<td>
-3750.0
-</td>
-
-<td>
-Male
-</td>
-
-</tr>
-
-<tr>
-
-<th>
-1
-</th>
-
-<td>
-Adelie
-</td>
-
-<td>
-Torgersen
-</td>
-
-<td>
-39.5
-</td>
-
-<td>
-17.4
-</td>
-
-<td>
-186.0
-</td>
-
-<td>
-3800.0
-</td>
-
-<td>
-Female
-</td>
-
-</tr>
-
-<tr>
-
-<th>
-2
-</th>
-
-<td>
-Adelie
-</td>
-
-<td>
-Torgersen
-</td>
-
-<td>
-40.3
-</td>
-
-<td>
-18.0
-</td>
-
-<td>
-195.0
-</td>
-
-<td>
-3250.0
-</td>
-
-<td>
-Female
-</td>
-
-</tr>
-
-<tr>
-
-<th>
-4
-</th>
-
-<td>
-Adelie
-</td>
-
-<td>
-Torgersen
-</td>
-
-<td>
-36.7
-</td>
-
-<td>
-19.3
-</td>
-
-<td>
-193.0
-</td>
-
-<td>
-3450.0
-</td>
-
-<td>
-Female
-</td>
-
-</tr>
-
-<tr>
-
-<th>
-5
-</th>
-
-<td>
-Adelie
-</td>
-
-<td>
-Torgersen
-</td>
-
-<td>
-39.3
-</td>
-
-<td>
-20.6
-</td>
-
-<td>
-190.0
-</td>
-
-<td>
-3650.0
-</td>
-
-<td>
-Male
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-</div>
-</div>
 </section>
 <section id="images" class="slide level2">
 <h2>Images</h2>
@@ -571,18 +332,6 @@ Male
 <li><p>The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting <code>$$</code> must appear in the very beginning of a line, followed immediately by a non-space character, and the ending <code>$$</code> must be at the end of a line, led by a non-space character;</p></li>
 <li><p>There should not be spaces after the opening <code>$</code> or before the closing <code>$</code>.</p></li>
 </ol>
-</section></section>
-<section>
-<section id="wrap-up" class="title-slide slide level1 center">
-<h1>Wrap up</h1>
-
-</section>
-<section id="feeling-adventurous" class="slide level2">
-<h2>Feeling adventurous?</h2>
-<ul>
-<li><p>You are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.</p></li>
-<li><p>But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.</p></li>
-</ul>
 
 
 </section></section>
