@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="author" content="(Ahn) Michael Howell &amp; Cat Xia | GitHub Repo">
+  <meta name="author" content="(Ahn) Michael Howell &amp; Cat Xia | Repo Link">
   <title>Investigating Sociological &amp; Marginalised Themes in Jokes – Investigating Sociological &amp; Marginalised Themes in Jokes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -128,12 +128,12 @@
 
 <section id="title-slide" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title"><a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological &amp; Marginalised Themes in Jokes</a></h1>
-  <p class="subtitle">INFO 523 - Summer 2025 - Final Project</p>
+  <p class="subtitle"></p><p>INFO 523 - Summer 2025 - Final Project <audio controls="" style="margin-top:10px; width:250px;"> <source src="test-sound-effect.mp3" type="audio/mpeg"> </audio></p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-(Ahn) Michael Howell &amp; Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">GitHub Repo</a> 
+(Ahn) Michael Howell &amp; Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">Repo Link</a> 
 </div>
 </div>
 </div>
@@ -141,28 +141,34 @@
 </section>
 <section id="our-dataset" class="slide level2">
 <h2>Our Dataset</h2>
+<audio controls="">
+<source src="test-sound-effect.mp3" type="audio/mpeg">
+<p>Your browser does not support the audio element. </p>
 <p><a href="https://github.com/taivop/joke-dataset">A dataset of English plaintext jokes</a></p>
 <ul>
 <li><p>~200k jokes from Reddit</p></li>
 <li><p>Gathered in 2017 by Taivo Pungas</p></li>
-<li><p>Had coluns: id, title, body, score</p></li>
+<li><p>Had columns: id, title, body, score</p></li>
 <li><p>Why we chose it:</p>
 <ul>
 <li><p>Very complete data (few missing values)</p></li>
 <li><p>Text data with sociological topic</p></li>
 </ul></li>
 </ul>
-</section>
+</audio></section>
 <section id="our-questions" class="slide level2">
 <h2>Our Questions</h2>
+<audio controls="">
+<source src="test-sound-effect.mp3" type="audio/mpeg">
+<p>Your browser does not support the audio element. </p>
 <ol type="1">
 <li>What are the distributions of social categories and marginalised themes represented in jokes?</li>
-<li>How does each sociological theme relate to the scores users assign- are certain themes rated more highly?</li>
+<li>How does each sociological theme relate to the scores users assign - are certain themes rated more highly?</li>
 </ol>
 <ul>
 <li>Can we create a model to predict how well a joke does, through sociological theme alone?</li>
 </ul>
-</section>
+</audio></section>
 <section id="our-approach" class="slide level2">
 <h2>Our Approach</h2>
 <p>Identifying sociological themes</p>
@@ -174,11 +180,11 @@
 <ul>
 <li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/preprocess_data.ipynb">preprocessing_data.ipynb</a></p>
 <ul>
-<li>For data preparation &amp; feature engineering</li>
-</ul></li>
+<li><p>For data preparation &amp; feature engineering</p></li>
 <li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/final_analysis_writeup.ipynb">final_analysis_writeup.ipynb</a></p>
 <ul>
 <li>For analysis &amp; presenting findings</li>
+</ul></li>
 </ul></li>
 </ul>
 </section>
@@ -186,17 +192,20 @@
 <h2>Our Data Prep (NLP)</h2>
 <p>Preprocessing steps</p>
 <ul>
-<li><p>Combining joke title &amp; body (whole_text)</p></li>
+<li><p>Combining joke title &amp; body (whole_text)</p>
+<ul>
 <li><p>Lowercasing</p></li>
 <li><p>Removing non-letter characters</p></li>
 <li><p>Removing stop words</p></li>
+</ul></li>
 </ul>
 <p>Engineering features</p>
 <ul>
-<li><p>whole_text, whole_text_normalised_tokens</p></li>
-<li><p>distinct_words</p></li>
-<li><p>overall_length</p></li>
+<li><p>whole_text, whole_text_normalised_tokens</p>
+<ul>
+<li><p>distinct_words, overall_length</p></li>
 <li><p>theme_<theme><em>count, theme</em><theme>_bool, themes_found</theme></theme></p></li>
+</ul></li>
 </ul>
 </section>
 <section id="example-jokes" class="slide level2">
@@ -226,7 +235,7 @@
 <li><p>Uncommon themes (appearance, age, class) get highest scores</p></li>
 <li><p>Jokes with ethnic-themed words get lower scores, despite being common</p>
 <ul>
-<li>Social Progress or jokes becoming cover/subtle?</li>
+<li>Social progress or jokes becoming covert/subtle?</li>
 </ul></li>
 </ul>
 <p><img data-src="images/ahn/examples/ethnicity-leroy-paint.png"></p>
@@ -242,7 +251,7 @@
 <section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2">
 <h2>Plot 4 - Scores by joke length, by theme (Scatter)</h2>
 
-<img data-src="images/ahn/4-scatter_plot_length_vs_score_default.png" class="r-stretch"><ul>
+<img data-src="images/ahn/4-scatter_plot_length_vs_score_default.png" style="width:50.0%" class="r-stretch"><ul>
 <li><p>Longer jokes receive lower scores</p></li>
 <li><p>Jokes with no social theme tend to be shorter</p></li>
 <li><p>Otherwise no clear trend separating themes here</p></li>

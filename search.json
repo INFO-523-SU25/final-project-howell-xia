@@ -102,28 +102,28 @@
     "href": "presentation.html#our-dataset",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Dataset",
-    "text": "Our Dataset\nA dataset of English plaintext jokes\n\n~200k jokes from Reddit\nGathered in 2017 by Taivo Pungas\nHad coluns: id, title, body, score\nWhy we chose it:\n\nVery complete data (few missing values)\nText data with sociological topic"
+    "text": "Our Dataset\n\n\nYour browser does not support the audio element. \nA dataset of English plaintext jokes\n\n~200k jokes from Reddit\nGathered in 2017 by Taivo Pungas\nHad columns: id, title, body, score\nWhy we chose it:\n\nVery complete data (few missing values)\nText data with sociological topic"
   },
   {
     "objectID": "presentation.html#our-questions",
     "href": "presentation.html#our-questions",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Questions",
-    "text": "Our Questions\n\nWhat are the distributions of social categories and marginalised themes represented in jokes?\nHow does each sociological theme relate to the scores users assign- are certain themes rated more highly?\n\n\nCan we create a model to predict how well a joke does, through sociological theme alone?"
+    "text": "Our Questions\n\n\nYour browser does not support the audio element. \n\nWhat are the distributions of social categories and marginalised themes represented in jokes?\nHow does each sociological theme relate to the scores users assign - are certain themes rated more highly?\n\n\nCan we create a model to predict how well a joke does, through sociological theme alone?"
   },
   {
     "objectID": "presentation.html#our-approach",
     "href": "presentation.html#our-approach",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Approach",
-    "text": "Our Approach\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\n\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
+    "text": "Our Approach\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
   },
   {
     "objectID": "presentation.html#our-data-prep-nlp",
     "href": "presentation.html#our-data-prep-nlp",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Data Prep (NLP)",
-    "text": "Our Data Prep (NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\ndistinct_words\noverall_length\ntheme_count, theme_bool, themes_found"
+    "text": "Our Data Prep (NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\n\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\n\ndistinct_words, overall_length\ntheme_count, theme_bool, themes_found"
   },
   {
     "objectID": "presentation.html#example-jokes",
@@ -144,7 +144,7 @@
     "href": "presentation.html#plot-2---scores-by-theme-box",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 2 - Scores by theme (Box)",
-    "text": "Plot 2 - Scores by theme (Box)\n\n\nThemeless jokes score much lower (median: 6 upvotes)\nUncommon themes (appearance, age, class) get highest scores\nJokes with ethnic-themed words get lower scores, despite being common\n\nSocial Progress or jokes becoming cover/subtle?"
+    "text": "Plot 2 - Scores by theme (Box)\n\n\nThemeless jokes score much lower (median: 6 upvotes)\nUncommon themes (appearance, age, class) get highest scores\nJokes with ethnic-themed words get lower scores, despite being common\n\nSocial progress or jokes becoming covert/subtle?"
   },
   {
     "objectID": "presentation.html#plot-3---scores-by-of-themes-box",
