@@ -2,15 +2,3 @@
 
 $body-bg: #f7f9fc;
 $headings-color: #2e5a83;
-
-/* Slide class to anchor audio player in the bottom-right corner */
-.reveal .slides section.pin-audio { 
-  position: relative; 
-}
-
-.reveal .slides section.pin-audio audio {
-  position: absolute; 
-  right: 1rem; 
-  bottom: 1rem; 
-  width: 240px;   // adjust as needed
-}

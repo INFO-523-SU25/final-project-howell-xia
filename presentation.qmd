@@ -75,7 +75,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 ```
 
 
-## Our Dataset {.pin-audio}
+## Our Dataset
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -94,7 +94,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
   - Text data with sociological topic
 
 
-## Our Questions {.pin-audio}
+## Our Questions
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -102,7 +102,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 2. How does each sociological theme relate to the scores users assign - are certain themes rated more highly?
   - Can we create a model to predict how well a joke does, through sociological theme alone?
 
-## Our Approach {.pin-audio}
+## Our Approach
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -122,7 +122,7 @@ Key files
 
     - For analysis & presenting findings
 
-## Our Data Prep (NLP) {.pin-audio}
+## Our Data Prep (NLP)
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -145,13 +145,13 @@ Engineering features
   - theme_<theme>_count, theme_<theme>_bool, themes_found
 
 
-## Example Jokes {.pin-audio}
+## Example Jokes
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
 ![](images/ahn/examples/example-jokes.png)
 
-## Plot 1 - Theme prevalence (Bar) {.pin-audio}
+## Plot 1 - Theme prevalence (Bar)
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -173,7 +173,7 @@ Engineering features
 - Strict: 63% of jokes have only 1 or no theme words
 
 
-## Plot 2 - Scores by theme (Box) {.pin-audio}
+## Plot 2 - Scores by theme (Box)
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -189,7 +189,7 @@ Engineering features
 
 ![](images/ahn/examples/ethnicity-leroy-paint.png)
 
-## Plot 3 - Scores by # of themes (Box) {.pin-audio}
+## Plot 3 - Scores by # of themes (Box)
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -199,7 +199,7 @@ Engineering features
 
 - There is a falloff point - joke too long, hard to follow
 
-## Plot 4 - Scores by joke length, by theme (Scatter) {.pin-audio}
+## Plot 4 - Scores by joke length, by theme (Scatter)
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
@@ -211,19 +211,19 @@ Engineering features
 
 - Otherwise no clear trend separating themes here
 
-## Modeling {.pin-audio}
+## Modeling
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
-## Classification {.pin-audio}
+## Classification
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
-## Results {.pin-audio}
+## Results
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
-## Summary & Next Steps {.pin-audio}
+## Summary & Next Steps
 
 <audio controls src="audio/test-sound-effect.mp3"></audio>
 
