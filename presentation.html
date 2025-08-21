@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-dcafbddb428608181addb2ae639a0b1e.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-72ef5f76ceb9d3f036180dc2519dfa88.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -45,6 +45,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -128,7 +129,7 @@
 
 <section id="title-slide" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title"><a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological &amp; Marginalised Themes in Jokes</a></h1>
-  <p class="subtitle"></p><p>INFO 523 - Summer 2025 - Final Project <audio controls="" style="margin-top:10px; width:250px;"> <source src="test-sound-effect.mp3" type="audio/mpeg"> </audio></p><p></p>
+  <p class="subtitle"></p><p>INFO 523 - Summer 2025 - Final Project <audio controls="" src="audio/test-sound-effect.mp3"></audio></p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -139,11 +140,10 @@
 </div>
 
 </section>
-<section id="our-dataset" class="slide level2">
+<section id="our-dataset" class="slide level2 pin-audio">
 <h2>Our Dataset</h2>
-<audio controls="">
-<source src="test-sound-effect.mp3" type="audio/mpeg">
-<p>Your browser does not support the audio element. </p>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <p><a href="https://github.com/taivop/joke-dataset">A dataset of English plaintext jokes</a></p>
 <ul>
 <li><p>~200k jokes from Reddit</p></li>
@@ -155,12 +155,11 @@
 <li><p>Text data with sociological topic</p></li>
 </ul></li>
 </ul>
-</audio></section>
-<section id="our-questions" class="slide level2">
+</section>
+<section id="our-questions" class="slide level2 pin-audio scrollable">
 <h2>Our Questions</h2>
-<audio controls="">
-<source src="test-sound-effect.mp3" type="audio/mpeg">
-<p>Your browser does not support the audio element. </p>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <ol type="1">
 <li>What are the distributions of social categories and marginalised themes represented in jokes?</li>
 <li>How does each sociological theme relate to the scores users assign - are certain themes rated more highly?</li>
@@ -168,9 +167,11 @@
 <ul>
 <li>Can we create a model to predict how well a joke does, through sociological theme alone?</li>
 </ul>
-</audio></section>
-<section id="our-approach" class="slide level2">
+</section>
+<section id="our-approach" class="slide level2 pin-audio">
 <h2>Our Approach</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <p>Identifying sociological themes</p>
 <ul>
 <li><p>8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class</p></li>
@@ -180,40 +181,42 @@
 <ul>
 <li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/preprocess_data.ipynb">preprocessing_data.ipynb</a></p>
 <ul>
-<li><p>For data preparation &amp; feature engineering</p></li>
+<li>For data preparation &amp; feature engineering</li>
+</ul></li>
 <li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/final_analysis_writeup.ipynb">final_analysis_writeup.ipynb</a></p>
 <ul>
 <li>For analysis &amp; presenting findings</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
-<section id="our-data-prep-nlp" class="slide level2">
+<section id="our-data-prep-nlp" class="slide level2 pin-audio">
 <h2>Our Data Prep (NLP)</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <p>Preprocessing steps</p>
 <ul>
-<li><p>Combining joke title &amp; body (whole_text)</p>
-<ul>
+<li><p>Combining joke title &amp; body (whole_text)</p></li>
 <li><p>Lowercasing</p></li>
 <li><p>Removing non-letter characters</p></li>
 <li><p>Removing stop words</p></li>
-</ul></li>
 </ul>
 <p>Engineering features</p>
 <ul>
-<li><p>whole_text, whole_text_normalised_tokens</p>
-<ul>
+<li><p>whole_text, whole_text_normalised_tokens</p></li>
 <li><p>distinct_words, overall_length</p></li>
 <li><p>theme_<theme><em>count, theme</em><theme>_bool, themes_found</theme></theme></p></li>
-</ul></li>
 </ul>
 </section>
-<section id="example-jokes" class="slide level2">
+<section id="example-jokes" class="slide level2 pin-audio">
 <h2>Example Jokes</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 
 <img data-src="images/ahn/examples/example-jokes.png" class="r-stretch"></section>
-<section id="plot-1---theme-prevalence-bar" class="slide level2">
+<section id="plot-1---theme-prevalence-bar" class="slide level2 pin-audio">
 <h2>Plot 1 - Theme prevalence (Bar)</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><img data-src="images/ahn/1-bar_plot_theme_prevalence_default.png"></p>
@@ -227,8 +230,10 @@
 <li><p>Strict: 63% of jokes have only 1 or no theme words</p></li>
 </ul>
 </section>
-<section id="plot-2---scores-by-theme-box" class="slide level2">
+<section id="plot-2---scores-by-theme-box" class="slide level2 pin-audio">
 <h2>Plot 2 - Scores by theme (Box)</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <p><img data-src="images/ahn/2-box_plot_scores_default.png" style="width:60.0%"></p>
 <ul>
 <li><p>Themeless jokes score much lower (median: 6 upvotes)</p></li>
@@ -240,16 +245,20 @@
 </ul>
 <p><img data-src="images/ahn/examples/ethnicity-leroy-paint.png"></p>
 </section>
-<section id="plot-3---scores-by-of-themes-box" class="slide level2">
+<section id="plot-3---scores-by-of-themes-box" class="slide level2 pin-audio">
 <h2>Plot 3 - Scores by # of themes (Box)</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 
 <img data-src="images/ahn/3-box_plot_score_vs_num_themes_default.png" class="r-stretch"><ul>
 <li><p>Clear positive trend: more themes = higher score</p></li>
 <li><p>There is a falloff point - joke too long, hard to follow</p></li>
 </ul>
 </section>
-<section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2">
+<section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2 pin-audio">
 <h2>Plot 4 - Scores by joke length, by theme (Scatter)</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 
 <img data-src="images/ahn/4-scatter_plot_length_vs_score_default.png" style="width:50.0%" class="r-stretch"><ul>
 <li><p>Longer jokes receive lower scores</p></li>
@@ -257,17 +266,25 @@
 <li><p>Otherwise no clear trend separating themes here</p></li>
 </ul>
 </section>
-<section id="modeling" class="slide level2">
+<section id="modeling" class="slide level2 pin-audio">
 <h2>Modeling</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 </section>
-<section id="classification" class="slide level2">
+<section id="classification" class="slide level2 pin-audio">
 <h2>Classification</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 </section>
-<section id="results" class="slide level2">
+<section id="results" class="slide level2 pin-audio">
 <h2>Results</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 </section>
-<section id="summary-next-steps" class="slide level2">
+<section id="summary-next-steps" class="slide level2 pin-audio">
 <h2>Summary &amp; Next Steps</h2>
+<audio controls="" src="audio/test-sound-effect.mp3">
+</audio>
 <p>Q1: What are the distributions of themes represented in jokes?</p>
 <ul>
 <li>Most jokes involve a social theme, especially gender, ethnicity &amp; sexuality</li>
@@ -281,7 +298,7 @@
 <li>Use an LLM for nuanced theme recognition</li>
 </ul>
 </section>
-<section id="layouts" class="slide level2">
+<section id="layouts" class="slide level2 scrollable">
 <h2>Layouts</h2>
 <p>You can use plain text</p>
 <div class="columns">
@@ -328,7 +345,7 @@
 <h2>Images</h2>
 
 <img data-src="images/watercolour_sys02_img34_teacup-ocean.png" width="500" class="r-stretch quarto-figure-center"><p class="caption">Image credit: Danielle Navarro, Percolate.</p></section>
-<section id="math-expressions" class="slide level2 smaller">
+<section id="math-expressions" class="slide level2 smaller scrollable">
 <h2>Math Expressions</h2>
 <p>You can write LaTeX math expressions inside a pair of dollar signs, e.g.&nbsp;$\alpha+\beta$ renders <span class="math inline">\(\alpha + \beta\)</span>. You can use the display style with double dollar signs:</p>
 <pre><code>$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$</code></pre>

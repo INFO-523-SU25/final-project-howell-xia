@@ -102,28 +102,28 @@
     "href": "presentation.html#our-dataset",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Dataset",
-    "text": "Our Dataset\n\n\nYour browser does not support the audio element. \nA dataset of English plaintext jokes\n\n~200k jokes from Reddit\nGathered in 2017 by Taivo Pungas\nHad columns: id, title, body, score\nWhy we chose it:\n\nVery complete data (few missing values)\nText data with sociological topic"
+    "text": "Our Dataset\n\n\nA dataset of English plaintext jokes\n\n~200k jokes from Reddit\nGathered in 2017 by Taivo Pungas\nHad columns: id, title, body, score\nWhy we chose it:\n\nVery complete data (few missing values)\nText data with sociological topic"
   },
   {
     "objectID": "presentation.html#our-questions",
     "href": "presentation.html#our-questions",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Questions",
-    "text": "Our Questions\n\n\nYour browser does not support the audio element. \n\nWhat are the distributions of social categories and marginalised themes represented in jokes?\nHow does each sociological theme relate to the scores users assign - are certain themes rated more highly?\n\n\nCan we create a model to predict how well a joke does, through sociological theme alone?"
+    "text": "Our Questions\n\n\n\nWhat are the distributions of social categories and marginalised themes represented in jokes?\nHow does each sociological theme relate to the scores users assign - are certain themes rated more highly?\n\n\nCan we create a model to predict how well a joke does, through sociological theme alone?"
   },
   {
     "objectID": "presentation.html#our-approach",
     "href": "presentation.html#our-approach",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Approach",
-    "text": "Our Approach\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
+    "text": "Our Approach\n\n\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\n\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
   },
   {
     "objectID": "presentation.html#our-data-prep-nlp",
     "href": "presentation.html#our-data-prep-nlp",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Data Prep (NLP)",
-    "text": "Our Data Prep (NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\n\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\n\ndistinct_words, overall_length\ntheme_count, theme_bool, themes_found"
+    "text": "Our Data Prep (NLP)\n\n\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\ndistinct_words, overall_length\ntheme_count, theme_bool, themes_found"
   },
   {
     "objectID": "presentation.html#example-jokes",
@@ -137,28 +137,28 @@
     "href": "presentation.html#plot-1---theme-prevalence-bar",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 1 - Theme prevalence (Bar)",
-    "text": "Plot 1 - Theme prevalence (Bar)\n\n\n\n\n\n\n\nMost common: gender, ethnicity & sexuality\nLeast common: weight, ability\nDefault: 28% of jokes have no visible social theme\nStrict: 63% of jokes have only 1 or no theme words"
+    "text": "Plot 1 - Theme prevalence (Bar)\n\n\n\n\n\n\n\n\n\nMost common: gender, ethnicity & sexuality\nLeast common: weight, ability\nDefault: 28% of jokes have no visible social theme\nStrict: 63% of jokes have only 1 or no theme words"
   },
   {
     "objectID": "presentation.html#plot-2---scores-by-theme-box",
     "href": "presentation.html#plot-2---scores-by-theme-box",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 2 - Scores by theme (Box)",
-    "text": "Plot 2 - Scores by theme (Box)\n\n\nThemeless jokes score much lower (median: 6 upvotes)\nUncommon themes (appearance, age, class) get highest scores\nJokes with ethnic-themed words get lower scores, despite being common\n\nSocial progress or jokes becoming covert/subtle?"
+    "text": "Plot 2 - Scores by theme (Box)\n\n\n\n\nThemeless jokes score much lower (median: 6 upvotes)\nUncommon themes (appearance, age, class) get highest scores\nJokes with ethnic-themed words get lower scores, despite being common\n\nSocial progress or jokes becoming covert/subtle?"
   },
   {
     "objectID": "presentation.html#plot-3---scores-by-of-themes-box",
     "href": "presentation.html#plot-3---scores-by-of-themes-box",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 3 - Scores by # of themes (Box)",
-    "text": "Plot 3 - Scores by # of themes (Box)\n\n\nClear positive trend: more themes = higher score\nThere is a falloff point - joke too long, hard to follow"
+    "text": "Plot 3 - Scores by # of themes (Box)\n\n\n\n\nClear positive trend: more themes = higher score\nThere is a falloff point - joke too long, hard to follow"
   },
   {
     "objectID": "presentation.html#plot-4---scores-by-joke-length-by-theme-scatter",
     "href": "presentation.html#plot-4---scores-by-joke-length-by-theme-scatter",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 4 - Scores by joke length, by theme (Scatter)",
-    "text": "Plot 4 - Scores by joke length, by theme (Scatter)\n\n\nLonger jokes receive lower scores\nJokes with no social theme tend to be shorter\nOtherwise no clear trend separating themes here"
+    "text": "Plot 4 - Scores by joke length, by theme (Scatter)\n\n\n\n\nLonger jokes receive lower scores\nJokes with no social theme tend to be shorter\nOtherwise no clear trend separating themes here"
   },
   {
     "objectID": "presentation.html#modeling",
@@ -186,7 +186,7 @@
     "href": "presentation.html#summary-next-steps",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Summary & Next Steps",
-    "text": "Summary & Next Steps\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
+    "text": "Summary & Next Steps\n\n\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
   },
   {
     "objectID": "presentation.html#layouts",
