@@ -64,9 +64,6 @@ preprocessed_df = pd.read_csv(
 ## MERGE DATAFRAMES
 jokes_df = preprocessed_df
 
-## REVIEW DETAILS
-show_df_details(jokes_df, ["dtypes", "head", "tail", "info", "describe"])
-
 #removes ID and creates a copy of the joke df for classification
 jokes_model = jokes_df.copy()
 jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
@@ -145,15 +142,58 @@ Engineering features
 
 
 ## 
-![Alt text](images/ahn/examples/example-jokes.png)
+![](images/ahn/examples/example-jokes.png)
 
 ## Plot 1 - Theme prevalence (Bar)
+::: columns
+::: {.column width="50%"}
+![](images/ahn/1-bar_plot_theme_prevalence_default.png)
+:::
+
+::: {.column width="50%"}
+![](images/ahn/1-bar_plot_theme_prevalence_strict.png)
+:::
+:::
+- Most common: gender, ethnicity & sexuality
+
+- Least common: weight, ability
+
+- Default: 28% of jokes have no visible social theme
+
+- Strict: 63% of jokes have only 1 or no theme words
+
 
 ## Plot 2 - Scores by theme (Box)
 
+![](images/ahn/2-box_plot_scores_default.png)
+
+- Themeless jokes score much lower (median: 6 upvotes)
+
+- Uncommon themes (appearance, age, class) get highest scores
+
+- Jokes with ethnic-themed words get lower scores, despite being common
+
+  - Social Progress or jokes becoming cover/subtle?
+
+![](images/ahn/examples/ethnicity-leroy-paint.png)
+
 ## Plot 3 - Scores by # of themes (Box)
 
+![](images/ahn/3-box_plot_score_vs_num_themes_default.png)
+
+- Clear positive trend: more themes = higher score
+
+- There is a falloff point - too long, hard to follow
+
 ## Plot 4 - Scores by joke length, by theme (Scatter)
+
+![](images/ahn/4-scatter_plot_length_vs_score_default.png)
+
+- Longer jokes recieve lower scores
+
+- Jokes with no social theme tend to be shorter
+
+- Otherwise no clear trend separating themes here
 
 ## Modeling
 
@@ -197,30 +237,11 @@ or in two columns
 
 ## Code
 
-```{python}
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
-import pandas as pd
 
-# Fit a linear regression model
-X = mtcars[['speed']]
-y = mtcars['mpg']
-model = LinearRegression().fit(X, y)
-
-# Summary of the model
-X2 = sm.add_constant(X)
-est = sm.OLS(y, X2)
-est2 = est.fit()
-print(est2.summary())
-```
 
 ## Plots
 
-```{python}
-penguins['species'] = penguins['species'].apply(lambda x: "Adelie" if x == "Adelie" else "Other")
-sns.scatterplot(data=penguins, x='flipper_length_mm', y='body_mass_g', hue='species')
-plt.show()
-```
+
 
 ## Plot and text
 
@@ -232,13 +253,7 @@ plt.show()
 :::
 
 ::: {.column width="50%"}
-```{python}
-#| warning: false
-#| fig.width: 5.5
-fig, ax = plt.subplots(figsize=(5.5, 5.5 * 0.618))
-sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax)
-plt.show()
-```
+
 :::
 :::
 
@@ -248,9 +263,7 @@ plt.show()
 
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
-```{python}
-penguins.head().to_html()
-```
+
 
 ## Images
 
