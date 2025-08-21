@@ -9,8 +9,8 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="author" content="(Ahn) Michael Howell &amp; Cat Xia">
-  <title>Investigating Sociological &amp; Marginalised Themes in Jokes</title>
+  <meta name="author" content="(Ahn) Michael Howell &amp; Cat Xia | GitHub Repo">
+  <title>Investigating Sociological &amp; Marginalised Themes in Jokes – Investigating Sociological &amp; Marginalised Themes in Jokes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,7 +29,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-6cdba8845797a0b5a60f808f0334ef8f.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-dcafbddb428608181addb2ae639a0b1e.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -127,13 +127,13 @@
     <div class="slides">
 
 <section id="title-slide" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Investigating Sociological &amp; Marginalised Themes in Jokes</h1>
+  <h1 class="title"><a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological &amp; Marginalised Themes in Jokes</a></h1>
   <p class="subtitle">INFO 523 - Summer 2025 - Final Project</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-(Ahn) Michael Howell &amp; Cat Xia 
+(Ahn) Michael Howell &amp; Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">GitHub Repo</a> 
 </div>
 </div>
 </div>
@@ -141,7 +141,7 @@
 </section>
 <section id="our-dataset" class="slide level2">
 <h2>Our Dataset</h2>
-<p>A dataset of English plaintext jokes</p>
+<p><a href="https://github.com/taivop/joke-dataset">A dataset of English plaintext jokes</a></p>
 <ul>
 <li><p>~200k jokes from Reddit</p></li>
 <li><p>Gathered in 2017 by Taivo Pungas</p></li>
@@ -158,8 +158,10 @@
 <ol type="1">
 <li>What are the distributions of social categories and marginalised themes represented in jokes?</li>
 <li>How does each sociological theme relate to the scores users assign- are certain themes rated more highly?</li>
-<li>Can we create a model to predict how well a joke does through sciological theme alone?</li>
 </ol>
+<ul>
+<li>Can we create a model to predict how well a joke does, through sociological theme alone?</li>
+</ul>
 </section>
 <section id="our-approach" class="slide level2">
 <h2>Our Approach</h2>
@@ -170,18 +172,18 @@
 </ul>
 <p>Key files</p>
 <ul>
-<li><p>preprocessing_data.ipynb</p>
+<li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/preprocess_data.ipynb">preprocessing_data.ipynb</a></p>
 <ul>
 <li>For data preparation &amp; feature engineering</li>
 </ul></li>
-<li><p>final_analysis_writeup.ipynb</p>
+<li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/final_analysis_writeup.ipynb">final_analysis_writeup.ipynb</a></p>
 <ul>
 <li>For analysis &amp; presenting findings</li>
 </ul></li>
 </ul>
 </section>
-<section id="our-data-prepnlp" class="slide level2">
-<h2>Our data prep(NLP)</h2>
+<section id="our-data-prep-nlp" class="slide level2">
+<h2>Our Data Prep (NLP)</h2>
 <p>Preprocessing steps</p>
 <ul>
 <li><p>Combining joke title &amp; body (whole_text)</p></li>
@@ -191,17 +193,14 @@
 </ul>
 <p>Engineering features</p>
 <ul>
-<li><p>whole_text, whole_text_normalised</p></li>
-<li><p>whole_text_normalised_tokens</p></li>
+<li><p>whole_text, whole_text_normalised_tokens</p></li>
 <li><p>distinct_words</p></li>
 <li><p>overall_length</p></li>
-<li><p>theme_<theme>_count</theme></p></li>
-<li><p>theme_<theme>_bool</theme></p></li>
-<li><p>themes_found</p></li>
+<li><p>theme_<theme><em>count, theme</em><theme>_bool, themes_found</theme></theme></p></li>
 </ul>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="example-jokes" class="slide level2">
+<h2>Example Jokes</h2>
 
 <img data-src="images/ahn/examples/example-jokes.png" class="r-stretch"></section>
 <section id="plot-1---theme-prevalence-bar" class="slide level2">
@@ -221,7 +220,7 @@
 </section>
 <section id="plot-2---scores-by-theme-box" class="slide level2">
 <h2>Plot 2 - Scores by theme (Box)</h2>
-<p><img data-src="images/ahn/2-box_plot_scores_default.png"></p>
+<p><img data-src="images/ahn/2-box_plot_scores_default.png" style="width:60.0%"></p>
 <ul>
 <li><p>Themeless jokes score much lower (median: 6 upvotes)</p></li>
 <li><p>Uncommon themes (appearance, age, class) get highest scores</p></li>
@@ -237,14 +236,14 @@
 
 <img data-src="images/ahn/3-box_plot_score_vs_num_themes_default.png" class="r-stretch"><ul>
 <li><p>Clear positive trend: more themes = higher score</p></li>
-<li><p>There is a falloff point - too long, hard to follow</p></li>
+<li><p>There is a falloff point - joke too long, hard to follow</p></li>
 </ul>
 </section>
 <section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2">
 <h2>Plot 4 - Scores by joke length, by theme (Scatter)</h2>
 
 <img data-src="images/ahn/4-scatter_plot_length_vs_score_default.png" class="r-stretch"><ul>
-<li><p>Longer jokes recieve lower scores</p></li>
+<li><p>Longer jokes receive lower scores</p></li>
 <li><p>Jokes with no social theme tend to be shorter</p></li>
 <li><p>Otherwise no clear trend separating themes here</p></li>
 </ul>
@@ -259,7 +258,7 @@
 <h2>Results</h2>
 </section>
 <section id="summary-next-steps" class="slide level2">
-<h2>Summary &amp; next steps</h2>
+<h2>Summary &amp; Next Steps</h2>
 <p>Q1: What are the distributions of themes represented in jokes?</p>
 <ul>
 <li>Most jokes involve a social theme, especially gender, ethnicity &amp; sexuality</li>
@@ -339,7 +338,7 @@
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Content warning - problematic &amp; vulgar language in the data: <em>this project explores sociopolitical themes and aims to accurately represent the way users interact with humor on Reddit, meaning that many of the jokes contain problematic, vulgar, or taboo topics and use of language</em></p>
+
 </div>
 </div></div>
 

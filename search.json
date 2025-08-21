@@ -109,7 +109,7 @@
     "href": "presentation.html#our-questions",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Questions",
-    "text": "Our Questions\n\nWhat are the distributions of social categories and marginalised themes represented in jokes?\nHow does each sociological theme relate to the scores users assign- are certain themes rated more highly?\nCan we create a model to predict how well a joke does through sciological theme alone?"
+    "text": "Our Questions\n\nWhat are the distributions of social categories and marginalised themes represented in jokes?\nHow does each sociological theme relate to the scores users assign- are certain themes rated more highly?\n\n\nCan we create a model to predict how well a joke does, through sociological theme alone?"
   },
   {
     "objectID": "presentation.html#our-approach",
@@ -119,11 +119,18 @@
     "text": "Our Approach\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\n\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
   },
   {
-    "objectID": "presentation.html#our-data-prepnlp",
-    "href": "presentation.html#our-data-prepnlp",
+    "objectID": "presentation.html#our-data-prep-nlp",
+    "href": "presentation.html#our-data-prep-nlp",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Our data prep(NLP)",
-    "text": "Our data prep(NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised\nwhole_text_normalised_tokens\ndistinct_words\noverall_length\ntheme__count\ntheme__bool\nthemes_found"
+    "section": "Our Data Prep (NLP)",
+    "text": "Our Data Prep (NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\ndistinct_words\noverall_length\ntheme_count, theme_bool, themes_found"
+  },
+  {
+    "objectID": "presentation.html#example-jokes",
+    "href": "presentation.html#example-jokes",
+    "title": "Investigating Sociological & Marginalised Themes in Jokes",
+    "section": "Example Jokes",
+    "text": "Example Jokes"
   },
   {
     "objectID": "presentation.html#plot-1---theme-prevalence-bar",
@@ -144,14 +151,14 @@
     "href": "presentation.html#plot-3---scores-by-of-themes-box",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 3 - Scores by # of themes (Box)",
-    "text": "Plot 3 - Scores by # of themes (Box)\n\n\nClear positive trend: more themes = higher score\nThere is a falloff point - too long, hard to follow"
+    "text": "Plot 3 - Scores by # of themes (Box)\n\n\nClear positive trend: more themes = higher score\nThere is a falloff point - joke too long, hard to follow"
   },
   {
     "objectID": "presentation.html#plot-4---scores-by-joke-length-by-theme-scatter",
     "href": "presentation.html#plot-4---scores-by-joke-length-by-theme-scatter",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 4 - Scores by joke length, by theme (Scatter)",
-    "text": "Plot 4 - Scores by joke length, by theme (Scatter)\n\n\nLonger jokes recieve lower scores\nJokes with no social theme tend to be shorter\nOtherwise no clear trend separating themes here"
+    "text": "Plot 4 - Scores by joke length, by theme (Scatter)\n\n\nLonger jokes receive lower scores\nJokes with no social theme tend to be shorter\nOtherwise no clear trend separating themes here"
   },
   {
     "objectID": "presentation.html#modeling",
@@ -178,8 +185,8 @@
     "objectID": "presentation.html#summary-next-steps",
     "href": "presentation.html#summary-next-steps",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Summary & next steps",
-    "text": "Summary & next steps\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
+    "section": "Summary & Next Steps",
+    "text": "Summary & Next Steps\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
   },
   {
     "objectID": "presentation.html#layouts",
