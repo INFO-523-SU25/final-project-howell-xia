@@ -126,7 +126,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="images/watercolour_sys02_img34_teacup-ocean.jpg" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
+<section id="title-slide" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
   <h1 class="title">Investigating Sociological &amp; Marginalised Themes in Jokes</h1>
   <p class="subtitle">INFO 523 - Summer 2025 - Final Project</p>
 
@@ -221,13 +221,33 @@
 </section>
 <section id="plot-2---scores-by-theme-box" class="slide level2">
 <h2>Plot 2 - Scores by theme (Box)</h2>
-<p><img data-src=".png">]</p>
+<p><img data-src="images/ahn/2-box_plot_scores_default.png"></p>
+<ul>
+<li><p>Themeless jokes score much lower (median: 6 upvotes)</p></li>
+<li><p>Uncommon themes (appearance, age, class) get highest scores</p></li>
+<li><p>Jokes with ethnic-themed words get lower scores, despite being common</p>
+<ul>
+<li>Social Progress or jokes becoming cover/subtle?</li>
+</ul></li>
+</ul>
+<p><img data-src="images/ahn/examples/ethnicity-leroy-paint.png"></p>
 </section>
 <section id="plot-3---scores-by-of-themes-box" class="slide level2">
 <h2>Plot 3 - Scores by # of themes (Box)</h2>
+
+<img data-src="images/ahn/3-box_plot_score_vs_num_themes_default.png" class="r-stretch"><ul>
+<li><p>Clear positive trend: more themes = higher score</p></li>
+<li><p>There is a falloff point - too long, hard to follow</p></li>
+</ul>
 </section>
 <section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2">
 <h2>Plot 4 - Scores by joke length, by theme (Scatter)</h2>
+
+<img data-src="images/ahn/4-scatter_plot_length_vs_score_default.png" class="r-stretch"><ul>
+<li><p>Longer jokes recieve lower scores</p></li>
+<li><p>Jokes with no social theme tend to be shorter</p></li>
+<li><p>Otherwise no clear trend separating themes here</p></li>
+</ul>
 </section>
 <section id="modeling" class="slide level2">
 <h2>Modeling</h2>
@@ -600,7 +620,7 @@
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/INFO-523-SU25\.github\.io\/final-project-howell-xia\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

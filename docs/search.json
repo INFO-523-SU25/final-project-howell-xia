@@ -126,13 +126,6 @@
     "text": "Our data prep(NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised\nwhole_text_normalised_tokens\ndistinct_words\noverall_length\ntheme__count\ntheme__bool\nthemes_found"
   },
   {
-    "objectID": "presentation.html#image--imagesahnexamplesexample-joke.png",
-    "href": "presentation.html#image--imagesahnexamplesexample-joke.png",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "IMAGE- images/ahn/examples/example-joke.png",
-    "text": "IMAGE- images/ahn/examples/example-joke.png"
-  },
-  {
     "objectID": "presentation.html#plot-1---theme-prevalence-bar",
     "href": "presentation.html#plot-1---theme-prevalence-bar",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
@@ -144,21 +137,21 @@
     "href": "presentation.html#plot-2---scores-by-theme-box",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 2 - Scores by theme (Box)",
-    "text": "Plot 2 - Scores by theme (Box)\n]"
+    "text": "Plot 2 - Scores by theme (Box)\n\n\nThemeless jokes score much lower (median: 6 upvotes)\nUncommon themes (appearance, age, class) get highest scores\nJokes with ethnic-themed words get lower scores, despite being common\n\nSocial Progress or jokes becoming cover/subtle?"
   },
   {
     "objectID": "presentation.html#plot-3---scores-by-of-themes-box",
     "href": "presentation.html#plot-3---scores-by-of-themes-box",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 3 - Scores by # of themes (Box)",
-    "text": "Plot 3 - Scores by # of themes (Box)"
+    "text": "Plot 3 - Scores by # of themes (Box)\n\n\nClear positive trend: more themes = higher score\nThere is a falloff point - too long, hard to follow"
   },
   {
     "objectID": "presentation.html#plot-4---scores-by-joke-length-by-theme-scatter",
     "href": "presentation.html#plot-4---scores-by-joke-length-by-theme-scatter",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 4 - Scores by joke length, by theme (Scatter)",
-    "text": "Plot 4 - Scores by joke length, by theme (Scatter)"
+    "text": "Plot 4 - Scores by joke length, by theme (Scatter)\n\n\nLonger jokes recieve lower scores\nJokes with no social theme tend to be shorter\nOtherwise no clear trend separating themes here"
   },
   {
     "objectID": "presentation.html#modeling",
@@ -236,33 +229,5 @@
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Math Expressions",
     "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
-  },
-  {
-    "objectID": "presentation.html#feeling-adventurous",
-    "href": "presentation.html#feeling-adventurous",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Feeling adventurous?",
-    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
-  },
-  {
-    "objectID": "presentation.html#section",
-    "href": "presentation.html#section",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "",
-    "text": "Alt text"
-  },
-  {
-    "objectID": "presentation.html#plot-1---theme-prevalence-bar-1",
-    "href": "presentation.html#plot-1---theme-prevalence-bar-1",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Plot 1 - Theme prevalence (Bar)",
-    "text": "Plot 1 - Theme prevalence (Bar)\n\n\nMost common: gender, ethnicity & sexuality\nLeast common: weight, ability\nDefault: 28% of jokes have no visible social theme\nStrict: 63% of jokes have only 1 or no theme words"
-  },
-  {
-    "objectID": "presentation.html#plot-1---theme-prevalence-bar-2",
-    "href": "presentation.html#plot-1---theme-prevalence-bar-2",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Plot 1 - Theme prevalence (Bar)",
-    "text": "Plot 1 - Theme prevalence (Bar)\n\nMost common: gender, ethnicity & sexuality\nLeast common: weight, ability\nDefault: 28% of jokes have no visible social theme Strict: 63% of jokes have only 1 or no theme words"
   }
 ]

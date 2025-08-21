@@ -2,10 +2,9 @@
 title: "Investigating Sociological & Marginalised Themes in Jokes"
 subtitle: "INFO 523 - Summer 2025 - Final Project"
 author: "(Ahn) Michael Howell & Cat Xia"
-footer: "Content warning - problematic & vulgar language in the data: *this project explores sociopolitical themes and aims to accurately represent the way users interact with humor on Reddit, meaning that many of the jokes contain problematic, vulgar, or taboo topics and use of language*"
+
 
 title-slide-attributes:
-  data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch
   data-background-opacity: "0.7"
   data-slide-number: none
