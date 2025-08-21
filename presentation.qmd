@@ -2,9 +2,7 @@
 title: '<a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological & Marginalised Themes in Jokes</a>'
 subtitle: |
   INFO 523 - Summer 2025 - Final Project  
-  <audio controls style="margin-top:10px; width:250px;">
-    <source src="test-sound-effect.mp3" type="audio/mpeg">
-  </audio>
+  <audio controls src="audio/test-sound-effect.mp3"></audio>
 author: '(Ahn) Michael Howell & Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">Repo Link</a>'
 
 
@@ -14,6 +12,7 @@ title-slide-attributes:
   data-slide-number: none
 format:
   revealjs:
+    scrollable: true
     theme:  ['data/customtheming.scss']
   
 editor: visual
@@ -74,11 +73,9 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 ```
 
 
-## Our Dataset
-<audio controls>
-  <source src="test-sound-effect.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+## Our Dataset {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 [A dataset of English plaintext jokes](https://github.com/taivop/joke-dataset)
 
@@ -95,18 +92,17 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
   - Text data with sociological topic
 
 
-## Our Questions
+## Our Questions {.pin-audio}
 
-<audio controls>
-  <source src="test-sound-effect.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 1. What are the distributions of social categories and marginalised themes represented in jokes?
 2. How does each sociological theme relate to the scores users assign - are certain themes rated more highly?
   - Can we create a model to predict how well a joke does, through sociological theme alone?
 
-## Our Approach
+## Our Approach {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 Identifying sociological themes
 
@@ -124,7 +120,9 @@ Key files
 
     - For analysis & presenting findings
 
-## Our Data Prep (NLP)
+## Our Data Prep (NLP) {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 Preprocessing steps
 
@@ -145,10 +143,16 @@ Engineering features
   - theme_<theme>_count, theme_<theme>_bool, themes_found
 
 
-## Example Jokes
+## Example Jokes {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
+
 ![](images/ahn/examples/example-jokes.png)
 
-## Plot 1 - Theme prevalence (Bar)
+## Plot 1 - Theme prevalence (Bar) {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
+
 ::: columns
 ::: {.column width="50%"}
 ![](images/ahn/1-bar_plot_theme_prevalence_default.png)
@@ -167,7 +171,9 @@ Engineering features
 - Strict: 63% of jokes have only 1 or no theme words
 
 
-## Plot 2 - Scores by theme (Box)
+## Plot 2 - Scores by theme (Box) {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 ![](images/ahn/2-box_plot_scores_default.png){width=60%}
 
@@ -181,7 +187,9 @@ Engineering features
 
 ![](images/ahn/examples/ethnicity-leroy-paint.png)
 
-## Plot 3 - Scores by # of themes (Box)
+## Plot 3 - Scores by # of themes (Box) {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 ![](images/ahn/3-box_plot_score_vs_num_themes_default.png)
 
@@ -189,7 +197,9 @@ Engineering features
 
 - There is a falloff point - joke too long, hard to follow
 
-## Plot 4 - Scores by joke length, by theme (Scatter)
+## Plot 4 - Scores by joke length, by theme (Scatter) {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 ![](images/ahn/4-scatter_plot_length_vs_score_default.png){width=50%}
 
@@ -199,13 +209,21 @@ Engineering features
 
 - Otherwise no clear trend separating themes here
 
-## Modeling
+## Modeling {.pin-audio}
 
-## Classification
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
-## Results
+## Classification {.pin-audio}
 
-## Summary & Next Steps
+<audio controls src="audio/test-sound-effect.mp3"></audio>
+
+## Results {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
+
+## Summary & Next Steps {.pin-audio}
+
+<audio controls src="audio/test-sound-effect.mp3"></audio>
 
 Q1: What are the distributions of themes represented in jokes?
 
