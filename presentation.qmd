@@ -219,6 +219,9 @@ Engineering features
 
 <audio controls src="audio/10b-classification-approach.mp3"></audio>
 
+![](images/cat/Classification confusion matrix.png)
+
+
 ## Results
 
 <audio controls src="audio/11-classification-results.mp3"></audio>
@@ -247,17 +250,3 @@ Q2: How does each theme relate to the scores users assign?
 **Next steps**
 
   - Use an LLM for nuanced theme recognition
-
-## Layouts
-
-You can use plain text
-
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
-
-::: {.column width="60%"}
-or in two columns
-:::
-:::
