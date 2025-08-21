@@ -1,5 +1,5 @@
 ---
-title: '<a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological & Marginalised Themes in Jokes</a>'
+title: '<span style="font-size:0.8em;"><a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological & Marginalised Themes in Jokes</a></span>'
 subtitle: |
   INFO 523 - Summer 2025 - Final Project  
   <audio controls src="audio/0-intro.mp3"></audio>
@@ -110,11 +110,17 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 <audio controls src="audio/3-approach.mp3"></audio>
 
+::: {style="font-size: 80%;"}
+
 Identifying sociological themes
 
   -  8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class
 
   -  Predefined sets of words to match each theme
+
+:::
+
+::: {style="font-size: 80%;"}
 
 Key files
 
@@ -126,9 +132,13 @@ Key files
 
     - For analysis & presenting findings
 
+:::
+
 ## Our Data Prep (NLP)
 
 <audio controls src="audio/4-data-prep.mp3"></audio>
+
+::: {style="font-size: 80%;"}
 
 Preprocessing steps
 
@@ -140,14 +150,19 @@ Preprocessing steps
 
   - Removing stop words
 
+:::
+
+::: {style="font-size: 80%;"}
+
 Engineering features
 
   - whole_text, whole_text_normalised_tokens
 
   - distinct_words, overall_length
 
-  - theme_<theme>_count, theme_<theme>_bool, themes_found
+  - theme_**theme**_count, theme_**theme**_bool, themes_found
 
+:::
 
 ## Example Jokes
 
@@ -168,6 +183,8 @@ Engineering features
 ![](images/ahn/1-bar_plot_theme_prevalence_strict.png)
 :::
 :::
+
+::: {style="font-size: 90%;"}
 - Most common: gender, ethnicity & sexuality
 
 - Least common: weight, ability
@@ -175,7 +192,7 @@ Engineering features
 - Default: 28% of jokes have no visible social theme
 
 - Strict: 63% of jokes have only 1 or no theme words
-
+:::
 
 ## Plot 2 - Scores by theme (Box)
 
@@ -238,6 +255,7 @@ Engineering features
 
 <audio controls src="audio/12-summary-next-steps.mp3"></audio>
 
+::: {style="font-size: 80%;"}
 Q1: What are the distributions of themes represented in jokes?
 
   - Most jokes involve a social theme, especially gender, ethnicity & sexuality
@@ -250,3 +268,4 @@ Q2: How does each theme relate to the scores users assign?
 **Next steps**
 
   - Use an LLM for nuanced theme recognition
+:::

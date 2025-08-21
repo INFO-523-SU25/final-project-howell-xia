@@ -127,7 +127,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title"><a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological &amp; Marginalised Themes in Jokes</a></h1>
+  <h1 class="title"><span style="font-size:0.8em;"><a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological &amp; Marginalised Themes in Jokes</a></span></h1>
   <p class="subtitle"></p><p>INFO 523 - Summer 2025 - Final Project <audio controls="" src="audio/0-intro.mp3"></audio></p>
 <div style="font-size:0.6em; margin-top:2em; color:#111; text-align:center;">
 <p>Content warning: this project explores sociopolitical themes in humor data; many jokes contain problematic, vulgar, or taboo language.</p>
@@ -174,11 +174,14 @@
 <h2>Our Approach</h2>
 <audio controls="" src="audio/3-approach.mp3">
 </audio>
+<div style="font-size: 80%;">
 <p>Identifying sociological themes</p>
 <ul>
 <li><p>8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class</p></li>
 <li><p>Predefined sets of words to match each theme</p></li>
 </ul>
+</div>
+<div style="font-size: 80%;">
 <p>Key files</p>
 <ul>
 <li><p><a href="https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/preprocess_data.ipynb">preprocessing_data.ipynb</a></p>
@@ -190,11 +193,13 @@
 <li>For analysis &amp; presenting findings</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="our-data-prep-nlp" class="slide level2">
 <h2>Our Data Prep (NLP)</h2>
 <audio controls="" src="audio/4-data-prep.mp3">
 </audio>
+<div style="font-size: 80%;">
 <p>Preprocessing steps</p>
 <ul>
 <li><p>Combining joke title &amp; body (whole_text)</p></li>
@@ -202,12 +207,15 @@
 <li><p>Removing non-letter characters</p></li>
 <li><p>Removing stop words</p></li>
 </ul>
+</div>
+<div style="font-size: 80%;">
 <p>Engineering features</p>
 <ul>
 <li><p>whole_text, whole_text_normalised_tokens</p></li>
 <li><p>distinct_words, overall_length</p></li>
-<li><p>theme_<theme><em>count, theme</em><theme>_bool, themes_found</theme></theme></p></li>
+<li><p>theme_<strong>theme</strong>_count, theme_<strong>theme</strong>_bool, themes_found</p></li>
 </ul>
+</div>
 </section>
 <section id="example-jokes" class="slide level2">
 <h2>Example Jokes</h2>
@@ -225,12 +233,14 @@
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/ahn/1-bar_plot_theme_prevalence_strict.png"></p>
 </div></div>
+<div style="font-size: 90%;">
 <ul>
 <li><p>Most common: gender, ethnicity &amp; sexuality</p></li>
 <li><p>Least common: weight, ability</p></li>
 <li><p>Default: 28% of jokes have no visible social theme</p></li>
 <li><p>Strict: 63% of jokes have only 1 or no theme words</p></li>
 </ul>
+</div>
 </section>
 <section id="plot-2---scores-by-theme-box" class="slide level2">
 <h2>Plot 2 - Scores by theme (Box)</h2>
@@ -331,6 +341,7 @@
 <h2>Summary &amp; Next Steps</h2>
 <audio controls="" src="audio/12-summary-next-steps.mp3">
 </audio>
+<div style="font-size: 80%;">
 <p>Q1: What are the distributions of themes represented in jokes?</p>
 <ul>
 <li>Most jokes involve a social theme, especially gender, ethnicity &amp; sexuality</li>
@@ -344,18 +355,7 @@
 <ul>
 <li>Use an LLM for nuanced theme recognition</li>
 </ul>
-</section>
-<section id="layouts" class="slide level2">
-<h2>Layouts</h2>
-<p>You can use plain text</p>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li>or bullet points[^1]</li>
-</ul>
-</div><div class="column" style="width:60%;">
-<p>or in two columns</p>
-</div></div>
+</div>
 
 
 </section>
@@ -643,7 +643,7 @@
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/INFO-523-SU25\.github\.io\/final-project-howell-xia\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

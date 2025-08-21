@@ -116,14 +116,14 @@
     "href": "presentation.html#our-approach",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Approach",
-    "text": "Our Approach\n\n\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\n\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
+    "text": "Our Approach\n\n\n\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\n\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\n\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
   },
   {
     "objectID": "presentation.html#our-data-prep-nlp",
     "href": "presentation.html#our-data-prep-nlp",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Data Prep (NLP)",
-    "text": "Our Data Prep (NLP)\n\n\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\ndistinct_words, overall_length\ntheme_count, theme_bool, themes_found"
+    "text": "Our Data Prep (NLP)\n\n\n\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\n\n\nEngineering features\n\nwhole_text, whole_text_normalised_tokens\ndistinct_words, overall_length\ntheme_theme_count, theme_theme_bool, themes_found"
   },
   {
     "objectID": "presentation.html#example-jokes",
@@ -137,7 +137,7 @@
     "href": "presentation.html#plot-1---theme-prevalence-bar",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Plot 1 - Theme prevalence (Bar)",
-    "text": "Plot 1 - Theme prevalence (Bar)\n\n\n\n\n\n\n\n\n\nMost common: gender, ethnicity & sexuality\nLeast common: weight, ability\nDefault: 28% of jokes have no visible social theme\nStrict: 63% of jokes have only 1 or no theme words"
+    "text": "Plot 1 - Theme prevalence (Bar)\n\n\n\n\n\n\n\n\n\n\nMost common: gender, ethnicity & sexuality\nLeast common: weight, ability\nDefault: 28% of jokes have no visible social theme\nStrict: 63% of jokes have only 1 or no theme words"
   },
   {
     "objectID": "presentation.html#plot-2---scores-by-theme-box",
@@ -161,13 +161,6 @@
     "text": "Plot 4 - Scores by joke length, by theme (Scatter)\n\n\n\n\nLonger jokes receive lower scores\nJokes with no social theme tend to be shorter\nOtherwise no clear trend separating themes here"
   },
   {
-    "objectID": "presentation.html#modeling",
-    "href": "presentation.html#modeling",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Modeling",
-    "text": "Modeling"
-  },
-  {
     "objectID": "presentation.html#classification",
     "href": "presentation.html#classification",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
@@ -186,55 +179,6 @@
     "href": "presentation.html#summary-next-steps",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Summary & Next Steps",
-    "text": "Summary & Next Steps\n\n\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\nSocial theme themselves are not enough to predict how well a joke does\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
-  },
-  {
-    "objectID": "presentation.html#layouts",
-    "href": "presentation.html#layouts",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Layouts",
-    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points[^1]\n\n\nor in two columns"
-  },
-  {
-    "objectID": "presentation.html#code",
-    "href": "presentation.html#code",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Code",
-    "text": "Code"
-  },
-  {
-    "objectID": "presentation.html#plots",
-    "href": "presentation.html#plots",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Plots",
-    "text": "Plots"
-  },
-  {
-    "objectID": "presentation.html#plot-and-text",
-    "href": "presentation.html#plot-and-text",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Plot and text",
-    "text": "Plot and text\n\n\n\nSome text\ngoes here"
-  },
-  {
-    "objectID": "presentation.html#tables",
-    "href": "presentation.html#tables",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Tables",
-    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,"
-  },
-  {
-    "objectID": "presentation.html#images",
-    "href": "presentation.html#images",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Images",
-    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
-  },
-  {
-    "objectID": "presentation.html#math-expressions",
-    "href": "presentation.html#math-expressions",
-    "title": "Investigating Sociological & Marginalised Themes in Jokes",
-    "section": "Math Expressions",
-    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
+    "text": "Summary & Next Steps\n\n\n\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\nSocial theme themselves are not enough to predict how well a joke does\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
   }
 ]
