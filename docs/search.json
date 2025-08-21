@@ -102,7 +102,7 @@
     "href": "presentation.html#our-dataset",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Dataset",
-    "text": "Our Dataset\nA dataset of English plaintext jokes - ~200k jokes from Reddit - Gathered in 2017 by Taivo Pungas - Had coluns: id, title, body, score - Why we chose it: - Very complete data (few missing values) - Text data with sociological topic"
+    "text": "Our Dataset\nA dataset of English plaintext jokes\n\n~200k jokes from Reddit\nGathered in 2017 by Taivo Pungas\nHad coluns: id, title, body, score\nWhy we chose it:\n\nVery complete data (few missing values)\nText data with sociological topic"
   },
   {
     "objectID": "presentation.html#our-questions",
@@ -116,14 +116,14 @@
     "href": "presentation.html#our-approach",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our Approach",
-    "text": "Our Approach\nIdentifying sociological themes - 8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class - Predefined sets of words to match each theme Key files - preprocessing_data.ipynb - For data preparation & feature engineering - final_analysis_writeup.ipynb - For analysis & presenting findings"
+    "text": "Our Approach\nIdentifying sociological themes\n\n8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class\nPredefined sets of words to match each theme\n\nKey files\n\npreprocessing_data.ipynb\n\nFor data preparation & feature engineering\n\nfinal_analysis_writeup.ipynb\n\nFor analysis & presenting findings"
   },
   {
     "objectID": "presentation.html#our-data-prepnlp",
     "href": "presentation.html#our-data-prepnlp",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Our data prep(NLP)",
-    "text": "Our data prep(NLP)\nPreprocessing steps - Combining joke title & body (whole_text) - Lowercasing - Removing non-letter characters - Removing stop words Engineering features - whole_text, whole_text_normalised - whole_text_normalised_tokens - distinct_words - overall_length - theme_count - theme_bool - themes_found"
+    "text": "Our data prep(NLP)\nPreprocessing steps\n\nCombining joke title & body (whole_text)\nLowercasing\nRemoving non-letter characters\nRemoving stop words\n\nEngineering features\n\nwhole_text, whole_text_normalised\nwhole_text_normalised_tokens\ndistinct_words\noverall_length\ntheme__count\ntheme__bool\nthemes_found"
   },
   {
     "objectID": "presentation.html#image--imagesahnexamplesexample-joke.png",
@@ -186,7 +186,7 @@
     "href": "presentation.html#summary-next-steps",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Summary & next steps",
-    "text": "Summary & next steps\nQ1: What are the distributions of themes represented in jokes? - Most jokes involve a social theme, especially gender, ethnicity & sexuality Q2: How does each theme relate to the scores users assign? - Reddit users favor jokes with more social themes Next steps - Use an LLM for nuanced theme recognition"
+    "text": "Summary & next steps\nQ1: What are the distributions of themes represented in jokes?\n\nMost jokes involve a social theme, especially gender, ethnicity & sexuality\n\nQ2: How does each theme relate to the scores users assign?\n\nReddit users favor jokes with more social themes\n\nNext steps\n\nUse an LLM for nuanced theme recognition"
   },
   {
     "objectID": "presentation.html#layouts",
@@ -200,7 +200,7 @@
     "href": "presentation.html#code",
     "title": "Investigating Sociological & Marginalised Themes in Jokes",
     "section": "Code",
-    "text": "Code\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Thu, 21 Aug 2025   Prob (F-statistic):           5.84e-08\nTime:                        02:40:24   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified."
+    "text": "Code\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Thu, 21 Aug 2025   Prob (F-statistic):           5.84e-08\nTime:                        02:59:08   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified."
   },
   {
     "objectID": "presentation.html#plots",

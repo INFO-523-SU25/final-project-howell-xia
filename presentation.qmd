@@ -24,8 +24,18 @@ execute:
 #| include: false
 
 # Load packages here
+import ast # For ensuring preprocessed data is loaded as intended data types
+import numpy as np
 import pandas as pd
-import seaborn as sns
+import seaborn as sns # For making plots
+sns.set_theme(context = "notebook", style = "whitegrid")
+import os # For saving plots
+os.makedirs("./images", exist_ok = True)
+import matplotlib.pyplot as plt
+from sklearn.calibration import LabelEncoder
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.decomposition import PCA
+from sklearn.model_selection import train_test_split
 
 ```
 
@@ -44,26 +54,42 @@ plt.rcParams['figure.figsize'] = (6, 6 * 0.618)
 ```
 
 ```{python}
-#| label: load-data
+#| label: load-data and merge
 #| include: false
-# Load data in Python
-mtcars = sns.load_dataset('mpg').dropna()  # mtcars dataset is similar to the mpg dataset from seaborn
-mtcars['speed'] = mtcars['horsepower'] / mtcars['weight']
+# Load Data
+preprocessed_df = pd.read_csv(
+    "./data/preprocessed_dataset.csv",
+    converters={"themes_found": ast.literal_eval})
 
-penguins = sns.load_dataset('penguins').dropna()
+## MERGE DATAFRAMES
+jokes_df = preprocessed_df
+
+## REVIEW DETAILS
+show_df_details(jokes_df, ["dtypes", "head", "tail", "info", "describe"])
+
+#removes ID and creates a copy of the joke df for classification
+jokes_model = jokes_df.copy()
+jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
+
 ```
 
-# Using Quarto for presentations
 
 ## Our Dataset
 
 A dataset of English plaintext jokes
--   ~200k jokes from Reddit
--    Gathered in 2017 by Taivo Pungas
--    Had coluns: id, title, body, score
--    Why we chose it:
-    -    Very complete data (few missing values)
-    -    Text data with sociological topic
+
+- ~200k jokes from Reddit
+
+- Gathered in 2017 by Taivo Pungas
+
+- Had coluns: id, title, body, score
+
+- Why we chose it:
+
+  - Very complete data (few missing values)
+
+  - Text data with sociological topic
+
 
 ## Our Questions
 
@@ -72,32 +98,54 @@ A dataset of English plaintext jokes
 3. Can we create a model to predict how well a joke does through sciological theme alone?
 
 ## Our Approach
+
 Identifying sociological themes
-  -    8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class
-  -    Predefined sets of words to match each theme
+
+  -  8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class
+
+  -  Predefined sets of words to match each theme
+
 Key files
-  -    preprocessing_data.ipynb
-    -    For data preparation & feature engineering
-  -    final_analysis_writeup.ipynb
-    -    For analysis & presenting findings
+
+  - preprocessing_data.ipynb
+
+    - For data preparation & feature engineering
+
+  - final_analysis_writeup.ipynb
+
+    - For analysis & presenting findings
 
 ## Our data prep(NLP)
 
 Preprocessing steps
-  -    Combining joke title & body (whole_text)
-  -    Lowercasing
-  -    Removing non-letter characters
-  -    Removing stop words
-Engineering features
-  -    whole_text, whole_text_normalised
-  -    whole_text_normalised_tokens
-  -    distinct_words
-  -    overall_length
-  -    theme_<theme>_count
-  -    theme_<theme>_bool
-  -    themes_found
 
-## IMAGE- images/ahn/examples/example-joke.png
+  - Combining joke title & body (whole_text)
+
+  - Lowercasing
+
+  - Removing non-letter characters
+
+  - Removing stop words
+
+Engineering features
+
+  - whole_text, whole_text_normalised
+
+  - whole_text_normalised_tokens
+
+  - distinct_words
+
+  - overall_length
+
+  - theme_<theme>_count
+
+  - theme_<theme>_bool
+
+  - themes_found
+
+
+## 
+![Alt text](images/ahn/examples/example-jokes.png)
 
 ## Plot 1 - Theme prevalence (Bar)
 
@@ -116,12 +164,16 @@ Engineering features
 ## Summary & next steps
 
 Q1: What are the distributions of themes represented in jokes?
-  -    Most jokes involve a social theme, especially gender, ethnicity & sexuality
-Q2: How does each theme relate to the scores users assign?
-  -    Reddit users favor jokes with more social themes
-Next steps
-  -    Use an LLM for nuanced theme recognition
 
+  - Most jokes involve a social theme, especially gender, ethnicity & sexuality
+
+Q2: How does each theme relate to the scores users assign?
+
+  - Reddit users favor jokes with more social themes
+
+**Next steps**
+
+  - Use an LLM for nuanced theme recognition
 
 ## Layouts
 
@@ -221,11 +273,3 @@ Limitations:
 1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
 
 2.  There should not be spaces after the opening `$` or before the closing `$`.
-
-# Wrap up
-
-## Feeling adventurous?
-
--   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
--   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.

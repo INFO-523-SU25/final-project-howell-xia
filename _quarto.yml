@@ -12,7 +12,7 @@ website:
       - text: Overview
         href: index.qmd
       - text: Project and Analysis
-        href: final-analysis-writeup.ipynb
+        href: final_analysis_writeup.ipynb
       - text: Proposal
         href: proposal.qmd
       - text: Presentation
