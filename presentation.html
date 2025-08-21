@@ -146,7 +146,17 @@
 </section>
 <section id="our-dataset" class="slide level2">
 <h2>Our Dataset</h2>
-<p>A dataset of English plaintext jokes - ~200k jokes from Reddit - Gathered in 2017 by Taivo Pungas - Had coluns: id, title, body, score - Why we chose it: - Very complete data (few missing values) - Text data with sociological topic</p>
+<p>A dataset of English plaintext jokes</p>
+<ul>
+<li><p>~200k jokes from Reddit</p></li>
+<li><p>Gathered in 2017 by Taivo Pungas</p></li>
+<li><p>Had coluns: id, title, body, score</p></li>
+<li><p>Why we chose it:</p>
+<ul>
+<li><p>Very complete data (few missing values)</p></li>
+<li><p>Text data with sociological topic</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="our-questions" class="slide level2">
 <h2>Our Questions</h2>
@@ -158,11 +168,42 @@
 </section>
 <section id="our-approach" class="slide level2">
 <h2>Our Approach</h2>
-<p>Identifying sociological themes - 8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class - Predefined sets of words to match each theme Key files - preprocessing_data.ipynb - For data preparation &amp; feature engineering - final_analysis_writeup.ipynb - For analysis &amp; presenting findings</p>
+<p>Identifying sociological themes</p>
+<ul>
+<li><p>8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class</p></li>
+<li><p>Predefined sets of words to match each theme</p></li>
+</ul>
+<p>Key files</p>
+<ul>
+<li><p>preprocessing_data.ipynb</p>
+<ul>
+<li>For data preparation &amp; feature engineering</li>
+</ul></li>
+<li><p>final_analysis_writeup.ipynb</p>
+<ul>
+<li>For analysis &amp; presenting findings</li>
+</ul></li>
+</ul>
 </section>
 <section id="our-data-prepnlp" class="slide level2">
 <h2>Our data prep(NLP)</h2>
-<p>Preprocessing steps - Combining joke title &amp; body (whole_text) - Lowercasing - Removing non-letter characters - Removing stop words Engineering features - whole_text, whole_text_normalised - whole_text_normalised_tokens - distinct_words - overall_length - theme_<theme><em>count - theme</em><theme>_bool - themes_found</theme></theme></p>
+<p>Preprocessing steps</p>
+<ul>
+<li><p>Combining joke title &amp; body (whole_text)</p></li>
+<li><p>Lowercasing</p></li>
+<li><p>Removing non-letter characters</p></li>
+<li><p>Removing stop words</p></li>
+</ul>
+<p>Engineering features</p>
+<ul>
+<li><p>whole_text, whole_text_normalised</p></li>
+<li><p>whole_text_normalised_tokens</p></li>
+<li><p>distinct_words</p></li>
+<li><p>overall_length</p></li>
+<li><p>theme_<theme>_count</theme></p></li>
+<li><p>theme_<theme>_bool</theme></p></li>
+<li><p>themes_found</p></li>
+</ul>
 </section>
 <section id="image--imagesahnexamplesexample-joke.png" class="slide level2">
 <h2>IMAGE- images/ahn/examples/example-joke.png</h2>
@@ -190,7 +231,18 @@
 </section>
 <section id="summary-next-steps" class="slide level2">
 <h2>Summary &amp; next steps</h2>
-<p>Q1: What are the distributions of themes represented in jokes? - Most jokes involve a social theme, especially gender, ethnicity &amp; sexuality Q2: How does each theme relate to the scores users assign? - Reddit users favor jokes with more social themes Next steps - Use an LLM for nuanced theme recognition</p>
+<p>Q1: What are the distributions of themes represented in jokes?</p>
+<ul>
+<li>Most jokes involve a social theme, especially gender, ethnicity &amp; sexuality</li>
+</ul>
+<p>Q2: How does each theme relate to the scores users assign?</p>
+<ul>
+<li>Reddit users favor jokes with more social themes</li>
+</ul>
+<p><strong>Next steps</strong></p>
+<ul>
+<li>Use an LLM for nuanced theme recognition</li>
+</ul>
 </section>
 <section id="layouts" class="slide level2">
 <h2>Layouts</h2>
@@ -210,7 +262,7 @@
 <aside><ol class="aside-footnotes"><li id="fn1"><p>And add footnotes</p></li></ol></aside></section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="621acad5" class="cell" data-execution_count="4">
+<div id="0f2ddac3" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
@@ -218,7 +270,7 @@ Dep. Variable:                    mpg   R-squared:                       0.073
 Model:                            OLS   Adj. R-squared:                  0.070
 Method:                 Least Squares   F-statistic:                     30.59
 Date:                Thu, 21 Aug 2025   Prob (F-statistic):           5.84e-08
-Time:                        02:40:24   Log-Likelihood:                -1346.4
+Time:                        02:59:08   Log-Likelihood:                -1346.4
 No. Observations:                 392   AIC:                             2697.
 Df Residuals:                     390   BIC:                             2705.
 Df Model:                           1                                         
@@ -253,7 +305,7 @@ Notes:
 <li><p>goes here</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="91b2a8ba" class="cell" data-fig.width="5.5" data-execution_count="6">
+<div id="72a5e27b" class="cell" data-fig.width="5.5" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -272,8 +324,8 @@ Notes:
 <section id="tables" class="slide level2">
 <h2>Tables</h2>
 <p>If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,</p>
-<div id="e9ffed99" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="77">
+<div id="2c54ea69" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="350">
 <table border="1" class="dataframe">
 
 <thead>
