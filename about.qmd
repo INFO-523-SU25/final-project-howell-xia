@@ -10,4 +10,3 @@ This project was developed by **Howell-Xia** For [INFO 523 - Data Mining and Dis
 -   (Ahn) Michael Howell: Human Language Technology Masters - Sociolinguist & Agentic AI Engineer
 
 -   Cat Xia: Data Science Masters - Interested in data analysis of biological and cultural research.
-

@@ -9,8 +9,8 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.7.32">
 
-  <meta name="author" content="(Ahn) Michael Howell, Cat Xia">
-  <title>Investigating Sociological &amp; Marginalised Themes in Jokes – Internet Jokes from 2017 (Working Title)</title>
+  <meta name="author" content="(Ahn) Michael Howell &amp; Cat Xia">
+  <title>Investigating Sociological &amp; Marginalised Themes in Jokes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -127,13 +127,13 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/watercolour_sys02_img34_teacup-ocean.jpg" data-background-opacity="0.7" data-background-size="stretch" data-slide-number="none" class="quarto-title-block center">
-  <h1 class="title">Internet Jokes from 2017 (Working Title)</h1>
+  <h1 class="title">Investigating Sociological &amp; Marginalised Themes in Jokes</h1>
   <p class="subtitle">INFO 523 - Summer 2025 - Final Project</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-(Ahn) Michael Howell, Cat Xia 
+(Ahn) Michael Howell &amp; Cat Xia 
 </div>
 </div>
 </div>
@@ -144,12 +144,53 @@
 <h1>Using Quarto for presentations</h1>
 
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<ul>
-<li><p>The presentation is created using the Quarto CLI</p></li>
-<li><p><code>##</code> sets the start of a new slide</p></li>
-</ul>
+<section id="our-dataset" class="slide level2">
+<h2>Our Dataset</h2>
+<p>A dataset of English plaintext jokes - ~200k jokes from Reddit - Gathered in 2017 by Taivo Pungas - Had coluns: id, title, body, score - Why we chose it: - Very complete data (few missing values) - Text data with sociological topic</p>
+</section>
+<section id="our-questions" class="slide level2">
+<h2>Our Questions</h2>
+<ol type="1">
+<li>What are the distributions of social categories and marginalised themes represented in jokes?</li>
+<li>How does each sociological theme relate to the scores users assign- are certain themes rated more highly?</li>
+<li>Can we create a model to predict how well a joke does through sciological theme alone?</li>
+</ol>
+</section>
+<section id="our-approach" class="slide level2">
+<h2>Our Approach</h2>
+<p>Identifying sociological themes - 8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class - Predefined sets of words to match each theme Key files - preprocessing_data.ipynb - For data preparation &amp; feature engineering - final_analysis_writeup.ipynb - For analysis &amp; presenting findings</p>
+</section>
+<section id="our-data-prepnlp" class="slide level2">
+<h2>Our data prep(NLP)</h2>
+<p>Preprocessing steps - Combining joke title &amp; body (whole_text) - Lowercasing - Removing non-letter characters - Removing stop words Engineering features - whole_text, whole_text_normalised - whole_text_normalised_tokens - distinct_words - overall_length - theme_<theme><em>count - theme</em><theme>_bool - themes_found</theme></theme></p>
+</section>
+<section id="image--imagesahnexamplesexample-joke.png" class="slide level2">
+<h2>IMAGE- images/ahn/examples/example-joke.png</h2>
+</section>
+<section id="plot-1---theme-prevalence-bar" class="slide level2">
+<h2>Plot 1 - Theme prevalence (Bar)</h2>
+</section>
+<section id="plot-2---scores-by-theme-box" class="slide level2">
+<h2>Plot 2 - Scores by theme (Box)</h2>
+</section>
+<section id="plot-3---scores-by-of-themes-box" class="slide level2">
+<h2>Plot 3 - Scores by # of themes (Box)</h2>
+</section>
+<section id="plot-4---scores-by-joke-length-by-theme-scatter" class="slide level2">
+<h2>Plot 4 - Scores by joke length, by theme (Scatter)</h2>
+</section>
+<section id="modeling" class="slide level2">
+<h2>Modeling</h2>
+</section>
+<section id="classification" class="slide level2">
+<h2>Classification</h2>
+</section>
+<section id="results" class="slide level2">
+<h2>Results</h2>
+</section>
+<section id="summary-next-steps" class="slide level2">
+<h2>Summary &amp; next steps</h2>
+<p>Q1: What are the distributions of themes represented in jokes? - Most jokes involve a social theme, especially gender, ethnicity &amp; sexuality Q2: How does each theme relate to the scores users assign? - Reddit users favor jokes with more social themes Next steps - Use an LLM for nuanced theme recognition</p>
 </section>
 <section id="layouts" class="slide level2">
 <h2>Layouts</h2>
@@ -169,15 +210,15 @@
 <aside><ol class="aside-footnotes"><li id="fn1"><p>And add footnotes</p></li></ol></aside></section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="24ce9169" class="cell" data-execution_count="4">
+<div id="621acad5" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
 Dep. Variable:                    mpg   R-squared:                       0.073
 Model:                            OLS   Adj. R-squared:                  0.070
 Method:                 Least Squares   F-statistic:                     30.59
-Date:                Mon, 11 Aug 2025   Prob (F-statistic):           5.84e-08
-Time:                        05:57:20   Log-Likelihood:                -1346.4
+Date:                Thu, 21 Aug 2025   Prob (F-statistic):           5.84e-08
+Time:                        02:40:24   Log-Likelihood:                -1346.4
 No. Observations:                 392   AIC:                             2697.
 Df Residuals:                     390   BIC:                             2705.
 Df Model:                           1                                         
@@ -212,7 +253,7 @@ Notes:
 <li><p>goes here</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div id="d9c83349" class="cell" data-fig.width="5.5" data-execution_count="6">
+<div id="91b2a8ba" class="cell" data-fig.width="5.5" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -231,8 +272,8 @@ Notes:
 <section id="tables" class="slide level2">
 <h2>Tables</h2>
 <p>If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,</p>
-<div id="a06c10b2" class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="e9ffed99" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="77">
 <table border="1" class="dataframe">
 
 <thead>
@@ -497,7 +538,7 @@ Male
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p>Content warning - problematic &amp; vulgar language in the data: <em>this project explores sociopolitical themes and aims to accurately represent the way users interact with humor on Reddit, meaning that many of the jokes contain problematic, vulgar, or taboo topics and use of language</em></p>
 </div>
 </div></div>
 

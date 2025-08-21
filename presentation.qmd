@@ -58,12 +58,12 @@ penguins = sns.load_dataset('penguins').dropna()
 ## Our Dataset
 
 A dataset of English plaintext jokes
-- ~200k jokes from Reddit
-- Gathered in 2017 by Taivo Pungas
-- Had coluns: id, title, body, score
-- Why we chose it:
-    - Very complete data (few missing values)
-    - Text data with sociological topic
+-   ~200k jokes from Reddit
+-    Gathered in 2017 by Taivo Pungas
+-    Had coluns: id, title, body, score
+-    Why we chose it:
+    -    Very complete data (few missing values)
+    -    Text data with sociological topic
 
 ## Our Questions
 
@@ -73,29 +73,29 @@ A dataset of English plaintext jokes
 
 ## Our Approach
 Identifying sociological themes
-  - 8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class
-  - Predefined sets of words to match each theme
+  -    8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class
+  -    Predefined sets of words to match each theme
 Key files
-  - preprocessing_data.ipynb
-    - For data preparation & feature engineering
-  - final_analysis_writeup.ipynb
-    - For analysis & presenting findings
+  -    preprocessing_data.ipynb
+    -    For data preparation & feature engineering
+  -    final_analysis_writeup.ipynb
+    -    For analysis & presenting findings
 
 ## Our data prep(NLP)
 
 Preprocessing steps
-  - Combining joke title & body (whole_text)
-  - Lowercasing
-  - Removing non-letter characters
-  - Removing stop words
+  -    Combining joke title & body (whole_text)
+  -    Lowercasing
+  -    Removing non-letter characters
+  -    Removing stop words
 Engineering features
-  - whole_text, whole_text_normalised
-  - whole_text_normalised_tokens
-  - distinct_words
-  - overall_length
-  - theme_<theme>_count
-  - theme_<theme>_bool
-  - themes_found
+  -    whole_text, whole_text_normalised
+  -    whole_text_normalised_tokens
+  -    distinct_words
+  -    overall_length
+  -    theme_<theme>_count
+  -    theme_<theme>_bool
+  -    themes_found
 
 ## IMAGE- images/ahn/examples/example-joke.png
 
@@ -116,11 +116,11 @@ Engineering features
 ## Summary & next steps
 
 Q1: What are the distributions of themes represented in jokes?
-  - Most jokes involve a social theme, especially gender, ethnicity & sexuality
+  -    Most jokes involve a social theme, especially gender, ethnicity & sexuality
 Q2: How does each theme relate to the scores users assign?
-  - Reddit users favor jokes with more social themes
+  -    Reddit users favor jokes with more social themes
 Next steps
-  - Use an LLM for nuanced theme recognition
+  -    Use an LLM for nuanced theme recognition
 
 
 ## Layouts
