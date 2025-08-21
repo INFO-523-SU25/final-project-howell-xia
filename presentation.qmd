@@ -1,7 +1,7 @@
 ---
-title: "Investigating Sociological & Marginalised Themes in Jokes"
+title: '<a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological & Marginalised Themes in Jokes</a>'
 subtitle: "INFO 523 - Summer 2025 - Final Project"
-author: "(Ahn) Michael Howell & Cat Xia"
+author: '(Ahn) Michael Howell & Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">GitHub Repo</a>'
 
 
 title-slide-attributes:
@@ -72,7 +72,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 ## Our Dataset
 
-A dataset of English plaintext jokes
+[A dataset of English plaintext jokes](https://github.com/taivop/joke-dataset)
 
 - ~200k jokes from Reddit
 
@@ -91,7 +91,7 @@ A dataset of English plaintext jokes
 
 1. What are the distributions of social categories and marginalised themes represented in jokes?
 2. How does each sociological theme relate to the scores users assign- are certain themes rated more highly?
-3. Can we create a model to predict how well a joke does through sciological theme alone?
+- Can we create a model to predict how well a joke does, through sociological theme alone?
 
 ## Our Approach
 
@@ -103,15 +103,15 @@ Identifying sociological themes
 
 Key files
 
-  - preprocessing_data.ipynb
+  - [preprocessing_data.ipynb](https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/preprocess_data.ipynb)
 
     - For data preparation & feature engineering
 
-  - final_analysis_writeup.ipynb
+  - [final_analysis_writeup.ipynb](https://github.com/INFO-523-SU25/final-project-howell-xia/blob/main/final_analysis_writeup.ipynb)
 
     - For analysis & presenting findings
 
-## Our data prep(NLP)
+## Our Data Prep (NLP)
 
 Preprocessing steps
 
@@ -125,22 +125,16 @@ Preprocessing steps
 
 Engineering features
 
-  - whole_text, whole_text_normalised
-
-  - whole_text_normalised_tokens
+  - whole_text, whole_text_normalised_tokens
 
   - distinct_words
 
   - overall_length
 
-  - theme_<theme>_count
-
-  - theme_<theme>_bool
-
-  - themes_found
+  - theme_<theme>_count, theme_<theme>_bool, themes_found
 
 
-## 
+## Example Jokes
 ![](images/ahn/examples/example-jokes.png)
 
 ## Plot 1 - Theme prevalence (Bar)
@@ -164,7 +158,7 @@ Engineering features
 
 ## Plot 2 - Scores by theme (Box)
 
-![](images/ahn/2-box_plot_scores_default.png)
+![](images/ahn/2-box_plot_scores_default.png){width=60%}
 
 - Themeless jokes score much lower (median: 6 upvotes)
 
@@ -182,13 +176,13 @@ Engineering features
 
 - Clear positive trend: more themes = higher score
 
-- There is a falloff point - too long, hard to follow
+- There is a falloff point - joke too long, hard to follow
 
 ## Plot 4 - Scores by joke length, by theme (Scatter)
 
 ![](images/ahn/4-scatter_plot_length_vs_score_default.png)
 
-- Longer jokes recieve lower scores
+- Longer jokes receive lower scores
 
 - Jokes with no social theme tend to be shorter
 
@@ -200,7 +194,7 @@ Engineering features
 
 ## Results
 
-## Summary & next steps
+## Summary & Next Steps
 
 Q1: What are the distributions of themes represented in jokes?
 
