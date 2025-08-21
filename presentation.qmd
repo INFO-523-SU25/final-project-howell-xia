@@ -1,7 +1,11 @@
 ---
 title: '<a href="https://info-523-su25.github.io/final-project-howell-xia/" target="_blank">Investigating Sociological & Marginalised Themes in Jokes</a>'
-subtitle: "INFO 523 - Summer 2025 - Final Project"
-author: '(Ahn) Michael Howell & Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">GitHub Repo</a>'
+subtitle: |
+  INFO 523 - Summer 2025 - Final Project  
+  <audio controls style="margin-top:10px; width:250px;">
+    <source src="test-sound-effect.mp3" type="audio/mpeg">
+  </audio>
+author: '(Ahn) Michael Howell & Cat Xia | <a href="https://github.com/INFO-523-SU25/final-project-howell-xia" target="_blank">Repo Link</a>'
 
 
 title-slide-attributes:
@@ -71,6 +75,10 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 
 ## Our Dataset
+<audio controls>
+  <source src="test-sound-effect.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 [A dataset of English plaintext jokes](https://github.com/taivop/joke-dataset)
 
@@ -78,7 +86,7 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 - Gathered in 2017 by Taivo Pungas
 
-- Had coluns: id, title, body, score
+- Had columns: id, title, body, score
 
 - Why we chose it:
 
@@ -89,9 +97,14 @@ jokes_model.drop(columns = ["id", "themes_found"], inplace = True)
 
 ## Our Questions
 
+<audio controls>
+  <source src="test-sound-effect.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 1. What are the distributions of social categories and marginalised themes represented in jokes?
-2. How does each sociological theme relate to the scores users assign- are certain themes rated more highly?
-- Can we create a model to predict how well a joke does, through sociological theme alone?
+2. How does each sociological theme relate to the scores users assign - are certain themes rated more highly?
+  - Can we create a model to predict how well a joke does, through sociological theme alone?
 
 ## Our Approach
 
@@ -127,9 +140,7 @@ Engineering features
 
   - whole_text, whole_text_normalised_tokens
 
-  - distinct_words
-
-  - overall_length
+  - distinct_words, overall_length
 
   - theme_<theme>_count, theme_<theme>_bool, themes_found
 
@@ -166,7 +177,7 @@ Engineering features
 
 - Jokes with ethnic-themed words get lower scores, despite being common
 
-  - Social Progress or jokes becoming cover/subtle?
+  - Social progress or jokes becoming covert/subtle?
 
 ![](images/ahn/examples/ethnicity-leroy-paint.png)
 
@@ -180,7 +191,7 @@ Engineering features
 
 ## Plot 4 - Scores by joke length, by theme (Scatter)
 
-![](images/ahn/4-scatter_plot_length_vs_score_default.png)
+![](images/ahn/4-scatter_plot_length_vs_score_default.png){width=50%}
 
 - Longer jokes receive lower scores
 
