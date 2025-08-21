@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gather-imports" class="level4">
 <h4 class="anchored" data-anchor-id="gather-imports">Gather imports</h4>
-<div id="49786bb1" class="cell" data-execution_count="40">
+<div id="49786bb1" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast <span class="co"># For ensuring preprocessed data is loaded as intended data types</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -384,12 +384,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">"./images"</span>, exist_ok <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.calibration <span class="im">import</span> LabelEncoder</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> MinMaxScaler</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-helper-functions" class="level4">
 <h4 class="anchored" data-anchor-id="create-helper-functions">Create helper functions</h4>
-<div id="46480f49" class="cell" data-execution_count="28">
+<div id="46480f49" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">### AHN</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_df_details(df, details_to_include <span class="op">=</span> []):</span>
@@ -406,13 +408,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"describe-all"</span> <span class="kw">in</span> details_to_include:</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">** DESCRIBE (ALL):</span><span class="ch">\n</span><span class="sc">{</span>df<span class="sc">.</span>describe(include <span class="op">=</span> <span class="st">'all'</span>)<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e3d9dd55" class="cell" data-execution_count="29">
+<div id="e3d9dd55" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">### CAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="load-preprocessed-data" class="level4">
 <h4 class="anchored" data-anchor-id="load-preprocessed-data">Load preprocessed data</h4>
-<div id="04c91578" class="cell" data-execution_count="30">
+<div id="04c91578" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## LOAD DATA</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>preprocessed_df <span class="op">=</span> pd.read_csv(</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"./data/preprocessed_dataset.csv"</span>,</span>
@@ -632,7 +634,7 @@ max                171.000000          36.000000
 </section>
 <section id="additional-data-prep" class="level4">
 <h4 class="anchored" data-anchor-id="additional-data-prep">Additional data prep</h4>
-<div id="7c4c6d61" class="cell" data-execution_count="31">
+<div id="7c4c6d61" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">##Cat</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Data Prep for Exploratory Data Analysis</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -640,7 +642,7 @@ max                171.000000          36.000000
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>jokes_model <span class="op">=</span> jokes_df.copy()</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>jokes_model.drop(columns <span class="op">=</span> [<span class="st">"id"</span>, <span class="st">"themes_found"</span>], inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4f8856f5" class="cell" data-execution_count="32">
+<div id="4f8856f5" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">### AHN</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">## STATIC GLOBALS</span></span>
@@ -789,107 +791,100 @@ max                171.000000          36.000000
 
 
 ** SAMPLE (default):
-            id  score  overall_length  distinct_words_count  \
-209160  1t52w3   21.0              31                    16   
-101314  49pst5    1.0              31                     6   
-64191   5tezao    2.0             399                   128   
-51153   2jbmwh  160.0              96                    45   
-215776  522nwp    0.0               9                     5   
+            id   score  overall_length  distinct_words_count  \
+62864   1eft7k     0.0              22                     8   
+212551  5s6t2c  1057.0              17                     7   
+228234  4ncdsf     1.0              14                     6   
+60528   1mt6b4    26.0              19                    10   
+278107  2m5i2y     2.0              17                     6   
 
         theme_gender_count  theme_gender_bool  theme_ethnicity_count  \
-209160                   1               True                      0   
-101314                   0              False                      0   
-64191                    7               True                      8   
-51153                    4               True                      2   
-215776                   0              False                      0   
+62864                    1               True                      0   
+212551                   0              False                      0   
+228234                   0              False                      0   
+60528                    2               True                      0   
+278107                   0              False                      0   
 
         theme_ethnicity_bool  theme_sexuality_count  theme_sexuality_bool  \
-209160                 False                      0                 False   
-101314                 False                      1                  True   
-64191                   True                      0                 False   
-51153                   True                      1                  True   
-215776                 False                      0                 False   
+62864                  False                      0                 False   
+212551                 False                      0                 False   
+228234                 False                      0                 False   
+60528                  False                      0                 False   
+278107                 False                      0                 False   
 
         ...  theme_age_count  theme_age_bool  theme_weight_count  \
-209160  ...                0           False                   0   
-101314  ...                0           False                   0   
-64191   ...                0           False                   0   
-51153   ...                0           False                   0   
-215776  ...                0           False                   0   
+62864   ...                0           False                   0   
+212551  ...                0           False                   0   
+228234  ...                0           False                   0   
+60528   ...                0           False                   0   
+278107  ...                0           False                   0   
 
         theme_weight_bool  theme_appearance_count  theme_appearance_bool  \
-209160              False                       1                   True   
-101314              False                       0                  False   
-64191               False                       0                  False   
-51153               False                       1                   True   
-215776              False                       0                  False   
+62864               False                       0                  False   
+212551              False                       0                  False   
+228234              False                       0                  False   
+60528               False                       0                  False   
+278107              False                       0                  False   
 
-        theme_class_count  theme_class_bool  \
-209160                  1              True   
-101314                  0             False   
-64191                   0             False   
-51153                   1              True   
-215776                  0             False   
-
-                                             themes_found      theme  
-209160         [(gender, 1), (appearance, 1), (class, 1)]      class  
-101314                                   [(sexuality, 1)]  sexuality  
-64191         [(ethnicity, 8), (gender, 7), (ability, 1)]  ethnicity  
-51153   [(gender, 4), (ethnicity, 2), (sexuality, 1), ...     gender  
-215776                                                 []       none  
+        theme_class_count  theme_class_bool   themes_found   theme  
+62864                   0             False  [(gender, 1)]  gender  
+212551                  0             False             []    none  
+228234                  0             False             []    none  
+60528                   0             False  [(gender, 2)]  gender  
+278107                  0             False             []    none  
 
 [5 rows x 22 columns]
 
 
 ** SAMPLE (strict):
             id  score  overall_length  distinct_words_count  \
-31180   1oc60b    0.0              59                    26   
-114289  4n3a60    0.0              21                    15   
-52576   32ezvr  767.0             146                    51   
-87664   5r9sqa   24.0              35                    14   
-16888   3g4lgh   17.0              14                     8   
+137017  430fo8    2.0              13                     7   
+47389   44tsr7    2.0              86                    28   
+12337   3wqv2y    0.0             107                    38   
+161615  3jdbgd    0.0              10                     4   
+126615  4cmywb    4.0              40                    13   
 
         theme_gender_count  theme_gender_bool  theme_ethnicity_count  \
-31180                    7               True                      0   
-114289                   0              False                      0   
-52576                    4               True                      0   
-87664                    1               True                      0   
-16888                    2               True                      0   
+137017                   0              False                      0   
+47389                    0              False                     13   
+12337                    6               True                      0   
+161615                   0              False                      0   
+126615                   0              False                      0   
 
         theme_ethnicity_bool  theme_sexuality_count  theme_sexuality_bool  \
-31180                  False                      1                  True   
-114289                 False                      0                 False   
-52576                  False                      2                  True   
-87664                  False                      0                 False   
-16888                  False                      0                 False   
+137017                 False                      0                 False   
+47389                   True                      2                  True   
+12337                  False                      0                 False   
+161615                 False                      0                 False   
+126615                 False                      0                 False   
 
         ...  theme_age_count  theme_age_bool  theme_weight_count  \
-31180   ...                2            True                   0   
-114289  ...                0           False                   0   
-52576   ...                0           False                   0   
-87664   ...                0           False                   0   
-16888   ...                0           False                   0   
+137017  ...                0           False                   0   
+47389   ...                0           False                   0   
+12337   ...                0           False                   0   
+161615  ...                0           False                   0   
+126615  ...                0           False                   0   
 
         theme_weight_bool  theme_appearance_count  theme_appearance_bool  \
-31180               False                       0                  False   
-114289              False                       0                  False   
-52576               False                       1                   True   
-87664               False                       0                  False   
-16888               False                       0                  False   
+137017              False                       0                  False   
+47389               False                       0                  False   
+12337               False                       0                  False   
+161615              False                       0                  False   
+126615              False                       0                  False   
 
         theme_class_count  theme_class_bool  \
-31180                   0             False   
-114289                  0             False   
-52576                   0             False   
-87664                   0             False   
-16888                   0             False   
+137017                  0             False   
+47389                   0             False   
+12337                   1              True   
+161615                  0             False   
+126615                  0             False   
 
-                                          themes_found      theme  
-31180          [(gender, 7), (age, 2), (sexuality, 1)]     gender  
-114289                                              []       none  
-52576   [(gender, 4), (sexuality, 2), (appearance, 1)]  sexuality  
-87664                                    [(gender, 1)]       none  
-16888                                    [(gender, 2)]     gender  
+                             themes_found      theme  
+137017                                 []       none  
+47389   [(ethnicity, 13), (sexuality, 2)]  sexuality  
+12337           [(gender, 6), (class, 1)]     gender  
+161615                                 []       none  
+126615                                 []       none  
 
 [5 rows x 22 columns]
 
@@ -980,10 +975,10 @@ Name: count, dtype: int64
 </div>
 <section id="exploratory-data-analysis-eda" class="level5">
 <h5 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory data analysis (EDA)</h5>
-<div id="86eb681b" class="cell" data-execution_count="33">
+<div id="86eb681b" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">### AHN</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="42a34d63" class="cell" data-execution_count="34">
+<div id="42a34d63" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">### CAT</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#encodes all the boolean values into 0 or 1</span></span>
@@ -997,7 +992,7 @@ Name: count, dtype: int64
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>jokes_model[<span class="st">'theme_appearance_bool'</span>] <span class="op">=</span> le.fit_transform(jokes_model[<span class="st">'theme_appearance_bool'</span>]) </span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>jokes_model[<span class="st">'theme_class_bool'</span>] <span class="op">=</span> le.fit_transform(jokes_model[<span class="st">'theme_class_bool'</span>]) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="904d117d" class="cell" data-execution_count="35">
+<div id="904d117d" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#finds the highly correlated pairs</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a correlation matrix for each of the numeric columns</span></span>
@@ -1039,7 +1034,7 @@ Name: count, dtype: int64
 done</code></pre>
 </div>
 </div>
-<div id="2c434385" class="cell" data-execution_count="36">
+<div id="2c434385" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.pairplot(jokes_model, y_vars=["score"])</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#all the pair plot values have a similar distribution (ie non-boolean values have one distribution while boolean values have 0 being larger than 1)</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1054,7 +1049,7 @@ done</code></pre>
 </div>
 </div>
 <p>The graphs show an inverse relationship or (1/x). Thus, we linearlized by dividing the non-target variables that were continuous by 1.</p>
-<div id="95e4cc9b" class="cell">
+<div id="95e4cc9b" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#all inverse relationship variables are linearized</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#stores column names</span></span>
@@ -1064,153 +1059,8 @@ done</code></pre>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#inverses the continuous columns</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> inverse:</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    jokes_model[col] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (jokes_model[col] <span class="op">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">score</th>
-<th data-quarto-table-cell-role="th">overall_length</th>
-<th data-quarto-table-cell-role="th">distinct_words_count</th>
-<th data-quarto-table-cell-role="th">theme_gender_count</th>
-<th data-quarto-table-cell-role="th">theme_gender_bool</th>
-<th data-quarto-table-cell-role="th">theme_ethnicity_count</th>
-<th data-quarto-table-cell-role="th">theme_ethnicity_bool</th>
-<th data-quarto-table-cell-role="th">theme_sexuality_count</th>
-<th data-quarto-table-cell-role="th">theme_sexuality_bool</th>
-<th data-quarto-table-cell-role="th">theme_ability_count</th>
-<th data-quarto-table-cell-role="th">theme_ability_bool</th>
-<th data-quarto-table-cell-role="th">theme_age_count</th>
-<th data-quarto-table-cell-role="th">theme_age_bool</th>
-<th data-quarto-table-cell-role="th">theme_weight_count</th>
-<th data-quarto-table-cell-role="th">theme_weight_bool</th>
-<th data-quarto-table-cell-role="th">theme_appearance_count</th>
-<th data-quarto-table-cell-role="th">theme_appearance_bool</th>
-<th data-quarto-table-cell-role="th">theme_class_count</th>
-<th data-quarto-table-cell-role="th">theme_class_bool</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1.0</td>
-<td>0.043478</td>
-<td>0.125000</td>
-<td>1.0</td>
-<td>0</td>
-<td>0.50</td>
-<td>1</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.000000</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>0.0</td>
-<td>0.035714</td>
-<td>0.076923</td>
-<td>1.0</td>
-<td>0</td>
-<td>0.25</td>
-<td>1</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.000000</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.0</td>
-<td>0.024390</td>
-<td>0.052632</td>
-<td>1.0</td>
-<td>0</td>
-<td>0.25</td>
-<td>1</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.000000</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>1.0</td>
-<td>0.009434</td>
-<td>0.027778</td>
-<td>0.5</td>
-<td>1</td>
-<td>1.00</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>0.500000</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>0.0</td>
-<td>0.032258</td>
-<td>0.058824</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.00</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>1.0</td>
-<td>0</td>
-<td>1.0</td>
-<td>0</td>
-<td>0.333333</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-
 </div>
-</div>
-</div>
-<div id="0d87d602" class="cell" data-execution_count="38">
+<div id="0d87d602" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#finds outliers, takes the 5th and 95th quartile respectively to maximize values kept in</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>dataNum <span class="op">=</span> jokes_model.select_dtypes(include <span class="op">=</span> np.number)</span>
@@ -1234,128 +1084,207 @@ done</code></pre>
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Gets the lower and upper values specifically with the quartile + or - the cutoff</span></span>
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> <span class="bu">round</span>((q5 <span class="op">-</span> cut_off), <span class="dv">3</span>), <span class="bu">round</span>((q95 <span class="op">+</span> cut_off), <span class="dv">3</span>)</span>
 <span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the values</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">' '</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Outliers not printed for readability</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(' ')</span></span>
 <span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># For each value of the column, print the 5th and 95th percentiles and IQR</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, <span class="st">'q5 ='</span>, q5, <span class="st">'q95 ='</span>, q95, <span class="st">'IQR ='</span>, IQR)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print(i, 'q5 =', q5, 'q95 =', q95, 'IQR =', IQR)</span></span>
 <span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the lower and upper cut-offs</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'lower, upper:'</span>, lower, upper)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print('lower, upper:', lower, upper)</span></span>
 <span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count the number of outliers outside the (lower, upper) limits, print that value</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Number of Outliers: '</span>, dataNum_i[(dataNum_i <span class="op">&lt;</span> lower) <span class="op">|</span> (dataNum_i <span class="op">&gt;</span> upper)].count())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> 
-score q5 = 0.0 q95 = 260.0 IQR = 260.0
-lower, upper: -390.0 650.0
-Number of Outliers:  5019
- 
-overall_length q5 = 9.0 q95 = 196.0 IQR = 187.0
-lower, upper: -271.5 476.5
-Number of Outliers:  957
- 
-distinct_words_count q5 = 4.0 q95 = 62.0 IQR = 58.0
-lower, upper: -83.0 149.0
-Number of Outliers:  811
- 
-theme_gender_count q5 = 0.0 q95 = 6.0 IQR = 6.0
-lower, upper: -9.0 15.0
-Number of Outliers:  965
- 
-theme_gender_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0
- 
-theme_ethnicity_count q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  4026
- 
-theme_ethnicity_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0
- 
-theme_sexuality_count q5 = 0.0 q95 = 2.0 IQR = 2.0
-lower, upper: -3.0 5.0
-Number of Outliers:  2631
- 
-theme_sexuality_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0
- 
-theme_ability_count q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  775
- 
-theme_ability_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0
- 
-theme_age_count q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  4233
- 
-theme_age_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0
- 
-theme_weight_count q5 = 0.0 q95 = 0.0 IQR = 0.0
-lower, upper: 0.0 0.0
-Number of Outliers:  6145
- 
-theme_weight_bool q5 = 0.0 q95 = 0.0 IQR = 0.0
-lower, upper: 0.0 0.0
-Number of Outliers:  6145
- 
-theme_appearance_count q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  2358
- 
-theme_appearance_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0
- 
-theme_class_count q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  3895
- 
-theme_class_bool q5 = 0.0 q95 = 1.0 IQR = 1.0
-lower, upper: -1.5 2.5
-Number of Outliers:  0</code></pre>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print('Number of Outliers: ', dataNum_i[(dataNum_i &lt; lower) | (dataNum_i &gt; upper)].count())</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="689566f7" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a copy of country cleaned</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>jokes_model_copy <span class="op">=</span> jokes_model.copy()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> [<span class="st">"score"</span>, <span class="st">"overall_length"</span>, <span class="st">"distinct_words_count"</span>, <span class="st">"theme_gender_count"</span>, <span class="st">"theme_ethnicity_count"</span>, <span class="st">"theme_sexuality_count"</span>, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"theme_ability_count"</span>, <span class="st">"theme_age_count"</span>, <span class="st">"theme_weight_count"</span>, <span class="st">"theme_appearance_count"</span>, <span class="st">"theme_class_count"</span>]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> each <span class="kw">in</span> outliers:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#finds the 5th and 95th quartile rounded to the 3rd decimal point</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    q5, q95 <span class="op">=</span> <span class="bu">round</span>((jokes_model_copy[each].quantile(q <span class="op">=</span> <span class="fl">0.05</span>)), <span class="dv">3</span>), <span class="bu">round</span>((jokes_model_copy[each].quantile(q <span class="op">=</span> <span class="fl">0.95</span>)), <span class="dv">3</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#finds the IQR rounded to the third decimal point</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    IQR <span class="op">=</span> <span class="bu">round</span>((q95<span class="op">-</span>q5), <span class="dv">3</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">#obtains the cutoff value through the equation IQR * 1.5</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    cut_off <span class="op">=</span> IQR <span class="op">*</span> <span class="fl">1.5</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#gets the upper and lower bounds</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> <span class="bu">round</span>((q5 <span class="op">-</span> cut_off), <span class="dv">3</span>), <span class="bu">round</span>((q95 <span class="op">+</span> cut_off), <span class="dv">3</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#gits rid of everthing that is above and below the cutoff</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    jokes_model_copy[each] <span class="op">=</span> np.clip(jokes_model_copy[each], lower, upper) <span class="co">#*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3666807d" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Normalizes all the numeric columns, most numeric columns should already be scaled except score</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>scaled_data <span class="op">=</span> scaler.fit_transform(jokes_model_copy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f78b1eca" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#copies jokes model for regression analysis</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>jokes_reg <span class="op">=</span> jokes_model_copy.copy()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#copies jokes model for classification analysis</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a new variable that determines if a joke is liked more than the median score</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>jokes_class <span class="op">=</span> jokes_model_copy.copy()</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>jokes_class[<span class="st">"score_class"</span>] <span class="op">=</span> np.where(jokes_class[<span class="st">"score"</span>] <span class="op">&gt;</span> jokes_class[<span class="st">"score"</span>].median(), <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>jokes_class.drop(columns<span class="op">=</span>[<span class="st">"score"</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>jokes_class.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">overall_length</th>
+<th data-quarto-table-cell-role="th">distinct_words_count</th>
+<th data-quarto-table-cell-role="th">theme_gender_count</th>
+<th data-quarto-table-cell-role="th">theme_gender_bool</th>
+<th data-quarto-table-cell-role="th">theme_ethnicity_count</th>
+<th data-quarto-table-cell-role="th">theme_ethnicity_bool</th>
+<th data-quarto-table-cell-role="th">theme_sexuality_count</th>
+<th data-quarto-table-cell-role="th">theme_sexuality_bool</th>
+<th data-quarto-table-cell-role="th">theme_ability_count</th>
+<th data-quarto-table-cell-role="th">theme_ability_bool</th>
+<th data-quarto-table-cell-role="th">theme_age_count</th>
+<th data-quarto-table-cell-role="th">theme_age_bool</th>
+<th data-quarto-table-cell-role="th">theme_weight_count</th>
+<th data-quarto-table-cell-role="th">theme_weight_bool</th>
+<th data-quarto-table-cell-role="th">theme_appearance_count</th>
+<th data-quarto-table-cell-role="th">theme_appearance_bool</th>
+<th data-quarto-table-cell-role="th">theme_class_count</th>
+<th data-quarto-table-cell-role="th">theme_class_bool</th>
+<th data-quarto-table-cell-role="th">score_class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.043478</td>
+<td>0.125000</td>
+<td>1.0</td>
+<td>0</td>
+<td>0.50</td>
+<td>1</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.000000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.035714</td>
+<td>0.076923</td>
+<td>1.0</td>
+<td>0</td>
+<td>0.25</td>
+<td>1</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.000000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.024390</td>
+<td>0.052632</td>
+<td>1.0</td>
+<td>0</td>
+<td>0.25</td>
+<td>1</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.000000</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.009434</td>
+<td>0.027778</td>
+<td>0.5</td>
+<td>1</td>
+<td>1.00</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>0.500000</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.032258</td>
+<td>0.058824</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.00</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>0.5</td>
+<td>1</td>
+<td>1.0</td>
+<td>0</td>
+<td>1.0</td>
+<td>0</td>
+<td>0.333333</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<div id="689566f7" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a copy of country cleaned</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>jokes_model_copy <span class="op">=</span> jokes_model.copy()</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>outliers <span class="op">=</span> [<span class="st">"score"</span>, <span class="st">"overall_length"</span>, <span class="st">"distinct_words_count"</span>, <span class="st">"theme_gender_count"</span>, <span class="st">"theme_ethnicity_count"</span>, <span class="st">"theme_sexuality_count"</span>, </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"theme_ability_count"</span>, <span class="st">"theme_age_count"</span>, <span class="st">"theme_weight_count"</span>, <span class="st">"theme_appearance_count"</span>, <span class="st">"theme_class_count"</span>]</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> each <span class="kw">in</span> outliers:</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#finds the 5th and 95th quartile rounded to the 3rd decimal point</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    q5, q95 <span class="op">=</span> <span class="bu">round</span>((jokes_model_copy[each].quantile(q <span class="op">=</span> <span class="fl">0.05</span>)), <span class="dv">3</span>), <span class="bu">round</span>((jokes_model_copy[each].quantile(q <span class="op">=</span> <span class="fl">0.95</span>)), <span class="dv">3</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#finds the IQR rounded to the third decimal point</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    IQR <span class="op">=</span> <span class="bu">round</span>((q95<span class="op">-</span>q5), <span class="dv">3</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">#obtains the cutoff value through the equation IQR * 1.5</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    cut_off <span class="op">=</span> IQR <span class="op">*</span> <span class="fl">1.5</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#gets the upper and lower bounds</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    lower, upper <span class="op">=</span> <span class="bu">round</span>((q5 <span class="op">-</span> cut_off), <span class="dv">3</span>), <span class="bu">round</span>((q95 <span class="op">+</span> cut_off), <span class="dv">3</span>)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#gits rid of everthing that is above and below the cutoff</span></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    jokes_model_copy[each] <span class="op">=</span> np.clip(jokes_model_copy[each], lower, upper) <span class="co">#*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="3666807d" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Normalizes all the numeric columns, most numeric columns should already be scaled except score</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> MinMaxScaler()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>scaled_data <span class="op">=</span> scaler.fit_transform(jokes_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plotting-visual-analysis" class="level5">
 <h5 class="anchored" data-anchor-id="plotting-visual-analysis">Plotting &amp; visual analysis</h5>
-<div id="052b3425" class="cell" data-execution_count="390">
+<div id="052b3425" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">### AHN</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Each of these plots as default then as strict</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a fixed order and set of colors</span></span>
@@ -1595,19 +1524,19 @@ Number of Outliers:  0</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6755/653838035.py:81: FutureWarning: 
+<pre><code>/tmp/ipykernel_1925/653838035.py:81: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1616,12 +1545,12 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-4.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-4.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_6755/653838035.py:81: FutureWarning: 
+<pre><code>/tmp/ipykernel_1925/653838035.py:81: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1630,47 +1559,350 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-6.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-6.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-7.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-7.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-8.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-8.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-9.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-9.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="final-analysis-writeup_files/figure-html/cell-16-output-10.png" class="img-fluid figure-img"></p>
+<p><img src="final-analysis-writeup_files/figure-html/cell-17-output-10.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="334ec169" class="cell" data-execution_count="391">
+<div id="334ec169" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">### CAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="classification---model-training-evaluation" class="level5">
 <h5 class="anchored" data-anchor-id="classification---model-training-evaluation">Classification - model training &amp; evaluation</h5>
-<div id="b6f056c4" class="cell" data-execution_count="392">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">### CAT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="b6f056c4" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>jokes_col_names <span class="op">=</span> jokes_class.columns</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#intializes the PCA test (that explains the variance by 95%)</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components <span class="op">=</span> <span class="fl">0.95</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#fits the numeric data to PCA</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>reduced_data <span class="op">=</span> pca.fit_transform(scaled_data)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a dataframe with PCA loading scores </span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>loading_scores <span class="op">=</span> pd.DataFrame(pca.components_, columns <span class="op">=</span> jokes_col_names)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#sets a 0.5 cutoff</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co">#function that gets all the features that are over the cutoff value</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_top_features_for_each_component(loading_scores, threshold):</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">#creates a dictionary that stores the features</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    top_features <span class="op">=</span> {}</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">#loops through the number of loading scores</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(loading_scores.shape[<span class="dv">0</span>]):</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>        component <span class="op">=</span> <span class="ss">f"Component </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        scores <span class="op">=</span> loading_scores.iloc[i]</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">#finds the feature that is above the threshold and stores it in a dictionary</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        top_features_for_component <span class="op">=</span> scores[<span class="bu">abs</span>(scores) <span class="op">&gt;</span> threshold].index.tolist()</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        top_features[component] <span class="op">=</span> top_features_for_component</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> top_features</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co">#calls the fuction above to get the important features</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>top_features <span class="op">=</span> get_top_features_for_each_component(loading_scores, threshold)</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="co">#print out the features</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> component, features <span class="kw">in</span> top_features.items():</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>component<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>features<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Component 1: ['theme_ethnicity_count']
+Component 2: ['theme_ability_count']
+Component 3: ['theme_sexuality_count']
+Component 4: ['theme_sexuality_count', 'score_class']
+Component 5: ['theme_weight_count']
+Component 6: ['theme_class_count']
+Component 7: ['theme_age_count']
+Component 8: ['overall_length']
+Component 9: ['theme_appearance_count']</code></pre>
+</div>
+</div>
+<div id="218eb3c7" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#intializes the PCA and fits the data inside</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pca_full <span class="op">=</span> PCA()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>pca_full.fit(scaled_data)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#gets the variance</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>cumulative_variance <span class="op">=</span> np.cumsum(pca_full.explained_variance_ratio_)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a figure for the cumlative varience PCA Plot and labels the graph</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.plot(cumulative_variance)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Components'</span>)</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cumulative Explained Variance'</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PCA Plot'</span>)</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#stores the inflection point (number of variables that would make the prediction higher than 95% accurate)</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>inflection_point <span class="op">=</span> np.argmax(cumulative_variance <span class="op">&gt;=</span> <span class="fl">0.95</span>) <span class="op">+</span> <span class="dv">1</span>  </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co">#plots the inflection point on the graph</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span>inflection_point, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span>cumulative_variance[inflection_point], color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"inflection_point: "</span> <span class="op">+</span> <span class="bu">str</span>(inflection_point))</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>inflection_point: 9</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final-analysis-writeup_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="93ed5414" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a subset with 7 components most correlated and the target</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>jokes_subset <span class="op">=</span> jokes_class[[<span class="st">"score_class"</span>, <span class="st">"theme_gender_bool"</span>, <span class="st">"theme_sexuality_bool"</span>, <span class="st">"theme_age_bool"</span>, <span class="st">"theme_ethnicity_bool"</span>, </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"theme_appearance_bool"</span>, <span class="st">"theme_ability_bool"</span>, <span class="st">"theme_class_bool"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5463202e" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#creates X (everything without the target variable) and y (the target variable)</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> StandardScaler</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> jokes_subset.drop(<span class="st">'score_class'</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> jokes_subset[<span class="st">'score_class'</span>]</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#splits the data into test and train data with 80% train data and 20% train data</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#scaler = StandardScaler()</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co">#X_train_scaled = scaler.fit_transform(X_train)</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co">#X_test_scaled = scaler.transform(X_test)</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Reduce dimensionality </span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components <span class="op">=</span> <span class="dv">7</span>) </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>X_train_pca <span class="op">=</span> pca.fit_transform(X_train)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>X_test_pca <span class="op">=</span> pca.transform(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5453cf6b" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#trains the data with Logistic Regression</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>log_reg <span class="op">=</span> LogisticRegression(multi_class <span class="op">=</span> <span class="st">'multinomial'</span>, solver <span class="op">=</span> <span class="st">'lbfgs'</span>, max_iter <span class="op">=</span> <span class="dv">100000</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>log_reg.fit(X_train_pca, y_train)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>log_predictions <span class="op">=</span> log_reg.predict(X_test_pca)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co">#creates the confusion matrix</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, log_predictions)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co">#plots the confusion matrix with a heatmap and labels the axis and title</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot <span class="op">=</span> <span class="va">True</span>, fmt <span class="op">=</span> <span class="st">'g'</span>)</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Logistic Regression Confusion Matrix'</span>)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Actual label'</span>)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Predicted label'</span>)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/codespace/.local/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1254: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, binary problems will be fit as proper binary  logistic regression models (as if multi_class='ovr' were set). Leave it to its default value to avoid this warning.
+  warnings.warn(</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final-analysis-writeup_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b389014f" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculates and prints the accuracy, precision, recall_score, f1_score, and ROC AUC</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> f1_score, precision_score, recall_score, roc_auc_score</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Logistic Regression Accuracy:"</span>, accuracy_score(y_test, log_predictions))</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> precision_score(y_test, log_predictions) </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Logistic Regression Precision: </span><span class="sc">{</span>precision<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>recall <span class="op">=</span> recall_score(y_test, log_predictions)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Logistic Regression Recall: </span><span class="sc">{</span>recall<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, log_predictions) </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Logistic Regression F1 Score: </span><span class="sc">{</span>f1<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">#predicts the probability of the discrete variable for the PCA test valeus</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>y_score_log <span class="op">=</span> log_reg.predict_proba(X_test_pca)[:,<span class="dv">1</span>]</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co">#calculates the roc_auc_score</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(y_test, y_score_log)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROC AUC Score:"</span>, roc_auc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Logistic Regression Accuracy: 0.5745933026650561
+Logistic Regression Precision: 0.58
+Logistic Regression Recall: 0.30
+Logistic Regression F1 Score: 0.40
+ROC AUC Score: 0.5731551904064799</code></pre>
+</div>
+</div>
+<div id="fe2b5c5f" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#trains the data with K nearest neighbor</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> KNeighborsClassifier(n_neighbors <span class="op">=</span> <span class="dv">5</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>knn.fit(X_train_pca, y_train)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>knn_predictions <span class="op">=</span> knn.predict(X_test_pca)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">#creates the confusion matrix</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, knn_predictions)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">#creates a heatmap visualizing the confusion matrix</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot <span class="op">=</span> <span class="va">True</span>, fmt <span class="op">=</span><span class="st">'g'</span>)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'KNN Confusion Matrix'</span>) </span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Actual label'</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Predicted label'</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final-analysis-writeup_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="451d71d1" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"KNN Accuracy:"</span>, accuracy_score(y_test, knn_predictions))</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> precision_score(y_test, knn_predictions) </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KNN Precision: </span><span class="sc">{</span>precision<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>recall <span class="op">=</span> recall_score(y_test, knn_predictions) </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KNN Recall: </span><span class="sc">{</span>recall<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, knn_predictions)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"KNN F1 Score: </span><span class="sc">{</span>f1<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>y_score_knn <span class="op">=</span> knn.predict_proba(X_test_pca)[:,<span class="dv">1</span>]</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(y_test, y_score_knn)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROC AUC Score:"</span>, roc_auc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>KNN Accuracy: 0.5557040425586595
+KNN Precision: 0.54
+KNN Recall: 0.26
+KNN F1 Score: 0.35
+ROC AUC Score: 0.5540878405183575</code></pre>
+</div>
+</div>
+<div id="99ff217e" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#trains the data with Decision Tree</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>dtree <span class="op">=</span> DecisionTreeClassifier()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>dtree.fit(X_train_pca, y_train)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>dt_predictions <span class="op">=</span> dtree.predict(X_test_pca)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co">#creates the confusion matrix</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, dt_predictions)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">#creats a heatmap visualization of the confusion matrix</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot <span class="op">=</span> <span class="va">True</span>, fmt <span class="op">=</span> <span class="st">'g'</span>)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Decision Tree Confusion Matrix'</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Actual label'</span>)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Predicted label'</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final-analysis-writeup_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="b1a364fd" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Decision Tree Accuracy:"</span>, accuracy_score(y_test, dt_predictions))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> precision_score(y_test, dt_predictions) </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decision Tree Precision: </span><span class="sc">{</span>precision<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>recall <span class="op">=</span> recall_score(y_test, dt_predictions) </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decision Tree Recall: </span><span class="sc">{</span>recall<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, dt_predictions) </span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decision Tree F1 Score: </span><span class="sc">{</span>f1<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>y_score_dt <span class="op">=</span> dtree.predict_proba(X_test_pca)[:,<span class="dv">1</span>]</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(y_test, y_score_dt)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROC AUC Score:"</span>, roc_auc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Decision Tree Accuracy: 0.5733854180051914
+Decision Tree Precision: 0.58
+Decision Tree Recall: 0.29
+Decision Tree F1 Score: 0.39
+ROC AUC Score: 0.5727368540723066</code></pre>
+</div>
+</div>
+<div id="18f65a6e" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#trains the data on random forest</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>rf_classifier <span class="op">=</span> RandomForestClassifier()</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>rf_classifier.fit(X_train_pca, y_train)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>rf_predictions <span class="op">=</span> rf_classifier.predict(X_test_pca)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">#creates the confusion matrix</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, rf_predictions)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">#creats a heatmap visualization of the confusion matrix</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot <span class="op">=</span> <span class="va">True</span>, fmt <span class="op">=</span> <span class="st">'g'</span>)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Random Forest Confusion Matrix'</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Actual label'</span>)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Predicted label'</span>)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final-analysis-writeup_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="429ef5d7" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Random Forest Accuracy:"</span>, accuracy_score(y_test, rf_predictions))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> precision_score(y_test, rf_predictions) </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Random Forest Precision: </span><span class="sc">{</span>precision<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>recall <span class="op">=</span> recall_score(y_test, rf_predictions) </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Random Forest Recall: </span><span class="sc">{</span>recall<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>f1 <span class="op">=</span> f1_score(y_test, rf_predictions) </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Random Forest F1 Score: </span><span class="sc">{</span>f1<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>y_score_rf <span class="op">=</span> rf_classifier.predict_proba(X_test_pca)[:,<span class="dv">1</span>]</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>roc_auc <span class="op">=</span> roc_auc_score(y_test, y_score_rf)</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROC AUC Score:"</span>, roc_auc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Random Forest Accuracy: 0.5731798206162781
+Random Forest Precision: 0.58
+Random Forest Recall: 0.29
+Random Forest F1 Score: 0.39
+ROC AUC Score: 0.5727792788234809</code></pre>
+</div>
 </div>
 </section>
 </section>

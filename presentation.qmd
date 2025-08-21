@@ -1,7 +1,9 @@
 ---
-title: "Internet Jokes from 2017 (Working Title)"
+title: "Investigating Sociological & Marginalised Themes in Jokes"
 subtitle: "INFO 523 - Summer 2025 - Final Project"
-author: "(Ahn) Michael Howell, Cat Xia"
+author: "(Ahn) Michael Howell & Cat Xia"
+footer: "Content warning - problematic & vulgar language in the data: *this project explores sociopolitical themes and aims to accurately represent the way users interact with humor on Reddit, meaning that many of the jokes contain problematic, vulgar, or taboo topics and use of language*"
+
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch
@@ -53,11 +55,73 @@ penguins = sns.load_dataset('penguins').dropna()
 
 # Using Quarto for presentations
 
-## Quarto
+## Our Dataset
 
--   The presentation is created using the Quarto CLI
+A dataset of English plaintext jokes
+- ~200k jokes from Reddit
+- Gathered in 2017 by Taivo Pungas
+- Had coluns: id, title, body, score
+- Why we chose it:
+    - Very complete data (few missing values)
+    - Text data with sociological topic
 
--   `##` sets the start of a new slide
+## Our Questions
+
+1. What are the distributions of social categories and marginalised themes represented in jokes?
+2. How does each sociological theme relate to the scores users assign- are certain themes rated more highly?
+3. Can we create a model to predict how well a joke does through sciological theme alone?
+
+## Our Approach
+Identifying sociological themes
+  - 8 themes: gender, ethnicity, sexuality, ability, age, weight, appearance, class
+  - Predefined sets of words to match each theme
+Key files
+  - preprocessing_data.ipynb
+    - For data preparation & feature engineering
+  - final_analysis_writeup.ipynb
+    - For analysis & presenting findings
+
+## Our data prep(NLP)
+
+Preprocessing steps
+  - Combining joke title & body (whole_text)
+  - Lowercasing
+  - Removing non-letter characters
+  - Removing stop words
+Engineering features
+  - whole_text, whole_text_normalised
+  - whole_text_normalised_tokens
+  - distinct_words
+  - overall_length
+  - theme_<theme>_count
+  - theme_<theme>_bool
+  - themes_found
+
+## IMAGE- images/ahn/examples/example-joke.png
+
+## Plot 1 - Theme prevalence (Bar)
+
+## Plot 2 - Scores by theme (Box)
+
+## Plot 3 - Scores by # of themes (Box)
+
+## Plot 4 - Scores by joke length, by theme (Scatter)
+
+## Modeling
+
+## Classification
+
+## Results
+
+## Summary & next steps
+
+Q1: What are the distributions of themes represented in jokes?
+  - Most jokes involve a social theme, especially gender, ethnicity & sexuality
+Q2: How does each theme relate to the scores users assign?
+  - Reddit users favor jokes with more social themes
+Next steps
+  - Use an LLM for nuanced theme recognition
+
 
 ## Layouts
 
