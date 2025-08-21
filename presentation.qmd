@@ -12,8 +12,10 @@ title-slide-attributes:
   data-slide-number: none
 format:
   revealjs:
-    scrollable: true
     theme:  ['data/customtheming.scss']
+
+resources:
+  - audio/**
   
 editor: visual
 jupyter: python3
